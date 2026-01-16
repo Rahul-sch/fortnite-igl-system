@@ -1,6 +1,6 @@
 # IGL Winning System - Fortnite Duos Competitive Tool
 
-**Version:** 1.0.0
+**Version:** 2.0.0
 **Region:** NAC
 **Mode:** Builds (Battle Royale)
 **Season:** Chapter 7 Season 1 (Pacific Break)
@@ -18,6 +18,16 @@ A complete competitive Fortnite duos system designed to win tournaments through 
 - Public map data from fortnite.gg
 - Tournament macro principles
 - Competitive Fortnite meta analysis
+- Pro player statistics from Kinch Analytics
+
+---
+
+## 🚀 What's New in v2.0
+
+- **🤖 Discord Bot** - Voice channel integration for live game tracking
+- **🗺️ Rotation Planner** - Interactive map with team predictions and optimal routes
+- **📊 Kinch Analytics Benchmarks** - Pro player stats and targets to aim for
+- **🔥 Advanced Meta Strategies** - Storm tanking, scuff plays, high ping meta
 
 ---
 
@@ -39,7 +49,34 @@ Sections:
 - **D) Endgame** - Layer selection, tarp patterns, refresh timing
 - **E) Drop Cards** - Top 15 POIs for each playstyle
 
-### 2. Map Dataset (`data/`)
+### 2. Discord Bot (`discord-bot/`)
+
+Voice channel integration for live game tracking:
+- **Join your call** - Bot joins your duo's voice channel
+- **Live tracking** - Update zone, surge, mats, fights via slash commands
+- **Real-time insights** - Get tactical advice based on current situation
+- **Game recap** - End-of-game analysis with strengths and improvements
+- **Dashboard sync** - WebSocket connection for live dashboard updates
+
+Commands: `/igl join` `/igl zone` `/igl surge` `/igl mats` `/igl fight` `/igl gg`
+
+### 3. Advanced Documentation (`docs/`)
+
+**ADVANCED_META_STRATEGIES.md** - The scuff king playbook:
+- Storm damage ticks by zone (1/2/5/10 tick breakdowns)
+- Campfire math and heal hierarchy for storm tanking
+- Scuff resource locations (barrels, trucks, vending machines)
+- 200 IQ plays (Dead Man Walking, Surge Sacrifice, Launch Pad Bait)
+- High ping specific weapon priority and building adjustments
+- Zone prediction patterns for Chapter 7 Season 1
+
+**KINCH_ANALYTICS_BENCHMARKS.md** - Pro player statistics:
+- Damage, elim, damage ratio, DPM leaders from FNCS events
+- Benchmark targets: Average, Good, Elite, Pro levels
+- FNCS 2026 scoring reference
+- Self-assessment tracker template
+
+### 4. Map Dataset (`data/`)
 
 **poi_dataset.json** - Complete Chapter 7 Season 1 data:
 - 13 Named POIs
@@ -60,7 +97,7 @@ Sections:
 
 **scoring_engine.js** - Configurable scoring algorithm
 
-### 3. Interactive Tool (`tool/`)
+### 5. Interactive Tool (`tool/`)
 
 **index.html** - Single-file web application with:
 
@@ -88,7 +125,16 @@ Get AI-powered tactical recommendations:
 - View detailed drop cards
 - Links to fortnite.gg for verification
 
-#### Tab 3: Map Overlay
+#### Tab 3: Rotation Planner (NEW!)
+- Interactive canvas map with click-to-set-position
+- Team position predictions based on zone and teams alive
+- Optimal rotation routes with multiple path options
+- Refarm spots (slurp barrels, wood farms, vehicles)
+- Danger zone warnings
+- Grid coordinate system (A1-H8)
+- Resources layer toggle
+
+#### Tab 4: Map Overlay
 - Interactive canvas map
 - Toggle layers: POIs, chests, shields, mobility, routes
 - Color-coded by contest risk
@@ -111,6 +157,15 @@ Get AI-powered tactical recommendations:
 2. Print the one-page cheat sheet for quick reference during games
 3. Study the decision trees for each game phase
 4. Practice the comm scripts with your duo
+
+### Setting Up the Discord Bot
+
+1. Go to `discord-bot/` folder
+2. Follow setup instructions in `discord-bot/README.md`
+3. Create a Discord bot and get token
+4. Configure `.env` with your Discord token and Groq API key
+5. Run `npm install && npm start`
+6. Use `/igl join` in your server to start tracking
 
 ### Running Tests
 
@@ -153,6 +208,7 @@ contest_risk_inverse: 0.10
 | [GameRant Landing Spots](https://gamerant.com/fortnite-chapter-7-season-1-best-landing-spots/) | Competitive viability analysis |
 | [FNCS 2026 Format](https://esports.gg/news/fortnite/fortnite-fncs-2026/) | Tournament rules, duos format |
 | [Epic Games Patch Notes](https://www.fortnite.com/news) | Season updates, mobility items |
+| [Kinch Analytics](https://kinchanalytics.com) | Pro player statistics, FNCS data |
 
 ---
 
@@ -160,23 +216,30 @@ contest_risk_inverse: 0.10
 
 ```
 fortnite-igl-system/
-├── README.md                    # This file
+├── README.md                           # This file
 ├── docs/
-│   └── IGL_OS_DOCUMENT.md      # Complete IGL playbook
+│   ├── IGL_OS_DOCUMENT.md             # Complete IGL playbook
+│   ├── ADVANCED_META_STRATEGIES.md    # Storm tanking, scuff plays, high ping meta
+│   └── KINCH_ANALYTICS_BENCHMARKS.md  # Pro player stats and benchmarks
+├── discord-bot/
+│   ├── bot.js                         # Discord bot with voice integration
+│   ├── package.json                   # Bot dependencies
+│   ├── .env.example                   # Environment template
+│   └── README.md                      # Bot setup guide
 ├── data/
-│   ├── poi_dataset.json        # Full POI/landmark data
-│   ├── poi_rankings.json       # Scored rankings
-│   └── scoring_engine.js       # Scoring algorithm
+│   ├── poi_dataset.json               # Full POI/landmark data
+│   ├── poi_rankings.json              # Scored rankings
+│   └── scoring_engine.js              # Scoring algorithm
 ├── tool/
 │   ├── public/
-│   │   └── index.html          # Interactive web tool
+│   │   └── index.html                 # Interactive web tool (4 tabs)
 │   └── src/
-│       └── groq_analyzer.js    # Groq API integration
+│       └── groq_analyzer.js           # Groq API integration
 └── tests/
-    ├── test_scoring.js         # Scoring engine tests
-    ├── test_groq_analyzer.js   # Analyzer tests
-    ├── test_results.json       # Scoring test results
-    └── test_groq_results.json  # Analyzer test results
+    ├── test_scoring.js                # Scoring engine tests
+    ├── test_groq_analyzer.js          # Analyzer tests
+    ├── test_results.json              # Scoring test results
+    └── test_groq_results.json         # Analyzer test results
 ```
 
 ---
