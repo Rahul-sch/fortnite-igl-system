@@ -1,0 +1,27 @@
+# Fortnite IGL Vision Agent - Requirements
+# 100% FREE Local AI Setup - No Cloud Costs!
+
+# Screen Capture (Uses Desktop Duplication API - 240+ FPS capable)
+bettercam>=1.0.0
+
+# OCR Engine (GPU-accelerated text recognition)
+easyocr>=1.7.1
+
+# Image Processing
+opencv-python-headless>=4.9.0
+numpy>=1.26.0
+Pillow>=10.0.0
+
+# WebSocket Communication
+websocket-client>=1.7.0
+
+# PyTorch with CUDA 12.1 support (for EasyOCR GPU acceleration)
+# Uses NVIDIA's CUDA toolkit for RTX GPUs
+--extra-index-url https://download.pytorch.org/whl/cu121
+torch>=2.2.0
+
+# Optional: Performance monitoring
+psutil>=5.9.0
+
+# Optional: For calibration UI
+keyboard>=0.13.5
