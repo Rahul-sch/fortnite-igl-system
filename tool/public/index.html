@@ -2023,15 +2023,23 @@ Provide tactical JSON response with specific actionable advice.`;
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
 
-      // Background
-      const bg = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 0, canvas.width/2, canvas.height/2, canvas.width/1.5);
-      bg.addColorStop(0, '#1a1a25');
-      bg.addColorStop(1, '#0d0d15');
-      ctx.fillStyle = bg;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Draw fortnite.gg map background if loaded
+      if (mapImageLoaded && mapImage) {
+        ctx.drawImage(mapImage, 0, 0, canvas.width, canvas.height);
+        // Add slight dark overlay for better marker visibility
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      } else {
+        // Fallback background
+        const bg = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 0, canvas.width/2, canvas.height/2, canvas.width/1.5);
+        bg.addColorStop(0, '#1a1a25');
+        bg.addColorStop(1, '#0d0d15');
+        ctx.fillStyle = bg;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
 
-      // Grid
-      ctx.strokeStyle = 'rgba(99, 102, 241, 0.15)';
+      // Grid overlay
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
       ctx.lineWidth = 1;
       for (let i = 0; i <= 8; i++) {
         ctx.beginPath();
@@ -2045,7 +2053,7 @@ Provide tactical JSON response with specific actionable advice.`;
       }
 
       // Grid labels
-      ctx.fillStyle = 'rgba(255,255,255,0.3)';
+      ctx.fillStyle = 'rgba(255,255,255,0.5)';
       ctx.font = 'bold 12px Inter';
       const letters = 'ABCDEFGH';
       for (let i = 0; i < 8; i++) {
@@ -2241,6 +2249,26 @@ Provide tactical JSON response with specific actionable advice.`;
 
     // Map
     const mapLayers = { pois: true, routes: false, zones: false, resources: false };
+    let mapImage = null;
+    let mapImageLoaded = false;
+
+    // Load the fortnite.gg map image
+    function loadMapImage() {
+      mapImage = new Image();
+      mapImage.crossOrigin = 'anonymous';
+      // Use fortnite.gg map tiles - zoom 0 is full map in 256x256
+      mapImage.src = 'https://fortnite.gg/maps/39.02/0/0/0.jpg';
+      mapImage.onload = () => {
+        mapImageLoaded = true;
+        drawMap();
+        drawRotationMap();
+      };
+      mapImage.onerror = () => {
+        console.log('Map image failed to load, using fallback');
+        mapImageLoaded = false;
+        drawMap();
+      };
+    }
 
     function toggleLayer(layer) {
       mapLayers[layer] = !mapLayers[layer];
@@ -2254,15 +2282,23 @@ Provide tactical JSON response with specific actionable advice.`;
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
 
-      // Background gradient
-      const bg = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 0, canvas.width/2, canvas.height/2, canvas.width/1.5);
-      bg.addColorStop(0, '#1a1a25');
-      bg.addColorStop(1, '#0d0d15');
-      ctx.fillStyle = bg;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Draw fortnite.gg map background if loaded
+      if (mapImageLoaded && mapImage) {
+        ctx.drawImage(mapImage, 0, 0, canvas.width, canvas.height);
+        // Add slight dark overlay for better marker visibility
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      } else {
+        // Fallback gradient background
+        const bg = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 0, canvas.width/2, canvas.height/2, canvas.width/1.5);
+        bg.addColorStop(0, '#1a1a25');
+        bg.addColorStop(1, '#0d0d15');
+        ctx.fillStyle = bg;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
 
-      // Grid
-      ctx.strokeStyle = 'rgba(99, 102, 241, 0.1)';
+      // Grid overlay
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
       ctx.lineWidth = 1;
       for (let i = 0; i <= 8; i++) {
         ctx.beginPath();
@@ -2273,6 +2309,15 @@ Provide tactical JSON response with specific actionable advice.`;
         ctx.moveTo(0, (canvas.height / 8) * i);
         ctx.lineTo(canvas.width, (canvas.height / 8) * i);
         ctx.stroke();
+      }
+
+      // Grid labels
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+      ctx.font = 'bold 12px Inter, sans-serif';
+      const letters = 'ABCDEFGH';
+      for (let i = 0; i < 8; i++) {
+        ctx.fillText(letters[i], (canvas.width / 8) * i + canvas.width / 16 - 4, 15);
+        ctx.fillText(i + 1, 5, (canvas.height / 8) * i + canvas.height / 16 + 4);
       }
 
       if (mapLayers.zones) {
@@ -2358,6 +2403,7 @@ Provide tactical JSON response with specific actionable advice.`;
     // Init
     document.addEventListener('DOMContentLoaded', () => {
       filterDrops();
+      loadMapImage(); // Load fortnite.gg map
       setTimeout(drawMap, 100);
       setTimeout(drawRotationMap, 100);
       window.addEventListener('resize', () => {
