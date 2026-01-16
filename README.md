@@ -1,4 +1,261 @@
-# IGL Winning System - Fortnite Duos Competitive Tool
+# Fortnite IGL System v3.0 - 100% FREE Edition
+
+**Version:** 3.0.0
+**Region:** NAC
+**Mode:** Builds (Battle Royale)
+**Season:** Chapter 7 Season 1 (Pacific Break)
+
+---
+
+## 🆓 NEW IN v3.0: 100% FREE AI COACHING
+
+**Zero API costs. Zero subscriptions. Runs entirely on your PC.**
+
+- **Vision Agent** - Automatic screen reading (no manual input needed!)
+- - **Ollama AI** - Local LLM for tactical analysis (no cloud APIs)
+  - - **Real-time coaching** - Live callouts in Discord voice
+    -
+    - ### Cost Comparison
+    -
+    - | Feature | v2.0 (Old) | v3.0 (New) |
+    - |---------|------------|------------|
+    - | AI Analysis | Groq API ($10-30/mo) | **Ollama (FREE)** |
+    - | Game Data | Manual input | **Vision Agent (auto)** |
+    - | Privacy | Data sent to cloud | **100% local** |
+    - | Offline | ❌ No | ✅ **Yes** |
+    -
+    - ---
+    -
+    - ## 🎯 What's New in v3.0
+    -
+    - ### 🔬 Vision Agent (Python)
+    - Automatically reads your Fortnite screen:
+    - - HP & Shield values
+      - - Material counts (wood/brick/metal)
+        - - Player count
+          - - Storm timer
+            - - **Surge warnings** (auto-detected!)
+              -
+              - Performance: <8% CPU, <12% GPU, runs at 3 FPS.
+              -
+              - ### 🧠 Ollama AI (Local LLM)
+              - Free tactical analysis using Llama 3.1:
+              - - "Should I fight or rotate?"
+                - - "Am I below surge?"
+                  - - "What's my priority action?"
+                    -
+                    - No API keys. No costs. Runs on your GPU.
+                    -
+                    - ### 🎮 Discord Integration
+                    - - Vision Agent → WebSocket → Discord Bot
+                      - - Bot calls out warnings in voice channel
+                        - - End-game recaps with AI analysis
+                          -
+                          - ---
+                          -
+                          - ## ⚠️ Fair Play Statement
+                          -
+                          - **This tool is NOT cheating.**
+                          -
+                          - The Vision Agent:
+                          - - Only reads pixels from your screen (like your eyes)
+                            - - Does NOT inject code into Fortnite
+                              - - Does NOT automate gameplay
+                                - - Does NOT give unfair advantages
+                                  -
+                                  - It's the same as having a friend watch your screen and give callouts.
+                                  - This complies with Epic Games' terms of service.
+                                  -
+                                  - ---
+                                  -
+                                  - ## 🚀 Quick Start
+                                  -
+                                  - ### Prerequisites
+                                  -
+                                  - - Windows 10/11
+                                    - - Python 3.10+ (for Vision Agent)
+                                      - - Node.js 18+ (for Discord Bot)
+                                        - - NVIDIA GPU recommended (but not required)
+                                          - - Discord account + bot token
+                                            -
+                                            - ### Installation
+                                            -
+                                            - ```bash
+                                              # Clone the repo
+                                              git clone https://github.com/Rahul-sch/fortnite-igl-system.git
+                                              cd fortnite-igl-system
+
+                                              # Install Ollama (AI)
+                                              # Download from https://ollama.ai/download
+                                              ollama pull llama3.1:8b
+
+                                              # Install Vision Agent (Python)
+                                              cd vision-agent
+                                              pip install -r requirements.txt
+                                              python calibrate.py  # Calibrate for your resolution
+
+                                              # Install Discord Bot (Node.js)
+                                              cd ../discord-bot
+                                              npm install
+                                              cp .env.example .env
+                                              # Edit .env with your Discord token
+                                              ```
+
+                                              ### Running Everything
+
+                                              ```bash
+                                              # Terminal 1: Start Ollama
+                                              ollama serve
+
+                                              # Terminal 2: Start Discord Bot
+                                              cd discord-bot
+                                              npm start
+
+                                              # Terminal 3: Start Vision Agent (with Fortnite visible)
+                                              cd vision-agent
+                                              python main.py
+
+                                              # Terminal 4 (optional): Test Ollama
+                                              cd discord-bot
+                                              node ollama-client.js
+                                              ```
+
+                                              ---
+
+                                              ## 📦 Components
+
+                                              ### 1. Vision Agent (`vision-agent/`)
+
+                                              Python screen reader with:
+                                              - **BetterCam** - Fast screen capture (240+ FPS capable)
+                                              - - **EasyOCR** - GPU-accelerated text recognition
+                                                - - **WebSocket** - Real-time communication with Discord bot
+                                                  -
+                                                  - Files:
+                                                  - ```
+                                                    vision-agent/
+                                                    ├── main.py              # Main entry point
+                                                    ├── calibrate.py         # UI region calibration tool
+                                                    ├── config.json          # Configuration
+                                                    ├── requirements.txt     # Python dependencies
+                                                    └── utils/
+                                                        ├── capture.py       # Screen capture module
+                                                        ├── ocr.py           # Fortnite-optimized OCR
+                                                        └── extractor.py     # Game state extraction
+                                                    ```
+
+                                                    See: [docs/VISION_SETUP.md](docs/VISION_SETUP.md)
+
+                                                    ### 2. Discord Bot (`discord-bot/`)
+
+                                                    Node.js bot with:
+                                                    - **Voice channel integration** - Joins your duo's call
+                                                    - - **Vision Server** - Receives game state from Python agent
+                                                      - - **Ollama Client** - Local AI for tactical analysis
+                                                        - - **Live tracking** - Slash commands for manual updates
+                                                          -
+                                                          - Files:
+                                                          - ```
+                                                            discord-bot/
+                                                            ├── bot.js               # Main Discord bot
+                                                            ├── vision-server.js     # WebSocket server for Vision Agent
+                                                            ├── ollama-client.js     # Local LLM client
+                                                            ├── package.json         # Node dependencies
+                                                            └── .env.example         # Environment template
+                                                            ```
+
+                                                            See: [docs/OLLAMA_SETUP.md](docs/OLLAMA_SETUP.md)
+
+                                                            ### 3. Documentation (`docs/`)
+
+                                                            - **IGL_OS_DOCUMENT.md** - Complete IGL playbook
+                                                            - - **ADVANCED_META_STRATEGIES.md** - Storm tanking, scuff plays
+                                                              - - **KINCH_ANALYTICS_BENCHMARKS.md** - Pro player stats
+                                                                - - **VISION_SETUP.md** - Vision Agent setup guide
+                                                                  - - **OLLAMA_SETUP.md** - Local AI setup guide
+                                                                    -
+                                                                    - ### 4. Data & Tools (`data/`, `tool/`)
+                                                                    -
+                                                                    - - **poi_dataset.json** - Complete POI data for Chapter 7 Season 1
+                                                                      - - **poi_rankings.json** - Scored and ranked POIs
+                                                                        - - **scoring_engine.js** - Configurable scoring algorithm
+                                                                          - - **index.html** - Web-based situation analyzer (optional)
+                                                                            -
+                                                                            - ---
+                                                                            -
+                                                                            - ## 🎮 Discord Commands
+                                                                            -
+                                                                            - ### With Vision Agent (Automatic)
+                                                                            - When Vision Agent is running, the bot automatically:
+                                                                            - - Detects surge warnings and alerts you
+                                                                              - - Tracks HP/Shield/Mats changes
+                                                                                - - Provides tactical callouts based on game state
+                                                                                  -
+                                                                                  - ### Manual Commands (Fallback)
+                                                                                  -
+                                                                                  - | Command | Description |
+                                                                                  - |---------|-------------|
+                                                                                  - | `/igl join` | Join your voice channel |
+                                                                                  - | `/igl leave` | Leave and end session |
+                                                                                  - | `/igl zone [number] [teams]` | Update zone and teams alive |
+                                                                                  - | `/igl surge [status]` | Update surge status |
+                                                                                  - | `/igl mats [w] [b] [m]` | Update materials |
+                                                                                  - | `/igl fight [result]` | Log a fight result |
+                                                                                  - | `/igl gg [placement] [elims]` | End game, get recap |
+                                                                                  - | `/igl status` | Get current game status |
+                                                                                  -
+                                                                                  - ---
+                                                                                  -
+                                                                                  - ## 🔧 Configuration
+                                                                                  -
+                                                                                  - ### Vision Agent (`vision-agent/config.json`)
+                                                                                  -
+                                                                                  - ```json
+                                                                                    {
+                                                                                      "capture": {
+                                                                                        "monitor_index": 0,
+                                                                                        "target_fps": 3
+                                                                                      },
+                                                                                      "ocr": {
+                                                                                        "gpu": true
+                                                                                      },
+                                                                                      "websocket": {
+                                                                                        "port": 8765
+                                                                                      }
+                                                                                    }
+                                                                                    ```
+
+                                                                                    ### Discord Bot (`.env`)
+
+                                                                                    ```env
+                                                                                    DISCORD_TOKEN=your_bot_token_here
+                                                                                    OLLAMA_MODEL=llama3.1:8b
+                                                                                    VISION_PORT=8765
+                                                                                    ```
+
+                                                                                    ---
+
+                                                                                    ## 🖥️ System Requirements
+
+                                                                                    ### Minimum
+                                                                                    - Windows 10
+                                                                                    - - 8GB RAM
+                                                                                      - - Any GPU (CPU fallback available)
+                                                                                        - - Python 3.10+
+                                                                                          - - Node.js 18+
+                                                                                            -
+                                                                                            - ### Recommended
+                                                                                            - - Windows 11
+                                                                                              - - 16GB RAM
+                                                                                                - - NVIDIA RTX 3060+ (8GB VRAM)
+                                                                                                  - - Python 3.11+
+                                                                                                    - - Node.js 20+
+                                                                                                      -
+                                                                                                      - ---
+                                                                                                      -
+                                                                                                      - ## 🏆 Good luck in FNCS 2026!
+                                                                                                      -
+                                                                                                      - *Built for NAC Duos domination. 100% FREE.*# IGL Winning System - Fortnite Duos Competitive Tool
 
 **Version:** 2.0.0
 **Region:** NAC
