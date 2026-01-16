@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IGL Winning System v3.0 - Fortnite Duos Tool</title>
+  <title>IGL Winning System v4.0 - Fortnite Duos Tool</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <!-- Leaflet CSS for proper map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
     :root {
       --bg-primary: #05050a;
@@ -1306,6 +1309,123 @@
       color: var(--accent-primary);
     }
 
+    /* Bus Path Controls */
+    .bus-path-controls {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: flex-end;
+    }
+
+    .bus-input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .bus-input-group label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .bus-input-group input {
+      padding: 10px 14px;
+      background: var(--bg-primary);
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      color: white;
+      font-size: 1rem;
+      font-family: 'Orbitron', monospace;
+      width: 120px;
+      text-transform: uppercase;
+    }
+
+    .bus-input-group input:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+    }
+
+    /* Leaflet map overrides */
+    .leaflet-container {
+      background: #1a1a25 !important;
+    }
+
+    .leaflet-control-zoom a {
+      background: var(--bg-secondary) !important;
+      color: white !important;
+      border-color: var(--border-color) !important;
+    }
+
+    .leaflet-control-zoom a:hover {
+      background: var(--accent-primary) !important;
+    }
+
+    .poi-marker {
+      background: transparent;
+      border: none;
+    }
+
+    .poi-label {
+      color: white;
+      font-weight: 700;
+      text-shadow: 0 0 4px black, 0 0 4px black;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .chest-marker {
+      width: 20px;
+      height: 20px;
+      background: #fbbf24;
+      border: 2px solid #000;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: bold;
+      color: black;
+    }
+
+    .ammo-marker {
+      width: 18px;
+      height: 18px;
+      background: #22c55e;
+      border: 2px solid #000;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: bold;
+      color: black;
+    }
+
+    .bus-drop-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      background: var(--bg-secondary);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      border-left: 4px solid var(--accent-success);
+    }
+
+    .bus-drop-item.contested {
+      border-left-color: var(--accent-warning);
+    }
+
+    .bus-drop-item.hot {
+      border-left-color: var(--accent-danger);
+    }
+
+    .drop-distance {
+      font-family: 'Orbitron', monospace;
+      color: var(--accent-cyan);
+      font-size: 0.9rem;
+    }
+
     /* Disclaimer */
     .disclaimer {
       background: linear-gradient(90deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.05));
@@ -2148,10 +2268,37 @@
 
     <!-- MAP TAB -->
     <div id="map" class="tab-content">
+      <!-- Bus Path Input -->
+      <div class="card" style="margin-bottom: 16px;">
+        <div class="card-header">
+          <div class="card-icon">🚌</div>
+          <div class="card-title">Bus Path</div>
+        </div>
+        <div class="bus-path-controls">
+          <div class="bus-input-group">
+            <label>Bus Start (click map or enter grid)</label>
+            <input type="text" id="busStart" placeholder="e.g., A3, H5" onchange="updateBusPath()" />
+          </div>
+          <div class="bus-input-group">
+            <label>Bus End (click map or enter grid)</label>
+            <input type="text" id="busEnd" placeholder="e.g., H6, B8" onchange="updateBusPath()" />
+          </div>
+          <div class="bus-input-group">
+            <button class="btn btn-secondary" onclick="clearBusPath()" style="padding: 10px 20px;">Clear</button>
+            <button class="btn btn-primary" onclick="analyzeBusPath()" style="padding: 10px 20px;">Analyze Drops</button>
+          </div>
+        </div>
+        <div id="busAnalysis" style="display: none; margin-top: 16px; padding: 16px; background: var(--bg-primary); border-radius: 12px;">
+          <h4 style="margin-bottom: 12px; color: var(--accent-cyan);">🎯 Recommended Drops for This Bus</h4>
+          <div id="busDropRecommendations"></div>
+        </div>
+      </div>
+
       <div class="card">
         <div class="card-header">
           <div class="card-icon">🗺️</div>
-          <div class="card-title">Interactive Map</div>
+          <div class="card-title">Interactive Map (Fortnite.gg Tiles)</div>
+          <span style="margin-left: auto; font-size: 0.8rem; color: var(--text-secondary);">Click to set bus path • Scroll to zoom</span>
         </div>
 
         <!-- Fortnite.gg Style Layer Toggles -->
@@ -2159,17 +2306,20 @@
           <div class="layer-toggle active" onclick="toggleMapLayer('pois')" id="toggle-pois">
             <span class="layer-toggle-icon">📍</span> POIs
           </div>
-          <div class="layer-toggle" onclick="toggleMapLayer('chests')" id="toggle-chests">
+          <div class="layer-toggle active" onclick="toggleMapLayer('chests')" id="toggle-chests">
             <span class="layer-toggle-icon">📦</span> Chests
           </div>
-          <div class="layer-toggle" onclick="toggleMapLayer('slurp')" id="toggle-slurp">
-            <span class="layer-toggle-icon">🛢️</span> Slurp Barrels
+          <div class="layer-toggle active" onclick="toggleMapLayer('ammo')" id="toggle-ammo">
+            <span class="layer-toggle-icon">🔫</span> Ammo
           </div>
           <div class="layer-toggle" onclick="toggleMapLayer('vending')" id="toggle-vending">
             <span class="layer-toggle-icon">🏧</span> Vending
           </div>
+          <div class="layer-toggle" onclick="toggleMapLayer('mending')" id="toggle-mending">
+            <span class="layer-toggle-icon">💊</span> Mending
+          </div>
           <div class="layer-toggle" onclick="toggleMapLayer('vehicles')" id="toggle-vehicles">
-            <span class="layer-toggle-icon">🚗</span> Vehicles
+            <span class="layer-toggle-icon">🚗</span> Cars
           </div>
           <div class="layer-toggle" onclick="toggleMapLayer('ziplines')" id="toggle-ziplines">
             <span class="layer-toggle-icon">🎿</span> Ziplines
@@ -2180,44 +2330,44 @@
           <div class="layer-toggle" onclick="toggleMapLayer('reboot')" id="toggle-reboot">
             <span class="layer-toggle-icon">💚</span> Reboot
           </div>
-          <div class="layer-toggle" onclick="toggleMapLayer('heatmap')" id="toggle-heatmap">
-            <span class="layer-toggle-icon">🔥</span> Pro Heatmap
+          <div class="layer-toggle" onclick="toggleMapLayer('launchpads')" id="toggle-launchpads">
+            <span class="layer-toggle-icon">🚀</span> Launch Pads
           </div>
-          <div class="layer-toggle" onclick="toggleMapLayer('rotations')" id="toggle-rotations">
-            <span class="layer-toggle-icon">➡️</span> Pro Rotations
+          <div class="layer-toggle" onclick="toggleMapLayer('portapotty')" id="toggle-portapotty">
+            <span class="layer-toggle-icon">🚽</span> Port-a-Potty
           </div>
-          <div class="layer-toggle" onclick="toggleMapLayer('zones')" id="toggle-zones">
-            <span class="layer-toggle-icon">🌀</span> Zone Pulls
+          <div class="layer-toggle active" onclick="toggleMapLayer('busPath')" id="toggle-busPath">
+            <span class="layer-toggle-icon">🚌</span> Bus Path
           </div>
         </div>
 
-        <div class="map-container" style="position: relative;">
-          <canvas id="mapCanvas" class="map-canvas"></canvas>
-        </div>
-        <div class="map-legend">
+        <!-- Leaflet Map Container -->
+        <div id="leafletMap" style="width: 100%; height: 600px; border-radius: 12px; overflow: hidden; border: 2px solid var(--border-color);"></div>
+
+        <div class="map-legend" style="margin-top: 16px;">
           <div class="legend-item">
-            <div class="legend-color" style="background: #10b981;"></div>
-            <span>Safe Drop</span>
+            <div class="legend-color" style="background: #fbbf24;"></div>
+            <span>Chest</span>
           </div>
           <div class="legend-item">
-            <div class="legend-color" style="background: #f59e0b;"></div>
-            <span>Balanced</span>
+            <div class="legend-color" style="background: #22c55e;"></div>
+            <span>Ammo Box</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: #a855f7;"></div>
+            <span>Vending</span>
           </div>
           <div class="legend-item">
             <div class="legend-color" style="background: #ef4444;"></div>
-            <span>Hot Drop</span>
-          </div>
-          <div class="legend-item">
-            <div class="legend-color" style="background: #6366f1;"></div>
-            <span>Pro Rotation</span>
+            <span>Bus Path</span>
           </div>
           <div class="legend-item">
             <div class="legend-color" style="background: #06b6d4;"></div>
-            <span>Shields</span>
+            <span>Safe Drop</span>
           </div>
           <div class="legend-item">
             <div class="legend-color" style="background: #f97316;"></div>
-            <span>High Traffic</span>
+            <span>Hot Drop</span>
           </div>
         </div>
       </div>
@@ -2999,33 +3149,461 @@ Provide tactical JSON response with specific actionable advice.`;
       document.getElementById('modal').classList.remove('active');
     }
 
-    // Map
+    // ========== LEAFLET MAP SYSTEM ==========
+    let leafletMap = null;
+    let mapLayerGroups = {};
+    let busPathLine = null;
+    let busStartMarker = null;
+    let busEndMarker = null;
+    let clickMode = 'start'; // 'start' or 'end'
+
+    const mapLayerState = {
+      pois: true, chests: true, ammo: true, vending: false, mending: false,
+      vehicles: false, ziplines: false, campfires: false, reboot: false,
+      launchpads: false, portapotty: false, busPath: true
+    };
+
+    // Fortnite map bounds (using CRS.Simple for game coordinates)
+    const MAP_BOUNDS = [[0, 0], [256, 256]];
+
+    // Convert grid (A1-H8) to map coordinates
+    function gridToMapCoords(grid) {
+      const match = grid.match(/([A-H])([1-8])/i);
+      if (!match) return null;
+      const col = match[1].toUpperCase().charCodeAt(0) - 65;
+      const row = parseInt(match[2]) - 1;
+      // Leaflet Y is inverted
+      return [(7 - row) * 32 + 16, col * 32 + 16];
+    }
+
+    // Convert map coordinates to grid
+    function mapCoordsToGrid(lat, lng) {
+      const col = String.fromCharCode(65 + Math.floor(lng / 32));
+      const row = 8 - Math.floor(lat / 32);
+      return col + row;
+    }
+
+    // Initialize Leaflet map with fortnite.gg tiles
+    function initLeafletMap() {
+      if (leafletMap) return;
+
+      // Create map with simple CRS for game coordinates
+      leafletMap = L.map('leafletMap', {
+        crs: L.CRS.Simple,
+        minZoom: 0,
+        maxZoom: 5,
+        zoomSnap: 0.5,
+        zoomDelta: 0.5,
+        attributionControl: false
+      });
+
+      // Set initial view
+      leafletMap.setView([128, 128], 1);
+
+      // Add fortnite.gg tile layer
+      L.tileLayer('https://fortnite.gg/maps/39.02/{z}/{x}/{y}.jpg', {
+        minZoom: 0,
+        maxZoom: 5,
+        tileSize: 256,
+        noWrap: true,
+        bounds: MAP_BOUNDS
+      }).addTo(leafletMap);
+
+      // Create layer groups
+      mapLayerGroups = {
+        pois: L.layerGroup().addTo(leafletMap),
+        chests: L.layerGroup().addTo(leafletMap),
+        ammo: L.layerGroup().addTo(leafletMap),
+        vending: L.layerGroup(),
+        mending: L.layerGroup(),
+        vehicles: L.layerGroup(),
+        ziplines: L.layerGroup(),
+        campfires: L.layerGroup(),
+        reboot: L.layerGroup(),
+        launchpads: L.layerGroup(),
+        portapotty: L.layerGroup(),
+        busPath: L.layerGroup().addTo(leafletMap)
+      };
+
+      // Add POI markers
+      addPOIMarkers();
+      addChestMarkers();
+      addAmmoMarkers();
+      addVendingMarkers();
+      addVehicleMarkers();
+      addRebootMarkers();
+
+      // Click handler for bus path
+      leafletMap.on('click', handleMapClick);
+
+      // Add grid overlay
+      addGridOverlay();
+    }
+
+    function handleMapClick(e) {
+      const grid = mapCoordsToGrid(e.latlng.lat, e.latlng.lng);
+
+      if (clickMode === 'start') {
+        document.getElementById('busStart').value = grid;
+        clickMode = 'end';
+      } else {
+        document.getElementById('busEnd').value = grid;
+        clickMode = 'start';
+      }
+      updateBusPath();
+    }
+
+    function addGridOverlay() {
+      // Add grid lines
+      for (let i = 0; i <= 8; i++) {
+        // Vertical lines
+        L.polyline([[0, i * 32], [256, i * 32]], {
+          color: 'rgba(255,255,255,0.2)',
+          weight: 1
+        }).addTo(leafletMap);
+        // Horizontal lines
+        L.polyline([[i * 32, 0], [i * 32, 256]], {
+          color: 'rgba(255,255,255,0.2)',
+          weight: 1
+        }).addTo(leafletMap);
+      }
+
+      // Add grid labels
+      const letters = 'ABCDEFGH';
+      for (let i = 0; i < 8; i++) {
+        // Column labels (A-H) at top
+        L.marker([252, i * 32 + 16], {
+          icon: L.divIcon({
+            className: 'grid-label',
+            html: `<div style="color: rgba(255,255,255,0.6); font-weight: bold; font-size: 14px;">${letters[i]}</div>`,
+            iconSize: [20, 20]
+          })
+        }).addTo(leafletMap);
+        // Row labels (1-8) on left
+        L.marker([(7 - i) * 32 + 16, 6], {
+          icon: L.divIcon({
+            className: 'grid-label',
+            html: `<div style="color: rgba(255,255,255,0.6); font-weight: bold; font-size: 14px;">${i + 1}</div>`,
+            iconSize: [20, 20]
+          })
+        }).addTo(leafletMap);
+      }
+    }
+
+    function addPOIMarkers() {
+      const allPOIs = [...POI_DATA.named_pois, ...POI_DATA.landmarks];
+      allPOIs.forEach(poi => {
+        if (!poi.position) return;
+        const [x, y] = poi.position;
+        // Convert 0-1 position to 0-256
+        const lat = (1 - y) * 256;
+        const lng = x * 256;
+
+        const contest = poi.contest_data?.popularity;
+        let color = '#f59e0b';
+        if (contest === 'very_low' || contest === 'low') color = '#10b981';
+        if (contest === 'high' || contest === 'very_high') color = '#ef4444';
+
+        const marker = L.marker([lat, lng], {
+          icon: L.divIcon({
+            className: 'poi-marker',
+            html: `
+              <div style="text-align: center;">
+                <div style="width: ${poi.type === 'named_poi' ? 28 : 20}px; height: ${poi.type === 'named_poi' ? 28 : 20}px; background: ${color}; border: 3px solid white; border-radius: 50%; margin: 0 auto; box-shadow: 0 2px 8px rgba(0,0,0,0.5);"></div>
+                <div class="poi-label" style="margin-top: 2px;">${poi.name.split(' ')[0]}</div>
+              </div>
+            `,
+            iconSize: [80, 50],
+            iconAnchor: [40, 20]
+          })
+        });
+        marker.bindPopup(`
+          <div style="min-width: 200px;">
+            <strong style="font-size: 1.1rem;">${poi.name}</strong>
+            <hr style="margin: 8px 0; border-color: #333;">
+            <div>📦 Chests: ${poi.loot?.chests || 0}</div>
+            <div>⭐ Rare Chests: ${poi.loot?.rare_chests || 0}</div>
+            <div>🛢️ Slurp: ${poi.shields?.slurp_barrels || 0}</div>
+            <div>📊 Contest: ${poi.contest_data?.popularity?.replace('_', ' ') || 'Unknown'}</div>
+          </div>
+        `);
+        marker.addTo(mapLayerGroups.pois);
+      });
+    }
+
+    // Chest locations (approximate based on POI positions)
+    const CHEST_LOCATIONS = [
+      // Battle Boulevard area
+      {lat: 115, lng: 90}, {lat: 112, lng: 92}, {lat: 118, lng: 88}, {lat: 110, lng: 95},
+      {lat: 120, lng: 85}, {lat: 108, lng: 90}, {lat: 115, lng: 98}, {lat: 122, lng: 92},
+      // Sandy Strip
+      {lat: 140, lng: 205}, {lat: 138, lng: 200}, {lat: 142, lng: 210}, {lat: 135, lng: 198},
+      // Tiptop Terrace
+      {lat: 205, lng: 65}, {lat: 200, lng: 60}, {lat: 210, lng: 70}, {lat: 195, lng: 55},
+      // Innoloop Labs
+      {lat: 140, lng: 128}, {lat: 142, lng: 125}, {lat: 138, lng: 132}, {lat: 145, lng: 130},
+      // Classified Canyon
+      {lat: 78, lng: 140}, {lat: 75, lng: 145}, {lat: 82, lng: 138}, {lat: 70, lng: 142},
+      // Ripped Tides
+      {lat: 78, lng: 52}, {lat: 75, lng: 48}, {lat: 82, lng: 55}, {lat: 72, lng: 50},
+      // Toybox Docks
+      {lat: 192, lng: 52}, {lat: 188, lng: 48}, {lat: 195, lng: 58}, {lat: 185, lng: 55},
+      // Painted Palms
+      {lat: 78, lng: 180}, {lat: 75, lng: 175}, {lat: 82, lng: 185}, {lat: 72, lng: 178},
+      // Wonkeeland
+      {lat: 205, lng: 180}, {lat: 200, lng: 175}, {lat: 210, lng: 185},
+    ];
+
+    function addChestMarkers() {
+      CHEST_LOCATIONS.forEach(loc => {
+        L.marker([loc.lat, loc.lng], {
+          icon: L.divIcon({
+            className: 'chest-marker-icon',
+            html: '<div class="chest-marker">📦</div>',
+            iconSize: [20, 20],
+            iconAnchor: [10, 10]
+          })
+        }).addTo(mapLayerGroups.chests);
+      });
+    }
+
+    const AMMO_LOCATIONS = [
+      {lat: 115, lng: 88}, {lat: 118, lng: 94}, {lat: 140, lng: 202}, {lat: 205, lng: 62},
+      {lat: 140, lng: 130}, {lat: 78, lng: 143}, {lat: 78, lng: 50}, {lat: 190, lng: 55},
+      {lat: 75, lng: 180}, {lat: 202, lng: 178}, {lat: 160, lng: 100}, {lat: 100, lng: 160},
+    ];
+
+    function addAmmoMarkers() {
+      AMMO_LOCATIONS.forEach(loc => {
+        L.marker([loc.lat, loc.lng], {
+          icon: L.divIcon({
+            className: 'ammo-marker-icon',
+            html: '<div class="ammo-marker">🔫</div>',
+            iconSize: [18, 18],
+            iconAnchor: [9, 9]
+          })
+        }).addTo(mapLayerGroups.ammo);
+      });
+    }
+
+    const VENDING_LOCATIONS = [
+      {lat: 115, lng: 92}, {lat: 140, lng: 205}, {lat: 140, lng: 128}, {lat: 78, lng: 140}, {lat: 100, lng: 100},
+    ];
+
+    function addVendingMarkers() {
+      VENDING_LOCATIONS.forEach(loc => {
+        L.marker([loc.lat, loc.lng], {
+          icon: L.divIcon({
+            html: '<div style="background: #a855f7; width: 24px; height: 24px; border: 2px solid white; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 14px;">🏧</div>',
+            iconSize: [24, 24],
+            iconAnchor: [12, 12]
+          })
+        }).addTo(mapLayerGroups.vending);
+      });
+    }
+
+    const VEHICLE_LOCATIONS = [
+      {lat: 120, lng: 95}, {lat: 145, lng: 200}, {lat: 200, lng: 70}, {lat: 145, lng: 125}, {lat: 80, lng: 145},
+      {lat: 80, lng: 55}, {lat: 185, lng: 60}, {lat: 80, lng: 175}, {lat: 200, lng: 175}, {lat: 128, lng: 128},
+    ];
+
+    function addVehicleMarkers() {
+      VEHICLE_LOCATIONS.forEach(loc => {
+        L.marker([loc.lat, loc.lng], {
+          icon: L.divIcon({
+            html: '<div style="background: #f59e0b; width: 26px; height: 26px; border: 2px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">🚗</div>',
+            iconSize: [26, 26],
+            iconAnchor: [13, 13]
+          })
+        }).addTo(mapLayerGroups.vehicles);
+      });
+    }
+
+    const REBOOT_LOCATIONS = [
+      {lat: 112, lng: 95}, {lat: 138, lng: 208}, {lat: 208, lng: 65}, {lat: 138, lng: 125}, {lat: 75, lng: 142},
+      {lat: 75, lng: 52}, {lat: 192, lng: 55}, {lat: 75, lng: 178}, {lat: 75, lng: 72},
+    ];
+
+    function addRebootMarkers() {
+      REBOOT_LOCATIONS.forEach(loc => {
+        L.marker([loc.lat, loc.lng], {
+          icon: L.divIcon({
+            html: '<div style="background: #22c55e; width: 28px; height: 28px; border: 3px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; color: white;">R</div>',
+            iconSize: [28, 28],
+            iconAnchor: [14, 14]
+          })
+        }).addTo(mapLayerGroups.reboot);
+      });
+    }
+
+    function toggleMapLayer(layer) {
+      mapLayerState[layer] = !mapLayerState[layer];
+      document.getElementById('toggle-' + layer)?.classList.toggle('active');
+
+      if (mapLayerGroups[layer]) {
+        if (mapLayerState[layer]) {
+          leafletMap.addLayer(mapLayerGroups[layer]);
+        } else {
+          leafletMap.removeLayer(mapLayerGroups[layer]);
+        }
+      }
+    }
+
+    // Bus Path Functions
+    function updateBusPath() {
+      const startGrid = document.getElementById('busStart').value.trim().toUpperCase();
+      const endGrid = document.getElementById('busEnd').value.trim().toUpperCase();
+
+      // Clear existing
+      if (busPathLine) mapLayerGroups.busPath.removeLayer(busPathLine);
+      if (busStartMarker) mapLayerGroups.busPath.removeLayer(busStartMarker);
+      if (busEndMarker) mapLayerGroups.busPath.removeLayer(busEndMarker);
+
+      const startCoords = gridToMapCoords(startGrid);
+      const endCoords = gridToMapCoords(endGrid);
+
+      if (startCoords) {
+        busStartMarker = L.marker(startCoords, {
+          icon: L.divIcon({
+            html: '<div style="background: #ef4444; width: 32px; height: 32px; border: 3px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 0 15px #ef4444;">🚌</div>',
+            iconSize: [32, 32],
+            iconAnchor: [16, 16]
+          })
+        }).addTo(mapLayerGroups.busPath);
+      }
+
+      if (endCoords) {
+        busEndMarker = L.marker(endCoords, {
+          icon: L.divIcon({
+            html: '<div style="background: #ef4444; width: 24px; height: 24px; border: 3px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px;">🏁</div>',
+            iconSize: [24, 24],
+            iconAnchor: [12, 12]
+          })
+        }).addTo(mapLayerGroups.busPath);
+      }
+
+      if (startCoords && endCoords) {
+        busPathLine = L.polyline([startCoords, endCoords], {
+          color: '#ef4444',
+          weight: 5,
+          opacity: 0.9,
+          dashArray: '15, 10'
+        }).addTo(mapLayerGroups.busPath);
+      }
+    }
+
+    function clearBusPath() {
+      document.getElementById('busStart').value = '';
+      document.getElementById('busEnd').value = '';
+      document.getElementById('busAnalysis').style.display = 'none';
+      if (busPathLine) mapLayerGroups.busPath.removeLayer(busPathLine);
+      if (busStartMarker) mapLayerGroups.busPath.removeLayer(busStartMarker);
+      if (busEndMarker) mapLayerGroups.busPath.removeLayer(busEndMarker);
+      busPathLine = null;
+      busStartMarker = null;
+      busEndMarker = null;
+      clickMode = 'start';
+    }
+
+    function analyzeBusPath() {
+      const startGrid = document.getElementById('busStart').value.trim().toUpperCase();
+      const endGrid = document.getElementById('busEnd').value.trim().toUpperCase();
+
+      if (!startGrid || !endGrid) {
+        alert('Please set both bus start and end points!');
+        return;
+      }
+
+      const startCoords = gridToMapCoords(startGrid);
+      const endCoords = gridToMapCoords(endGrid);
+
+      if (!startCoords || !endCoords) {
+        alert('Invalid grid coordinates!');
+        return;
+      }
+
+      // Calculate distance from each POI to bus path
+      const allPOIs = [...POI_DATA.named_pois, ...POI_DATA.landmarks];
+      const poisWithDistance = allPOIs.map(poi => {
+        if (!poi.position) return null;
+        const [x, y] = poi.position;
+        const poiLat = (1 - y) * 256;
+        const poiLng = x * 256;
+
+        // Distance from point to line segment
+        const dist = pointToLineDistance(poiLat, poiLng, startCoords[0], startCoords[1], endCoords[0], endCoords[1]);
+
+        return { ...poi, busDistance: dist };
+      }).filter(p => p && p.busDistance < 80); // Within reasonable drop range
+
+      poisWithDistance.sort((a, b) => a.busDistance - b.busDistance);
+
+      const recommendations = document.getElementById('busDropRecommendations');
+      recommendations.innerHTML = poisWithDistance.slice(0, 6).map(poi => {
+        const contest = poi.contest_data?.popularity;
+        let className = '';
+        if (contest === 'high' || contest === 'very_high') className = 'hot';
+        else if (contest === 'medium' || contest === 'low_medium') className = 'contested';
+
+        return `
+          <div class="bus-drop-item ${className}">
+            <div>
+              <strong>${poi.name}</strong>
+              <div style="font-size: 0.8rem; color: var(--text-secondary);">
+                ${poi.loot?.chests || 0} chests • ${poi.contest_data?.popularity?.replace('_', ' ') || 'Unknown'} contest
+              </div>
+            </div>
+            <div class="drop-distance">${Math.round(poi.busDistance)}m</div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('busAnalysis').style.display = 'block';
+    }
+
+    // Helper: Distance from point to line segment
+    function pointToLineDistance(px, py, x1, y1, x2, y2) {
+      const A = px - x1;
+      const B = py - y1;
+      const C = x2 - x1;
+      const D = y2 - y1;
+
+      const dot = A * C + B * D;
+      const lenSq = C * C + D * D;
+      let param = -1;
+      if (lenSq !== 0) param = dot / lenSq;
+
+      let xx, yy;
+      if (param < 0) { xx = x1; yy = y1; }
+      else if (param > 1) { xx = x2; yy = y2; }
+      else { xx = x1 + param * C; yy = y1 + param * D; }
+
+      const dx = px - xx;
+      const dy = py - yy;
+      return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    // Keep old functions for rotation map canvas
     const mapLayers = { pois: true, routes: false, zones: false, resources: false };
     let mapImage = null;
     let mapImageLoaded = false;
 
-    // Load the fortnite.gg map image
     function loadMapImage() {
       mapImage = new Image();
       mapImage.crossOrigin = 'anonymous';
-      // Use fortnite.gg map tiles - zoom 0 is full map in 256x256
       mapImage.src = 'https://fortnite.gg/maps/39.02/0/0/0.jpg';
       mapImage.onload = () => {
         mapImageLoaded = true;
-        drawMap();
         drawRotationMap();
       };
       mapImage.onerror = () => {
-        console.log('Map image failed to load, using fallback');
         mapImageLoaded = false;
-        drawMap();
       };
     }
 
     function toggleLayer(layer) {
       mapLayers[layer] = !mapLayers[layer];
-      document.getElementById('btn-' + layer).classList.toggle('active');
-      drawMap();
+      document.getElementById('btn-' + layer)?.classList.toggle('active');
     }
 
     function drawMap() {
@@ -3995,12 +4573,24 @@ Provide tactical JSON response with specific actionable advice.`;
     // Init
     document.addEventListener('DOMContentLoaded', () => {
       filterDrops();
-      loadMapImage(); // Load fortnite.gg map
-      setTimeout(drawMap, 100);
+      loadMapImage(); // Load fortnite.gg map for rotation canvas
       setTimeout(drawRotationMap, 100);
+
+      // Initialize Leaflet map when Map tab is shown
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          if (tab.dataset.tab === 'map') {
+            setTimeout(() => {
+              initLeafletMap();
+              if (leafletMap) leafletMap.invalidateSize();
+            }, 100);
+          }
+        });
+      });
+
       window.addEventListener('resize', () => {
-        drawMap();
         drawRotationMap();
+        if (leafletMap) leafletMap.invalidateSize();
       });
 
       // Load saved session
