@@ -143,29 +143,92 @@ Get AI-powered tactical recommendations:
 
 ## 🚀 Quick Start
 
-### Using the Interactive Tool
+### Option 1: Run the Web Tool Locally
 
-1. Open `tool/public/index.html` in any modern browser
-2. Get a free Groq API key from [console.groq.com](https://console.groq.com)
-3. Enter your API key in the Situation Analyzer tab
-4. Input your current game situation
-5. Click "Analyze Situation" for tactical recommendations
+**Using Python (easiest):**
+```bash
+# Navigate to the tool folder
+cd fortnite-igl-system/tool/public
 
-### Using the IGL Document
+# Start a local server
+python3 -m http.server 8080
+# OR for Python 2
+python -m SimpleHTTPServer 8080
 
-1. Open `docs/IGL_OS_DOCUMENT.md`
-2. Print the one-page cheat sheet for quick reference during games
-3. Study the decision trees for each game phase
-4. Practice the comm scripts with your duo
+# Open in browser
+open http://localhost:8080
+```
+
+**Using Node.js:**
+```bash
+# Install serve globally (one time)
+npm install -g serve
+
+# Run the server
+cd fortnite-igl-system/tool/public
+serve -s . -p 8080
+
+# Open in browser
+open http://localhost:8080
+```
+
+**Or just open the file directly:**
+```bash
+# Works in most browsers (Chrome, Firefox, Edge)
+open fortnite-igl-system/tool/public/index.html
+```
+
+### Option 2: Deploy to Vercel (Share with Teammate)
+
+```bash
+# Install Vercel CLI
+npm install -g vercel
+
+# Deploy (follow prompts)
+cd fortnite-igl-system/tool/public
+vercel
+
+# You'll get a URL like: https://your-project.vercel.app
+```
+
+### Using the Tool
+
+1. Get a **free Groq API key** from [console.groq.com](https://console.groq.com)
+2. Enter your API key in the **Situation Analyzer** tab
+3. Fill in your current game situation (landing spot, mats, zone, surge, etc.)
+4. Click **"ANALYZE SITUATION"** for AI-powered tactical advice
+5. Use **Rotation Planner** tab for visual rotation planning
+6. Use **Drop Explorer** to find the best drops for your playstyle
 
 ### Setting Up the Discord Bot
 
-1. Go to `discord-bot/` folder
-2. Follow setup instructions in `discord-bot/README.md`
-3. Create a Discord bot and get token
-4. Configure `.env` with your Discord token and Groq API key
-5. Run `npm install && npm start`
-6. Use `/igl join` in your server to start tracking
+```bash
+# 1. Navigate to discord-bot folder
+cd fortnite-igl-system/discord-bot
+
+# 2. Copy environment template
+cp .env.example .env
+
+# 3. Edit .env with your tokens:
+#    DISCORD_TOKEN=your_bot_token
+#    DISCORD_CLIENT_ID=your_client_id
+#    GROQ_API_KEY=your_groq_key
+
+# 4. Install dependencies
+npm install
+
+# 5. Start the bot
+npm start
+```
+
+**Getting a Discord Bot Token:**
+1. Go to [Discord Developer Portal](https://discord.com/developers/applications)
+2. Click "New Application"
+3. Go to Bot → Add Bot → Copy Token
+4. Go to OAuth2 → URL Generator
+5. Select scopes: `bot`, `applications.commands`
+6. Select permissions: `Send Messages`, `Connect`, `Speak`, `Use Slash Commands`
+7. Copy URL and invite bot to your server
 
 ### Running Tests
 
