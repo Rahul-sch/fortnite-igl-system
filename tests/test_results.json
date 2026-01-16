@@ -1,0 +1,80 @@
+{
+  "timestamp": "2026-01-16T04:47:22.379Z",
+  "total": 18,
+  "passed": 18,
+  "failed": 0,
+  "results": [
+    {
+      "name": "calcRotatePotential returns score in valid range",
+      "status": "PASS"
+    },
+    {
+      "name": "calcRotatePotential gives higher score for closer POIs",
+      "status": "PASS"
+    },
+    {
+      "name": "calcLootQuality returns score in valid range",
+      "status": "PASS"
+    },
+    {
+      "name": "calcLootQuality handles missing loot data",
+      "status": "PASS"
+    },
+    {
+      "name": "calcShieldAvailability returns score in valid range",
+      "status": "PASS"
+    },
+    {
+      "name": "calcShieldAvailability values slurp trucks highly",
+      "status": "PASS"
+    },
+    {
+      "name": "calcMaterials returns score in valid range",
+      "status": "PASS"
+    },
+    {
+      "name": "calcSurgePotential returns score in valid range",
+      "status": "PASS"
+    },
+    {
+      "name": "calcContestRiskInverse returns higher score for lower popularity",
+      "status": "PASS"
+    },
+    {
+      "name": "All presets have weights summing to 1.0",
+      "status": "PASS"
+    },
+    {
+      "name": "Super safe preset has highest contest_risk_inverse weight",
+      "status": "PASS"
+    },
+    {
+      "name": "Risky preset has highest surge_potential weight",
+      "status": "PASS"
+    },
+    {
+      "name": "calculateScore returns valid structure",
+      "status": "PASS"
+    },
+    {
+      "name": "calculateScore produces different results for different presets",
+      "status": "PASS"
+    },
+    {
+      "name": "Dataset file exists and is valid JSON",
+      "status": "PASS"
+    },
+    {
+      "name": "All POIs have required fields",
+      "status": "PASS"
+    },
+    {
+      "name": "rankPOIs returns sorted results",
+      "status": "PASS"
+    },
+    {
+      "name": "generateAllRankings produces all three preset rankings",
+      "status": "PASS"
+    }
+  ]
+}

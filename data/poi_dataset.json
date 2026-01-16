@@ -1,0 +1,1438 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "chapter": 7,
+    "season": 1,
+    "season_name": "Pacific Break",
+    "last_updated": "2026-01-15",
+    "data_sources": [
+      "https://fortnite.gg/map",
+      "https://www.thegamer.com/fortnite-chapter-7-season-1-complete-guide-locations-landmarks-where-to-find/",
+      "https://gamerant.com/fortnite-chapter-7-season-1-best-landing-spots/",
+      "https://www.sportskeeda.com/fortnite/7-best-landing-spots-fortnite-chapter-7-season-1-ranked"
+    ],
+    "estimation_notes": "Chest/ammo counts estimated from community sources and visual analysis. Confidence levels provided per POI."
+  },
+  "named_pois": [
+    {
+      "id": "battle_boulevard",
+      "name": "Battle Boulevard",
+      "type": "named_poi",
+      "biome": "urban",
+      "grid_location": "D5-E5",
+      "map_region": "central-west",
+      "loot": {
+        "chests": 28,
+        "rare_chests": 4,
+        "ammo_boxes": 35,
+        "confidence": "high"
+      },
+      "shields": {
+        "slurp_barrels": 2,
+        "slurp_trucks": 0,
+        "shield_kegs": 1,
+        "vending_machines": 2
+      },
+      "materials": {
+        "wood": 8,
+        "brick": 7,
+        "metal": 9,
+        "notes": "Urban environment - high metal from cars/poles, good brick from buildings, moderate wood from pallets"
+      },
+      "mobility": {
+        "hot_air_balloon_station": true,
+        "ziplines": 2,
+        "vehicles": ["cars", "trucks"],
+        "launch_pads": 1,
+        "wingsuits": true
+      },
+      "strategic": {
+        "reboot_van": true,
+        "reboot_van_mobile": true,
+        "npcs": ["Carina"],
+        "bosses_possible": true,
+        "vaults": false,
+        "mythic_potential": "boss_dependent"
+      },
+      "contest_data": {
+        "popularity": "very_high",
+        "typical_teams_landing": "3-5",
+        "offspawn_fight_likelihood": "90%"
+      },
+      "rotation_data": {
+        "center_distance": "close",
+        "avg_rotate_time_to_zone": "30-60s",
+        "deadside_creation_potential": "low",
+        "natural_highground": false
+      },
+      "surge_potential": {
+        "tag_opportunities": "high",
+        "safe_angles": 3,
+        "early_fight_viability": "excellent"
+      },
+      "description": "Largest POI - LA-inspired city with theater, highway, sewers. High traffic, constant action.",
+      "pros": ["Massive loot pool", "Multiple vehicles", "Central location", "Good for fighters"],
+      "cons": ["Always contested", "Hard to loot safely", "No natural highground", "Third party central"]
+    },
+    {
+      "id": "sandy_strip",
+      "name": "Sandy Strip",
+      "type": "named_poi",
+      "biome": "desert",
+      "grid_location": "G4-H4",
+      "map_region": "east",
+      "loot": {
+        "chests": 22,
+        "rare_chests": 3,
+        "ammo_boxes": 28,
+        "confidence": "high"
+      },
+      "shields": {
+        "slurp_barrels": 3,
+        "slurp_trucks": 1,
+        "shield_kegs": 0,
+        "vending_machines": 3
+      },
+      "materials": {
+        "wood": 5,
+        "brick": 6,
+        "metal": 8,
+        "notes": "Vegas-style - lots of metal from slot machines/signs, moderate brick, low wood"
+      },
+      "mobility": {
+        "hot_air_balloon_station": true,
+        "ziplines": 0,
+        "vehicles": ["cars", "sports_cars"],
+        "launch_pads": 0,
+        "wingsuits": true
+      },
+      "strategic": {
+        "reboot_van": true,
+        "reboot_van_mobile": true,
+        "npcs": [],
+        "bosses_possible": true,
+        "vaults": false,
+        "mythic_potential": "boss_dependent"
+      },
+      "contest_data": {
+        "popularity": "high",
+        "typical_teams_landing": "2-4",
+        "offspawn_fight_likelihood": "75%"
+      },
+      "rotation_data": {
+        "center_distance": "medium",
+        "avg_rotate_time_to_zone": "45-90s",
+        "deadside_creation_potential": "medium",
+        "natural_highground": false
+      },
+      "surge_potential": {
+        "tag_opportunities": "high",
+        "safe_angles": 4,
+        "early_fight_viability": "good"
+      },
+      "description": "Vegas-inspired with The Sphere, neon lights, clubs. Good loot density.",
+      "pros": ["High loot density", "Multiple vehicles", "Good shields", "Memorable terrain"],
+      "cons": ["Popular spot", "East edge - bad pulls hurt", "Flat terrain"]
+    },
+    {
+      "id": "tiptop_terrace",
+      "name": "Tiptop Terrace",
+      "type": "named_poi",
+      "biome": "forest",
+      "grid_location": "C2-D2",
+      "map_region": "northwest",
+      "loot": {
+        "chests": 18,
+        "rare_chests": 2,
+        "ammo_boxes": 22,
+        "confidence": "medium"
+      },
+      "shields": {
+        "slurp_barrels": 4,
+        "slurp_trucks": 0,
+        "shield_kegs": 0,
+        "vending_machines": 1
+      },
+      "materials": {
+        "wood": 10,
+        "brick": 4,
+        "metal": 3,
+        "notes": "Forest area - excellent wood from trees/cabins, limited brick/metal"
+      },
+      "mobility": {
+        "hot_air_balloon_station": false,
+        "ziplines": 1,
+        "vehicles": ["cars"],
+        "launch_pads": 1,
+        "wingsuits": true
+      },
+      "strategic": {
+        "reboot_van": true,
+        "reboot_van_mobile": false,
+        "npcs": [],
+        "bosses_possible": false,
+        "vaults": false,
+        "mythic_potential": "none"
+      },
+      "contest_data": {
+        "popularity": "low",
+        "typical_teams_landing": "0-1",
+        "offspawn_fight_likelihood": "25%"
+      },
+      "rotation_data": {
+        "center_distance": "far",
+        "avg_rotate_time_to_zone": "60-120s",
+        "deadside_creation_potential": "high",
+        "natural_highground": true
+      },
+      "surge_potential": {
+        "tag_opportunities": "low",
+        "safe_angles": 1,
+        "early_fight_viability": "poor"
+      },
+      "description": "Secluded forest with log cabins. Perfect for safe looting, long rotates.",
+      "pros": ["Rarely contested", "Excellent wood", "High ground", "Launch pad access"],
+      "cons": ["Edge of map", "Long rotations", "Low surge potential", "Limited loot"]
+    },
+    {
+      "id": "painted_palms",
+      "name": "Painted Palms",
+      "type": "named_poi",
+      "biome": "desert",
+      "grid_location": "F6-G6",
+      "map_region": "southeast",
+      "loot": {
+        "chests": 24,
+        "rare_chests": 3,
+        "ammo_boxes": 30,
+        "confidence": "high"
+      },
+      "shields": {
+        "slurp_barrels": 2,
+        "slurp_trucks": 0,
+        "shield_kegs": 1,
+        "vending_machines": 1
+      },
+      "materials": {
+        "wood": 6,
+        "brick": 7,
+        "metal": 5,
+        "notes": "Movie set with varied materials - props provide mix"
+      },
+      "mobility": {
+        "hot_air_balloon_station": false,
+        "ziplines": 0,
+        "vehicles": ["cars"],
+        "launch_pads": 0,
+        "wingsuits": true
+      },
+      "strategic": {
+        "reboot_van": true,
+        "reboot_van_mobile": true,
+        "npcs": [],
+        "bosses_possible": true,
+        "vaults": false,
+        "mythic_potential": "boss_dependent"
+      },
+      "contest_data": {
+        "popularity": "medium",
+        "typical_teams_landing": "1-2",
+        "offspawn_fight_likelihood": "50%"
+      },
+      "rotation_data": {
+        "center_distance": "medium",
+        "avg_rotate_time_to_zone": "45-90s",
+        "deadside_creation_potential": "medium",
+        "natural_highground": false
+      },
+      "surge_potential": {
+        "tag_opportunities": "medium",
+        "safe_angles": 2,
+        "early_fight_viability": "good"
+      },
+      "description": "Abandoned movie set with violet foliage. Large area, good loot spread.",
+      "pros": ["Large POI", "Good chest count", "Often quieter", "Interesting terrain"],
+      "cons": ["Southeast corner", "Spread out loot", "Bad west pulls"]
+    },
+    {
+      "id": "bumpy_bay",
+      "name": "Bumpy Bay",
+      "type": "named_poi",
+      "biome": "beach",
+      "grid_location": "A4-B4",
+      "map_region": "west",
+      "loot": {
+        "chests": 16,
+        "rare_chests": 2,
+        "ammo_boxes": 20,
+        "confidence": "medium"
+      },
+      "shields": {
+        "slurp_barrels": 3,
+        "slurp_trucks": 0,
+        "shield_kegs": 0,
+        "vending_machines": 1
+      },
+      "materials": {
+        "wood": 7,
+        "brick": 5,
+        "metal": 4,
+        "notes": "Pier area - wood from docks, moderate brick from buildings"
+      },
+      "mobility": {
+        "hot_air_balloon_station": true,
+        "ziplines": 0,
+        "vehicles": ["cars", "tram"],
+        "launch_pads": 0,
+        "wingsuits": true
+      },
+      "strategic": {
+        "reboot_van": true,
+        "reboot_van_mobile": false,
+        "npcs": [],
+        "bosses_possible": false,
+        "vaults": false,
+        "mythic_potential": "none"
+      },
+      "contest_data": {
+        "popularity": "low",
+        "typical_teams_landing": "0-1",
+        "offspawn_fight_likelihood": "30%"
+      },
+      "rotation_data": {
+        "center_distance": "medium",
+        "avg_rotate_time_to_zone": "45-75s",
+        "deadside_creation_potential": "high",
+        "natural_highground": false
+      },
+      "surge_potential": {
+        "tag_opportunities": "low",
+        "safe_angles": 2,
+        "early_fight_viability": "moderate"
+      },
+      "description": "Classic pier-themed POI with fishing spots and cozy houses.",
+      "pros": ["Rarely contested", "Good shields", "Hot air balloon", "Fishing"],
+      "cons": ["West edge", "Lower loot", "Limited surge potential"]
+    },
+    {
+      "id": "innoloop_labs",
+      "name": "Innoloop Labs",
+      "type": "named_poi",
+      "biome": "urban",
+      "grid_location": "E4",
+      "map_region": "center",
+      "loot": {
+        "chests": 14,
+        "rare_chests": 4,
+        "ammo_boxes": 18,
+        "confidence": "high"
+      },
+      "shields": {
+        "slurp_barrels": 1,
+        "slurp_trucks": 0,
+        "shield_kegs": 0,
+        "vending_machines": 1
+      },
+      "materials": {
+        "wood": 3,
+        "brick": 5,
+        "metal": 8,
+        "notes": "Tech lab - high metal, moderate brick, low wood"
+      },
+      "mobility": {
+        "hot_air_balloon_station": false,
+        "ziplines": 2,
+        "vehicles": ["cars"],
+        "launch_pads": 0,
+        "wingsuits": true,
+        "tunnel_system": true
+      },
+      "strategic": {
+        "reboot_van": true,
+        "reboot_van_mobile": true,
+        "npcs": [],
+        "bosses_possible": false,
+        "vaults": false,
+        "mythic_potential": "none",
+        "special": "Zero Point shard, tunnel system to Collider Corridors, Unstable Element spawns"
+      },
+      "contest_data": {
+        "popularity": "medium",
+        "typical_teams_landing": "1-2",
+        "offspawn_fight_likelihood": "55%"
+      },
+      "rotation_data": {
+        "center_distance": "very_close",
+        "avg_rotate_time_to_zone": "15-45s",
+        "deadside_creation_potential": "low",
+        "natural_highground": false
+      },
+      "surge_potential": {
+        "tag_opportunities": "high",
+        "safe_angles": 4,
+        "early_fight_viability": "excellent"
+      },
+      "description": "Central tech lab housing Zero Point shard. Tunnel system provides unique escape routes.",
+      "pros": ["Most central POI", "Rare chests", "Tunnel escapes", "Always in zone"],
+      "cons": ["Lower total loot", "Third party risk", "Low shields"]
+    },
+    {
+      "id": "fore_fields",
+      "name": "Fore Fields",
+      "type": "named_poi",
+      "biome": "grass",
+      "grid_location": "H5",
+      "map_region": "east",
+      "loot": {
+        "chests": 15,
+        "rare_chests": 2,
+        "ammo_boxes": 18,
+        "confidence": "medium"
+      },
+      "shields": {
+        "slurp_barrels": 2,
+        "slurp_trucks": 0,
+        "shield_kegs": 1,
+        "vending_machines": 1
+      },
+      "materials": {
+        "wood": 6,
+        "brick": 4,
+        "metal": 5,
+        "notes": "Golf course - moderate all materials, golf carts for metal"
+      },
+      "mobility": {
+        "hot_air_balloon_station": false,
+        "ziplines": 0,
+        "vehicles": ["golf_carts", "cars"],
+        "launch_pads": 0,
+        "wingsuits": true
+      },
+      "strategic": {
+        "reboot_van": true,
+        "reboot_van_mobile": false,
+        "npcs": [],
+        "bosses_possible": false,
+        "vaults": false,
+        "mythic_potential": "none"
+      },
+      "contest_data": {
+        "popularity": "low",
+        "typical_teams_landing": "0-1",
+        "offspawn_fight_likelihood": "25%"
+      },
+      "rotation_data": {
+        "center_distance": "medium",
+        "avg_rotate_time_to_zone": "45-75s",
+        "deadside_creation_potential": "medium",
+        "natural_highground": false
+      },
+      "surge_potential": {
+        "tag_opportunities": "medium",
+        "safe_angles": 2,
+        "early_fight_viability": "moderate"
+      },
+      "description": "Lush golf course east of the map. Peaceful looting spot.",
+      "pros": ["Rarely contested", "Adjacent to Sandy Strip", "Good vehicle access"],
+      "cons": ["East edge", "Open terrain", "Lower loot density"]
+    },
+    {
+      "id": "ripped_tides",
+      "name": "Ripped Tides",
+      "type": "named_poi",
+      "biome": "beach",
+      "grid_location": "B6-C6",
+      "map_region": "southwest",
+      "loot": {
+        "chests": 20,
+        "rare_chests": 2,
+        "ammo_boxes": 25,
+        "confidence": "high"
+      },
+      "shields": {
+        "slurp_barrels": 4,
+        "slurp_trucks": 0,
+        "shield_kegs": 0,
+        "vending_machines": 2
+      },
+      "materials": {
+        "wood": 7,
+        "brick": 6,
+        "metal": 5,
+        "notes": "Miami beach style - wood from boardwalk, brick from shops"
+      },
+      "mobility": {
+        "hot_air_balloon_station": false,
+        "ziplines": 0,
+        "vehicles": ["cars"],
+        "launch_pads": 0,
+        "wingsuits": true
+      },
+      "strategic": {
+        "reboot_van": true,
+        "reboot_van_mobile": true,
+        "npcs": [],
+        "bosses_possible": false,
+        "vaults": false,
+        "mythic_potential": "barbell_challenge",
+        "special": "Barbell challenge for exclusive Pinpoint Iron Pump Shotgun mythic"
+      },
+      "contest_data": {
+        "popularity": "medium",
+        "typical_teams_landing": "1-2",
+        "offspawn_fight_likelihood": "45%"
+      },
+      "rotation_data": {
+        "center_distance": "medium",
+        "avg_rotate_time_to_zone": "45-75s",
+        "deadside_creation_potential": "high",
+        "natural_highground": false
+      },
+      "surge_potential": {
+        "tag_opportunities": "medium",
+        "safe_angles": 2,
+        "early_fight_viability": "good"
+      },
+      "description": "Miami-style beach street with rooftop parkour and exclusive mythic shotgun challenge.",
+      "pros": ["Exclusive mythic", "Good shields", "Parkour terrain", "Battle Bus remains"],
+      "cons": ["Southwest corner", "Challenge takes time", "Can be contested"]
+    },
+    {
+      "id": "sus_studios",
+      "name": "Sus Studios",
+      "type": "named_poi",
+      "biome": "urban",
+      "grid_location": "C5-D5",
+      "map_region": "west-central",
+      "loot": {
+        "chests": 19,
+        "rare_chests": 2,
+        "ammo_boxes": 24,
+        "confidence": "medium"
+      },
+      "shields": {
+        "slurp_barrels": 2,
+        "slurp_trucks": 0,
+        "shield_kegs": 0,
+        "vending_machines": 1
+      },
+      "materials": {
+        "wood": 5,
+        "brick": 4,
+        "metal": 8,
+        "notes": "Film studio - high metal from equipment/props, moderate wood from sets"
+      },
+      "mobility": {
+        "hot_air_balloon_station": false,
+        "ziplines": 0,
+        "vehicles": ["cars", "trucks"],
+        "launch_pads": 0,
+        "wingsuits": true
+      },
+      "strategic": {
+        "reboot_van": true,
+        "reboot_van_mobile": false,
+        "npcs": [],
+        "bosses_possible": true,
+        "vaults": false,
+        "mythic_potential": "boss_dependent"
+      },
+      "contest_data": {
+        "popularity": "medium",
+        "typical_teams_landing": "1-2",
+        "offspawn_fight_likelihood": "50%"
+      },
+      "rotation_data": {
+        "center_distance": "close",
+        "avg_rotate_time_to_zone": "30-60s",
+        "deadside_creation_potential": "medium",
+        "natural_highground": false
+      },
+      "surge_potential": {
+        "tag_opportunities": "medium",
+        "safe_angles": 3,
+        "early_fight_viability": "good"
+      },
+      "description": "Film studio with sound stages, props, cranes, cameras, and green screens.",
+      "pros": ["Near highway", "Good vehicle access", "Interesting cover", "Central-ish"],
+      "cons": ["Medium contest", "Spread out", "Adjacent to Battle Boulevard traffic"]
+    },
+    {
+      "id": "wonkeeland",
+      "name": "Wonkeeland / Cartmanland",
+      "type": "named_poi",
+      "biome": "mixed",
+      "grid_location": "F2-G2",
+      "map_region": "northeast",
+      "loot": {
+        "chests": 25,
+        "rare_chests": 3,
+        "ammo_boxes": 32,
+        "confidence": "high"
+      },
+      "shields": {
+        "slurp_barrels": 3,
+        "slurp_trucks": 0,
+        "shield_kegs": 1,
+        "vending_machines": 2
+      },
+      "materials": {
+        "wood": 7,
+        "brick": 5,
+        "metal": 8,
+        "notes": "Theme park - metal from rides, wood from game booths"
+      },
+      "mobility": {
+        "hot_air_balloon_station": false,
+        "ziplines": 0,
+        "vehicles": ["cars"],
+        "launch_pads": 2,
+        "wingsuits": true,
+        "roller_coaster": true,
+        "ferris_wheel": true
+      },
+      "strategic": {
+        "reboot_van": true,
+        "reboot_van_mobile": true,
+        "npcs": [],
+        "bosses_possible": true,
+        "vaults": false,
+        "mythic_potential": "boss_dependent"
+      },
+      "contest_data": {
+        "popularity": "low_medium",
+        "typical_teams_landing": "0-2",
+        "offspawn_fight_likelihood": "35%"
+      },
+      "rotation_data": {
+        "center_distance": "far",
+        "avg_rotate_time_to_zone": "60-100s",
+        "deadside_creation_potential": "high",
+        "natural_highground": true
+      },
+      "surge_potential": {
+        "tag_opportunities": "medium",
+        "safe_angles": 2,
+        "early_fight_viability": "moderate"
+      },
+      "description": "Theme park with roller coaster, ferris wheel, water slide. Currently Cartmanland (South Park event).",
+      "pros": ["High chest count", "Multiple launch pads", "Fun mobility", "Often uncontested"],
+      "cons": ["Northeast corner", "Long rotations", "Bad west/south pulls"]
+    },
+    {
+      "id": "classified_canyon",
+      "name": "Classified Canyon",
+      "type": "named_poi",
+      "biome": "desert",
+      "grid_location": "E6",
+      "map_region": "south-central",
+      "loot": {
+        "chests": 20,
+        "rare_chests": 5,
+        "ammo_boxes": 26,
+        "confidence": "high"
+      },
+      "shields": {
+        "slurp_barrels": 2,
+        "slurp_trucks": 0,
+        "shield_kegs": 0,
+        "vending_machines": 1
+      },
+      "materials": {
+        "wood": 4,
+        "brick": 8,
+        "metal": 6,
+        "notes": "Military base - high brick from structures, good metal from equipment"
+      },
+      "mobility": {
+        "hot_air_balloon_station": false,
+        "ziplines": 3,
+        "vehicles": ["military_vehicles"],
+        "launch_pads": 0,
+        "wingsuits": true,
+        "ascenders": true
+      },
+      "strategic": {
+        "reboot_van": true,
+        "reboot_van_mobile": true,
+        "npcs": [],
+        "bosses_possible": false,
+        "vaults": true,
+        "mythic_potential": "vault_guaranteed",
+        "special": "Vault with guaranteed Legendary Arc-Lightning Gun and invisibility"
+      },
+      "contest_data": {
+        "popularity": "high",
+        "typical_teams_landing": "2-3",
+        "offspawn_fight_likelihood": "65%"
+      },
+      "rotation_data": {
+        "center_distance": "close",
+        "avg_rotate_time_to_zone": "30-60s",
+        "deadside_creation_potential": "medium",
+        "natural_highground": false
+      },
+      "surge_potential": {
+        "tag_opportunities": "high",
+        "safe_angles": 3,
+        "early_fight_viability": "excellent"
+      },
+      "description": "Military base with underground vault. Guaranteed legendary weapons and invisibility.",
+      "pros": ["Guaranteed mythic", "High rare chests", "Central location", "Underground escape"],
+      "cons": ["Often contested", "Hard to reach early", "Complex layout"]
+    },
+    {
+      "id": "humble_hills",
+      "name": "Humble Hills",
+      "type": "named_poi",
+      "biome": "urban",
+      "grid_location": "D4",
+      "map_region": "central-west",
+      "loot": {
+        "chests": 17,
+        "rare_chests": 2,
+        "ammo_boxes": 21,
+        "confidence": "medium"
+      },
+      "shields": {
+        "slurp_barrels": 2,
+        "slurp_trucks": 0,
+        "shield_kegs": 1,
+        "vending_machines": 1
+      },
+      "materials": {
+        "wood": 6,
+        "brick": 7,
+        "metal": 5,
+        "notes": "Hollywood Hills style mansions - good brick from buildings, wood from interiors"
+      },
+      "mobility": {
+        "hot_air_balloon_station": false,
+        "ziplines": 0,
+        "vehicles": ["sports_cars"],
+        "launch_pads": 0,
+        "wingsuits": true
+      },
+      "strategic": {
+        "reboot_van": true,
+        "reboot_van_mobile": false,
+        "npcs": [],
+        "bosses_possible": true,
+        "vaults": false,
+        "mythic_potential": "boss_dependent"
+      },
+      "contest_data": {
+        "popularity": "medium",
+        "typical_teams_landing": "1-2",
+        "offspawn_fight_likelihood": "45%"
+      },
+      "rotation_data": {
+        "center_distance": "close",
+        "avg_rotate_time_to_zone": "25-50s",
+        "deadside_creation_potential": "low",
+        "natural_highground": true
+      },
+      "surge_potential": {
+        "tag_opportunities": "high",
+        "safe_angles": 3,
+        "early_fight_viability": "good"
+      },
+      "description": "Hollywood Hills-inspired mansions with highground advantage.",
+      "pros": ["Natural highground", "Central", "Good sightlines", "Boss potential"],
+      "cons": ["Medium contest", "Near Battle Boulevard", "Spread loot"]
+    },
+    {
+      "id": "fore_shores",
+      "name": "Fore Shores",
+      "type": "named_poi",
+      "biome": "beach",
+      "grid_location": "E1-F1",
+      "map_region": "north",
+      "loot": {
+        "chests": 14,
+        "rare_chests": 1,
+        "ammo_boxes": 18,
+        "confidence": "medium"
+      },
+      "shields": {
+        "slurp_barrels": 3,
+        "slurp_trucks": 0,
+        "shield_kegs": 0,
+        "vending_machines": 1
+      },
+      "materials": {
+        "wood": 8,
+        "brick": 4,
+        "metal": 3,
+        "notes": "Coastal haven - good wood from docks/houses, limited other materials"
+      },
+      "mobility": {
+        "hot_air_balloon_station": false,
+        "ziplines": 0,
+        "vehicles": ["boats", "cars"],
+        "launch_pads": 0,
+        "wingsuits": true
+      },
+      "strategic": {
+        "reboot_van": true,
+        "reboot_van_mobile": false,
+        "npcs": [],
+        "bosses_possible": false,
+        "vaults": false,
+        "mythic_potential": "none"
+      },
+      "contest_data": {
+        "popularity": "very_low",
+        "typical_teams_landing": "0",
+        "offspawn_fight_likelihood": "15%"
+      },
+      "rotation_data": {
+        "center_distance": "far",
+        "avg_rotate_time_to_zone": "60-100s",
+        "deadside_creation_potential": "very_high",
+        "natural_highground": false
+      },
+      "surge_potential": {
+        "tag_opportunities": "very_low",
+        "safe_angles": 1,
+        "early_fight_viability": "poor"
+      },
+      "description": "Northern coastal haven with shoreline houses. Quiet, loot-heavy start.",
+      "pros": ["Almost never contested", "Good shields", "Wood farming", "Peaceful loot"],
+      "cons": ["North edge", "Very long rotations", "No surge potential", "Low total loot"]
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "toybox_docks",
+      "name": "Toybox Docks",
+      "type": "landmark",
+      "biome": "beach",
+      "grid_location": "B2",
+      "map_region": "northwest",
+      "loot": {
+        "chests": 12,
+        "rare_chests": 1,
+        "ammo_boxes": 15,
+        "confidence": "high"
+      },
+      "shields": {
+        "slurp_barrels": 6,
+        "slurp_trucks": 1,
+        "shield_kegs": 0,
+        "vending_machines": 0
+      },
+      "materials": {
+        "wood": 9,
+        "brick": 3,
+        "metal": 4,
+        "notes": "Docks with excellent wood, slurp truck for full shields"
+      },
+      "mobility": {
+        "hot_air_balloon_station": false,
+        "ziplines": 0,
+        "vehicles": ["boats"],
+        "launch_pads": 1,
+        "wingsuits": true
+      },
+      "strategic": {
+        "reboot_van": false,
+        "reboot_van_mobile": false,
+        "npcs": [],
+        "bosses_possible": false,
+        "vaults": false,
+        "mythic_potential": "none"
+      },
+      "contest_data": {
+        "popularity": "very_low",
+        "typical_teams_landing": "0",
+        "offspawn_fight_likelihood": "10%"
+      },
+      "rotation_data": {
+        "center_distance": "far",
+        "avg_rotate_time_to_zone": "60-90s",
+        "deadside_creation_potential": "very_high",
+        "natural_highground": false
+      },
+      "surge_potential": {
+        "tag_opportunities": "very_low",
+        "safe_angles": 1,
+        "early_fight_viability": "poor"
+      },
+      "description": "BEST SAFE DROP - Slurp truck + barrels = full shields. Launch pad nearby for rotation.",
+      "pros": ["Almost never contested", "Full shields guaranteed", "Launch pad", "Good wood"],
+      "cons": ["Far from center", "No surge", "Long rotation", "Limited loot"]
+    },
+    {
+      "id": "artsy_rvs",
+      "name": "Artsy RVs",
+      "type": "landmark",
+      "biome": "desert",
+      "grid_location": "F5",
+      "map_region": "east-central",
+      "loot": {
+        "chests": 8,
+        "rare_chests": 0,
+        "ammo_boxes": 10,
+        "confidence": "medium"
+      },
+      "shields": {
+        "slurp_barrels": 5,
+        "slurp_trucks": 0,
+        "shield_kegs": 0,
+        "vending_machines": 0
+      },
+      "materials": {
+        "wood": 5,
+        "brick": 3,
+        "metal": 6,
+        "notes": "RVs provide good metal, some wood from props"
+      },
+      "mobility": {
+        "hot_air_balloon_station": false,
+        "ziplines": 0,
+        "vehicles": [],
+        "launch_pads": 1,
+        "wingsuits": true
+      },
+      "strategic": {
+        "reboot_van": false,
+        "reboot_van_mobile": false,
+        "npcs": [],
+        "bosses_possible": false,
+        "vaults": false,
+        "mythic_potential": "none",
+        "special": "Campfire on nearby island"
+      },
+      "contest_data": {
+        "popularity": "very_low",
+        "typical_teams_landing": "0",
+        "offspawn_fight_likelihood": "5%"
+      },
+      "rotation_data": {
+        "center_distance": "medium",
+        "avg_rotate_time_to_zone": "40-70s",
+        "deadside_creation_potential": "high",
+        "natural_highground": false
+      },
+      "surge_potential": {
+        "tag_opportunities": "low",
+        "safe_angles": 2,
+        "early_fight_viability": "poor"
+      },
+      "description": "TOP COMPETITIVE PICK - Never contested, good shields, launch pad, campfire nearby.",
+      "pros": ["Essentially never contested", "Good shields", "Launch pad", "Campfire healing"],
+      "cons": ["Low chest count", "East side", "Must expand to nearby areas"]
+    },
+    {
+      "id": "peelian_swamp",
+      "name": "Peelian Swamp",
+      "type": "landmark",
+      "biome": "swamp",
+      "grid_location": "E6",
+      "map_region": "south-central",
+      "loot": {
+        "chests": 10,
+        "rare_chests": 1,
+        "ammo_boxes": 12,
+        "confidence": "medium"
+      },
+      "shields": {
+        "slurp_barrels": 4,
+        "slurp_trucks": 0,
+        "shield_kegs": 0,
+        "vending_machines": 0
+      },
+      "materials": {
+        "wood": 8,
+        "brick": 2,
+        "metal": 2,
+        "notes": "Swamp area - excellent wood, minimal brick/metal"
+      },
+      "mobility": {
+        "hot_air_balloon_station": false,
+        "ziplines": 0,
+        "vehicles": [],
+        "launch_pads": 0,
+        "wingsuits": true,
+        "river": true
+      },
+      "strategic": {
+        "reboot_van": false,
+        "reboot_van_mobile": false,
+        "npcs": [],
+        "bosses_possible": false,
+        "vaults": false,
+        "mythic_potential": "none"
+      },
+      "contest_data": {
+        "popularity": "very_low",
+        "typical_teams_landing": "0",
+        "offspawn_fight_likelihood": "10%"
+      },
+      "rotation_data": {
+        "center_distance": "medium",
+        "avg_rotate_time_to_zone": "40-70s",
+        "deadside_creation_potential": "high",
+        "natural_highground": false
+      },
+      "surge_potential": {
+        "tag_opportunities": "low",
+        "safe_angles": 1,
+        "early_fight_viability": "poor"
+      },
+      "description": "Good passive drop with hiding spots. River allows fast rotation via swimming.",
+      "pros": ["Never contested", "Natural cover", "River rotation", "Good wood"],
+      "cons": ["Low loot", "No mobility", "Must expand", "South edge"]
+    },
+    {
+      "id": "battlewood_sign",
+      "name": "Battlewood Sign",
+      "type": "landmark",
+      "biome": "urban",
+      "grid_location": "C4",
+      "map_region": "west",
+      "loot": {
+        "chests": 4,
+        "rare_chests": 0,
+        "ammo_boxes": 5,
+        "confidence": "medium"
+      },
+      "shields": {
+        "slurp_barrels": 1,
+        "slurp_trucks": 0,
+        "shield_kegs": 0,
+        "vending_machines": 0
+      },
+      "materials": {
+        "wood": 4,
+        "brick": 3,
+        "metal": 5,
+        "notes": "Sign structure provides metal, surrounding area has varied materials"
+      },
+      "mobility": {
+        "hot_air_balloon_station": false,
+        "ziplines": 0,
+        "vehicles": [],
+        "launch_pads": 0,
+        "wingsuits": true
+      },
+      "strategic": {
+        "reboot_van": false,
+        "reboot_van_mobile": false,
+        "npcs": [],
+        "bosses_possible": false,
+        "vaults": false,
+        "mythic_potential": "none"
+      },
+      "contest_data": {
+        "popularity": "very_low",
+        "typical_teams_landing": "0",
+        "offspawn_fight_likelihood": "10%"
+      },
+      "rotation_data": {
+        "center_distance": "medium",
+        "avg_rotate_time_to_zone": "35-55s",
+        "deadside_creation_potential": "medium",
+        "natural_highground": true
+      },
+      "surge_potential": {
+        "tag_opportunities": "medium",
+        "safe_angles": 2,
+        "early_fight_viability": "moderate"
+      },
+      "description": "Hollywood sign replica. Good highground sightlines but minimal loot.",
+      "pros": ["Highground", "Good sightlines", "Near Battle Boulevard expansion"],
+      "cons": ["Very low loot", "Near hot zone", "No shields"]
+    },
+    {
+      "id": "collider_corridor_alpha",
+      "name": "Collider Corridor Alpha",
+      "type": "landmark",
+      "biome": "underground",
+      "grid_location": "E4",
+      "map_region": "center-underground",
+      "loot": {
+        "chests": 3,
+        "rare_chests": 1,
+        "ammo_boxes": 4,
+        "confidence": "medium"
+      },
+      "shields": {
+        "slurp_barrels": 0,
+        "slurp_trucks": 0,
+        "shield_kegs": 0,
+        "vending_machines": 0
+      },
+      "materials": {
+        "wood": 1,
+        "brick": 3,
+        "metal": 5,
+        "notes": "Underground corridor - mostly metal"
+      },
+      "mobility": {
+        "hot_air_balloon_station": false,
+        "ziplines": 0,
+        "vehicles": [],
+        "launch_pads": 0,
+        "wingsuits": false
+      },
+      "strategic": {
+        "reboot_van": false,
+        "reboot_van_mobile": false,
+        "npcs": [],
+        "bosses_possible": false,
+        "vaults": true,
+        "mythic_potential": "unstable_element",
+        "special": "Access via Innoloop Labs with Unstable Element for vault"
+      },
+      "contest_data": {
+        "popularity": "very_low",
+        "typical_teams_landing": "0",
+        "offspawn_fight_likelihood": "5%"
+      },
+      "rotation_data": {
+        "center_distance": "close",
+        "avg_rotate_time_to_zone": "varies",
+        "deadside_creation_potential": "low",
+        "natural_highground": false
+      },
+      "surge_potential": {
+        "tag_opportunities": "none",
+        "safe_angles": 0,
+        "early_fight_viability": "none"
+      },
+      "description": "Underground corridor accessed from Innoloop Labs. Vault with Unstable Element.",
+      "pros": ["Vault loot", "Hidden", "Quick escape route"],
+      "cons": ["Requires Unstable Element", "Underground trap", "No surge potential"]
+    },
+    {
+      "id": "collider_corridor_gamma",
+      "name": "Collider Corridor Gamma",
+      "type": "landmark",
+      "biome": "underground",
+      "grid_location": "E3",
+      "map_region": "center-underground",
+      "loot": {
+        "chests": 3,
+        "rare_chests": 1,
+        "ammo_boxes": 4,
+        "confidence": "medium"
+      },
+      "shields": {
+        "slurp_barrels": 0,
+        "slurp_trucks": 0,
+        "shield_kegs": 0,
+        "vending_machines": 0
+      },
+      "materials": {
+        "wood": 1,
+        "brick": 3,
+        "metal": 5,
+        "notes": "Underground corridor - mostly metal"
+      },
+      "mobility": {
+        "hot_air_balloon_station": false,
+        "ziplines": 0,
+        "vehicles": [],
+        "launch_pads": 0,
+        "wingsuits": false
+      },
+      "strategic": {
+        "reboot_van": false,
+        "reboot_van_mobile": false,
+        "npcs": [],
+        "bosses_possible": false,
+        "vaults": true,
+        "mythic_potential": "unstable_element",
+        "special": "Access via Innoloop Labs with Unstable Element for vault"
+      },
+      "contest_data": {
+        "popularity": "very_low",
+        "typical_teams_landing": "0",
+        "offspawn_fight_likelihood": "5%"
+      },
+      "rotation_data": {
+        "center_distance": "close",
+        "avg_rotate_time_to_zone": "varies",
+        "deadside_creation_potential": "low",
+        "natural_highground": false
+      },
+      "surge_potential": {
+        "tag_opportunities": "none",
+        "safe_angles": 0,
+        "early_fight_viability": "none"
+      },
+      "description": "Underground corridor accessed from Innoloop Labs. Vault with Unstable Element.",
+      "pros": ["Vault loot", "Hidden", "Quick escape route"],
+      "cons": ["Requires Unstable Element", "Underground trap", "No surge potential"]
+    },
+    {
+      "id": "storm_station",
+      "name": "Storm Station",
+      "type": "landmark",
+      "biome": "mixed",
+      "grid_location": "D3",
+      "map_region": "north-central",
+      "loot": {
+        "chests": 6,
+        "rare_chests": 0,
+        "ammo_boxes": 8,
+        "confidence": "medium"
+      },
+      "shields": {
+        "slurp_barrels": 2,
+        "slurp_trucks": 0,
+        "shield_kegs": 0,
+        "vending_machines": 0
+      },
+      "materials": {
+        "wood": 5,
+        "brick": 4,
+        "metal": 5,
+        "notes": "Research station - balanced materials"
+      },
+      "mobility": {
+        "hot_air_balloon_station": false,
+        "ziplines": 0,
+        "vehicles": [],
+        "launch_pads": 0,
+        "wingsuits": true
+      },
+      "strategic": {
+        "reboot_van": false,
+        "reboot_van_mobile": false,
+        "npcs": [],
+        "bosses_possible": false,
+        "vaults": false,
+        "mythic_potential": "none",
+        "special": "Secret audio log from The Order"
+      },
+      "contest_data": {
+        "popularity": "very_low",
+        "typical_teams_landing": "0",
+        "offspawn_fight_likelihood": "10%"
+      },
+      "rotation_data": {
+        "center_distance": "medium",
+        "avg_rotate_time_to_zone": "40-60s",
+        "deadside_creation_potential": "medium",
+        "natural_highground": false
+      },
+      "surge_potential": {
+        "tag_opportunities": "low",
+        "safe_angles": 1,
+        "early_fight_viability": "moderate"
+      },
+      "description": "Research station with secret lore. Decent expansion spot.",
+      "pros": ["Never contested", "Lore content", "Decent materials"],
+      "cons": ["Low loot", "No mobility", "Must expand"]
+    },
+    {
+      "id": "paws_inn",
+      "name": "Paws Inn / Clawsy Lodge",
+      "type": "landmark",
+      "biome": "forest",
+      "grid_location": "D2",
+      "map_region": "northwest",
+      "loot": {
+        "chests": 8,
+        "rare_chests": 1,
+        "ammo_boxes": 10,
+        "confidence": "medium"
+      },
+      "shields": {
+        "slurp_barrels": 2,
+        "slurp_trucks": 0,
+        "shield_kegs": 0,
+        "vending_machines": 1
+      },
+      "materials": {
+        "wood": 8,
+        "brick": 3,
+        "metal": 2,
+        "notes": "Inn building - excellent wood, limited other materials"
+      },
+      "mobility": {
+        "hot_air_balloon_station": false,
+        "ziplines": 0,
+        "vehicles": ["cars"],
+        "launch_pads": 0,
+        "wingsuits": true
+      },
+      "strategic": {
+        "reboot_van": false,
+        "reboot_van_mobile": false,
+        "npcs": ["Paws"],
+        "bosses_possible": false,
+        "vaults": false,
+        "mythic_potential": "none"
+      },
+      "contest_data": {
+        "popularity": "low",
+        "typical_teams_landing": "0-1",
+        "offspawn_fight_likelihood": "20%"
+      },
+      "rotation_data": {
+        "center_distance": "far",
+        "avg_rotate_time_to_zone": "55-85s",
+        "deadside_creation_potential": "high",
+        "natural_highground": false
+      },
+      "surge_potential": {
+        "tag_opportunities": "low",
+        "safe_angles": 1,
+        "early_fight_viability": "poor"
+      },
+      "description": "Large inn in forest. Currently Clawsy Lodge for Winterfest event.",
+      "pros": ["Rarely contested", "NPC services", "Good wood", "Vending machine"],
+      "cons": ["Northwest corner", "Long rotation", "Low surge potential"]
+    },
+    {
+      "id": "espresso_experiment",
+      "name": "Espresso Experiment",
+      "type": "landmark",
+      "biome": "urban",
+      "grid_location": "E5",
+      "map_region": "central",
+      "loot": {
+        "chests": 5,
+        "rare_chests": 0,
+        "ammo_boxes": 6,
+        "confidence": "medium"
+      },
+      "shields": {
+        "slurp_barrels": 1,
+        "slurp_trucks": 0,
+        "shield_kegs": 0,
+        "vending_machines": 1
+      },
+      "materials": {
+        "wood": 4,
+        "brick": 3,
+        "metal": 4,
+        "notes": "Coffee house - balanced materials"
+      },
+      "mobility": {
+        "hot_air_balloon_station": false,
+        "ziplines": 0,
+        "vehicles": [],
+        "launch_pads": 0,
+        "wingsuits": true
+      },
+      "strategic": {
+        "reboot_van": false,
+        "reboot_van_mobile": false,
+        "npcs": [],
+        "bosses_possible": false,
+        "vaults": false,
+        "mythic_potential": "none"
+      },
+      "contest_data": {
+        "popularity": "low",
+        "typical_teams_landing": "0",
+        "offspawn_fight_likelihood": "15%"
+      },
+      "rotation_data": {
+        "center_distance": "very_close",
+        "avg_rotate_time_to_zone": "20-40s",
+        "deadside_creation_potential": "low",
+        "natural_highground": false
+      },
+      "surge_potential": {
+        "tag_opportunities": "medium",
+        "safe_angles": 2,
+        "early_fight_viability": "moderate"
+      },
+      "description": "Large coffee house. Good expansion spot from central POIs.",
+      "pros": ["Central location", "Never primary drop", "Good expansion"],
+      "cons": ["Low loot alone", "No mobility", "Must combine with nearby areas"]
+    },
+    {
+      "id": "cosmic_durr",
+      "name": "Cosmic Durr",
+      "type": "landmark",
+      "biome": "mixed",
+      "grid_location": "F4",
+      "map_region": "east-central",
+      "loot": {
+        "chests": 4,
+        "rare_chests": 0,
+        "ammo_boxes": 5,
+        "confidence": "medium"
+      },
+      "shields": {
+        "slurp_barrels": 1,
+        "slurp_trucks": 0,
+        "shield_kegs": 0,
+        "vending_machines": 0
+      },
+      "materials": {
+        "wood": 3,
+        "brick": 2,
+        "metal": 4,
+        "notes": "Durr Burger location - some metal from equipment"
+      },
+      "mobility": {
+        "hot_air_balloon_station": false,
+        "ziplines": 0,
+        "vehicles": [],
+        "launch_pads": 0,
+        "wingsuits": true
+      },
+      "strategic": {
+        "reboot_van": false,
+        "reboot_van_mobile": false,
+        "npcs": [],
+        "bosses_possible": false,
+        "vaults": false,
+        "mythic_potential": "none"
+      },
+      "contest_data": {
+        "popularity": "very_low",
+        "typical_teams_landing": "0",
+        "offspawn_fight_likelihood": "5%"
+      },
+      "rotation_data": {
+        "center_distance": "medium",
+        "avg_rotate_time_to_zone": "35-55s",
+        "deadside_creation_potential": "medium",
+        "natural_highground": false
+      },
+      "surge_potential": {
+        "tag_opportunities": "low",
+        "safe_angles": 1,
+        "early_fight_viability": "poor"
+      },
+      "description": "Durr Burger restaurant location. Minor expansion spot.",
+      "pros": ["Never contested", "Iconic location", "Quick loot"],
+      "cons": ["Very low loot", "No shields", "Expansion only"]
+    }
+  ],
+  "scoring_weights": {
+    "balanced": {
+      "rotate_potential": 0.30,
+      "loot_quality": 0.20,
+      "shield_availability": 0.15,
+      "materials": 0.15,
+      "surge_potential": 0.10,
+      "contest_risk_inverse": 0.10
+    },
+    "super_safe": {
+      "rotate_potential": 0.20,
+      "loot_quality": 0.15,
+      "shield_availability": 0.20,
+      "materials": 0.15,
+      "surge_potential": 0.05,
+      "contest_risk_inverse": 0.25
+    },
+    "risky_keying": {
+      "rotate_potential": 0.20,
+      "loot_quality": 0.25,
+      "shield_availability": 0.15,
+      "materials": 0.10,
+      "surge_potential": 0.20,
+      "contest_risk_inverse": 0.10
+    }
+  }
+}

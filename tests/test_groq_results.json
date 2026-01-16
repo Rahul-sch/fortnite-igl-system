@@ -1,0 +1,84 @@
+{
+  "timestamp": "2026-01-16T04:47:27.628Z",
+  "total": 19,
+  "passed": 19,
+  "failed": 0,
+  "results": [
+    {
+      "name": "buildUserPrompt includes landing spot",
+      "status": "PASS"
+    },
+    {
+      "name": "buildUserPrompt includes all mats",
+      "status": "PASS"
+    },
+    {
+      "name": "buildUserPrompt handles missing data gracefully",
+      "status": "PASS"
+    },
+    {
+      "name": "buildUserPrompt includes storm info",
+      "status": "PASS"
+    },
+    {
+      "name": "buildUserPrompt includes surge status",
+      "status": "PASS"
+    },
+    {
+      "name": "buildUserPrompt includes additional context",
+      "status": "PASS"
+    },
+    {
+      "name": "Quick presets exist for common situations",
+      "status": "PASS"
+    },
+    {
+      "name": "bad_zone_pull preset recommends immediate leave",
+      "status": "PASS"
+    },
+    {
+      "name": "surge_critical preset recommends fighting",
+      "status": "PASS"
+    },
+    {
+      "name": "uncontested_good_zone preset recommends extended looting",
+      "status": "PASS"
+    },
+    {
+      "name": "Full situation generates comprehensive prompt",
+      "status": "PASS"
+    },
+    {
+      "name": "Prompt structure is consistent",
+      "status": "PASS"
+    },
+    {
+      "name": "Analyzer code defines correct API endpoint",
+      "status": "PASS"
+    },
+    {
+      "name": "Analyzer code uses JSON mode",
+      "status": "PASS"
+    },
+    {
+      "name": "Analyzer code includes system prompt",
+      "status": "PASS"
+    },
+    {
+      "name": "Analyzer code includes retry logic",
+      "status": "PASS"
+    },
+    {
+      "name": "Analyzer code includes error handling",
+      "status": "PASS"
+    },
+    {
+      "name": "Analyzer code includes fair play disclaimer",
+      "status": "PASS"
+    },
+    {
+      "name": "System prompt includes disclaimer",
+      "status": "PASS"
+    }
+  ]
+}

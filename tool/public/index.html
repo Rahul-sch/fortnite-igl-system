@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IGL Winning System - Fortnite Duos Tool</title>
+  <style>
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --bg-tertiary: #1a1a25;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0b0;
+      --accent-primary: #6366f1;
+      --accent-secondary: #8b5cf6;
+      --accent-success: #10b981;
+      --accent-warning: #f59e0b;
+      --accent-danger: #ef4444;
+      --border-color: #2a2a3a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    header p {
+      color: var(--text-secondary);
+      margin-top: 10px;
+    }
+
+    .disclaimer {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+    }
+
+    .disclaimer strong {
+      color: var(--accent-danger);
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 10px;
+    }
+
+    .tab {
+      padding: 12px 24px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+
+    .tab:hover {
+      background: var(--bg-tertiary);
+    }
+
+    .tab.active {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: white;
+      border-color: transparent;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      font-size: 1.25rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card h2 .icon {
+      font-size: 1.5rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+    }
+
+    .mats-input {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .mat-field {
+      text-align: center;
+    }
+
+    .mat-field label {
+      display: block;
+      font-size: 0.75rem;
+      margin-bottom: 5px;
+    }
+
+    .mat-field.wood label { color: #a0522d; }
+    .mat-field.brick label { color: #cd5c5c; }
+    .mat-field.metal label { color: #708090; }
+
+    .btn {
+      padding: 14px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .btn-secondary {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    .results-panel {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .result-section {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .result-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .result-section h3 {
+      font-size: 1rem;
+      color: var(--accent-primary);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .recommendation {
+      background: var(--bg-tertiary);
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .recommendation.now {
+      border-left: 4px solid var(--accent-danger);
+    }
+
+    .recommendation.safe {
+      border-left: 4px solid var(--accent-success);
+    }
+
+    .recommendation.warning {
+      border-left: 4px solid var(--accent-warning);
+    }
+
+    .priority-list {
+      list-style: none;
+    }
+
+    .priority-list li {
+      padding: 10px 15px;
+      background: var(--bg-tertiary);
+      margin-bottom: 5px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .priority-list li::before {
+      content: counter(item);
+      counter-increment: item;
+      background: var(--accent-primary);
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
+    .priority-list {
+      counter-reset: item;
+    }
+
+    .path-card {
+      background: var(--bg-tertiary);
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .path-card h4 {
+      margin-bottom: 10px;
+    }
+
+    .path-card .risk-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .path-card .risk-badge.low {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--accent-success);
+    }
+
+    .path-card .risk-badge.medium {
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--accent-warning);
+    }
+
+    .path-card .risk-badge.high {
+      background: rgba(239, 68, 68, 0.2);
+      color: var(--accent-danger);
+    }
+
+    /* Drop Explorer Styles */
+    .filter-bar {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .filter-group label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .filter-group select {
+      padding: 8px 12px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      color: var(--text-primary);
+    }
+
+    .poi-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .poi-table th,
+    .poi-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .poi-table th {
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+    }
+
+    .poi-table th:hover {
+      color: var(--accent-primary);
+    }
+
+    .poi-table tr:hover {
+      background: var(--bg-tertiary);
+    }
+
+    .score-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .score-badge.high {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--accent-success);
+    }
+
+    .score-badge.medium {
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--accent-warning);
+    }
+
+    .score-badge.low {
+      background: rgba(239, 68, 68, 0.2);
+      color: var(--accent-danger);
+    }
+
+    .drop-card-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .drop-card-modal.active {
+      display: flex;
+    }
+
+    .drop-card-content {
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 30px;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* Map Overlay Styles */
+    .map-container {
+      position: relative;
+      background: var(--bg-tertiary);
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      max-height: 600px;
+    }
+
+    .map-canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    .map-controls {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .map-controls button {
+      padding: 8px 12px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      color: var(--text-primary);
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    .map-controls button:hover {
+      background: var(--accent-primary);
+    }
+
+    .map-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 15px;
+      padding: 15px;
+      background: var(--bg-tertiary);
+      border-radius: 8px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+    }
+
+    .legend-color {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+    }
+
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .loading .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid var(--border-color);
+      border-top-color: var(--accent-primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .api-key-section {
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    .api-key-section input {
+      font-family: monospace;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tabs {
+        flex-wrap: wrap;
+      }
+
+      .tab {
+        flex: 1 1 auto;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🎮 IGL Winning System</h1>
+      <p>NAC Duos | Chapter 7 Season 1 | High Ping (35-45ms) | Builds</p>
+    </header>
+
+    <div class="disclaimer">
+      <strong>⚠️ FAIR PLAY NOTICE:</strong> This tool uses ONLY manual user inputs. It does NOT read game memory, use overlays that extract game data, or automate any gameplay. All advice is based on public map data and competitive macro principles. This is a decision-support and training tool, not a cheat.
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="analyzer">🎯 Situation Analyzer</button>
+      <button class="tab" data-tab="drops">📍 Drop Explorer</button>
+      <button class="tab" data-tab="map">🗺️ Map Overlay</button>
+    </div>
+
+    <!-- SITUATION ANALYZER TAB -->
+    <div id="analyzer" class="tab-content active">
+      <div class="api-key-section">
+        <div class="form-group">
+          <label>Groq API Key (required for AI analysis)</label>
+          <input type="password" id="apiKey" placeholder="Enter your Groq API key (gsk_...)" />
+          <small style="color: var(--text-secondary); display: block; margin-top: 5px;">
+            Get a free API key at <a href="https://console.groq.com" target="_blank" style="color: var(--accent-primary);">console.groq.com</a>
+          </small>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <div class="card">
+            <h2><span class="icon">📍</span> Location & Contest</h2>
+            <div class="form-group">
+              <label>Landing Spot</label>
+              <select id="landingSpot">
+                <option value="">-- Select POI --</option>
+                <optgroup label="Named POIs">
+                  <option value="Battle Boulevard">Battle Boulevard</option>
+                  <option value="Sandy Strip">Sandy Strip</option>
+                  <option value="Tiptop Terrace">Tiptop Terrace</option>
+                  <option value="Painted Palms">Painted Palms</option>
+                  <option value="Bumpy Bay">Bumpy Bay</option>
+                  <option value="Innoloop Labs">Innoloop Labs</option>
+                  <option value="Fore Fields">Fore Fields</option>
+                  <option value="Ripped Tides">Ripped Tides</option>
+                  <option value="Sus Studios">Sus Studios</option>
+                  <option value="Wonkeeland / Cartmanland">Wonkeeland / Cartmanland</option>
+                  <option value="Classified Canyon">Classified Canyon</option>
+                  <option value="Humble Hills">Humble Hills</option>
+                  <option value="Fore Shores">Fore Shores</option>
+                </optgroup>
+                <optgroup label="Landmarks">
+                  <option value="Toybox Docks">Toybox Docks</option>
+                  <option value="Artsy RVs">Artsy RVs</option>
+                  <option value="Peelian Swamp">Peelian Swamp</option>
+                  <option value="Storm Station">Storm Station</option>
+                  <option value="Paws Inn">Paws Inn / Clawsy Lodge</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Teams Contested (including you)</label>
+              <select id="teamsContested">
+                <option value="1">1 (Uncontested)</option>
+                <option value="2">2 (One other team)</option>
+                <option value="3">3 (Two other teams)</option>
+                <option value="4+">4+ (Multi-team chaos)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2><span class="icon">🎒</span> Our Loadout</h2>
+            <div class="form-group">
+              <label>Weapons</label>
+              <input type="text" id="weapons" placeholder="e.g., Gold AR, Blue Pump, SMG" />
+            </div>
+            <div class="form-group">
+              <label>Heals</label>
+              <input type="text" id="heals" placeholder="e.g., 6 minis, 2 medkits" />
+            </div>
+            <div class="form-group">
+              <label>Shield Status</label>
+              <select id="shields">
+                <option value="full">Full (200 HP)</option>
+                <option value="half">Half Shield (~150 HP)</option>
+                <option value="low">Low Shield (~100 HP)</option>
+                <option value="none">No Shield (75 HP)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2><span class="icon">🪵</span> Current Materials</h2>
+            <div class="mats-input">
+              <div class="mat-field wood">
+                <label>WOOD</label>
+                <input type="number" id="matsWood" min="0" max="999" value="300" />
+              </div>
+              <div class="mat-field brick">
+                <label>BRICK</label>
+                <input type="number" id="matsBrick" min="0" max="999" value="200" />
+              </div>
+              <div class="mat-field metal">
+                <label>METAL</label>
+                <input type="number" id="matsMetal" min="0" max="999" value="100" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <h2><span class="icon">🌀</span> Storm & Zone</h2>
+            <div class="form-group">
+              <label>Storm Pull Direction</label>
+              <select id="stormDirection">
+                <option value="toward_us">Toward Us (Good)</option>
+                <option value="neutral">Neutral (Moderate)</option>
+                <option value="away">Away From Us (Bad)</option>
+                <option value="opposite_corner">Opposite Corner (Worst)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Distance to Safe Zone</label>
+              <select id="stormDistance">
+                <option value="close">Close (1-3 tiles)</option>
+                <option value="medium">Medium (4-7 tiles)</option>
+                <option value="far">Far (8-12 tiles)</option>
+                <option value="very_far">Very Far (13+ tiles)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Current Zone / Time</label>
+              <input type="text" id="timeZone" placeholder="e.g., Storm 2, 1:30 remaining" />
+            </div>
+          </div>
+
+          <div class="card">
+            <h2><span class="icon">⚡</span> Surge Status</h2>
+            <div class="form-group">
+              <label>Are you above or below surge?</label>
+              <select id="surgeStatus">
+                <option value="ahead_10+">10+ Above (Safe)</option>
+                <option value="ahead_5">5-10 Above (Comfortable)</option>
+                <option value="even">Even / Slightly Above</option>
+                <option value="behind_5">5-10 Below (Need Tags)</option>
+                <option value="behind_10+">10+ Below (Critical)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2><span class="icon">📝</span> Additional Context</h2>
+            <div class="form-group">
+              <textarea id="additionalContext" rows="3" placeholder="Any other relevant info (e.g., 'teammate low HP', 'vehicle nearby', 'team watching our rotate')"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin: 20px 0;">
+        <button class="btn btn-primary" id="analyzeBtn" onclick="analyzeGame()">
+          🎯 Analyze Situation
+        </button>
+      </div>
+
+      <div id="resultsPanel" class="results-panel" style="display: none;">
+        <div id="loadingIndicator" class="loading">
+          <div class="spinner"></div>
+        </div>
+        <div id="analysisResults"></div>
+      </div>
+    </div>
+
+    <!-- DROP EXPLORER TAB -->
+    <div id="drops" class="tab-content">
+      <div class="card">
+        <h2><span class="icon">🔍</span> Filter Drops</h2>
+        <div class="filter-bar">
+          <div class="filter-group">
+            <label>Style:</label>
+            <select id="styleFilter" onchange="filterDrops()">
+              <option value="balanced">Balanced</option>
+              <option value="super_safe">Super Safe</option>
+              <option value="risky_keying">Risky / Keying</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Type:</label>
+            <select id="typeFilter" onchange="filterDrops()">
+              <option value="all">All</option>
+              <option value="named_poi">Named POIs</option>
+              <option value="landmark">Landmarks</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Sort By:</label>
+            <select id="sortFilter" onchange="filterDrops()">
+              <option value="score">Score (High→Low)</option>
+              <option value="chests">Chests</option>
+              <option value="shields">Shields</option>
+              <option value="contest_low">Lowest Contest</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2><span class="icon">📊</span> POI Rankings</h2>
+        <div style="overflow-x: auto;">
+          <table class="poi-table" id="poiTable">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Location</th>
+                <th>Type</th>
+                <th>Score</th>
+                <th>Chests</th>
+                <th>Shields</th>
+                <th>Contest</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="poiTableBody">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAP OVERLAY TAB -->
+    <div id="map" class="tab-content">
+      <div class="card">
+        <h2><span class="icon">🗺️</span> Interactive Map</h2>
+        <div class="map-container">
+          <canvas id="mapCanvas" class="map-canvas"></canvas>
+          <div class="map-controls">
+            <button onclick="toggleLayer('pois')">POIs</button>
+            <button onclick="toggleLayer('chests')">Chests</button>
+            <button onclick="toggleLayer('shields')">Shields</button>
+            <button onclick="toggleLayer('mobility')">Mobility</button>
+            <button onclick="toggleLayer('routes')">Routes</button>
+          </div>
+        </div>
+        <div class="map-legend">
+          <div class="legend-item">
+            <div class="legend-color" style="background: #10b981;"></div>
+            <span>Safe Drop</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: #f59e0b;"></div>
+            <span>Balanced Drop</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: #ef4444;"></div>
+            <span>Hot Drop</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: #6366f1;"></div>
+            <span>Rotate Path</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DROP CARD MODAL -->
+    <div id="dropCardModal" class="drop-card-modal">
+      <button class="close-modal" onclick="closeModal()">×</button>
+      <div class="drop-card-content" id="dropCardContent">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // POI Dataset (embedded for standalone use)
+    const POI_DATA = {
+      named_pois: [
+        { id: "battle_boulevard", name: "Battle Boulevard", type: "named_poi", loot: { chests: 28, rare_chests: 4 }, shields: { slurp_barrels: 2, vending_machines: 2 }, contest_data: { popularity: "very_high" } },
+        { id: "sandy_strip", name: "Sandy Strip", type: "named_poi", loot: { chests: 22, rare_chests: 3 }, shields: { slurp_barrels: 3, slurp_trucks: 1, vending_machines: 3 }, contest_data: { popularity: "high" } },
+        { id: "tiptop_terrace", name: "Tiptop Terrace", type: "named_poi", loot: { chests: 18, rare_chests: 2 }, shields: { slurp_barrels: 4, vending_machines: 1 }, contest_data: { popularity: "low" } },
+        { id: "painted_palms", name: "Painted Palms", type: "named_poi", loot: { chests: 24, rare_chests: 3 }, shields: { slurp_barrels: 2, shield_kegs: 1, vending_machines: 1 }, contest_data: { popularity: "medium" } },
+        { id: "bumpy_bay", name: "Bumpy Bay", type: "named_poi", loot: { chests: 16, rare_chests: 2 }, shields: { slurp_barrels: 3, vending_machines: 1 }, contest_data: { popularity: "low" } },
+        { id: "innoloop_labs", name: "Innoloop Labs", type: "named_poi", loot: { chests: 14, rare_chests: 4 }, shields: { slurp_barrels: 1, vending_machines: 1 }, contest_data: { popularity: "medium" } },
+        { id: "fore_fields", name: "Fore Fields", type: "named_poi", loot: { chests: 15, rare_chests: 2 }, shields: { slurp_barrels: 2, shield_kegs: 1, vending_machines: 1 }, contest_data: { popularity: "low" } },
+        { id: "ripped_tides", name: "Ripped Tides", type: "named_poi", loot: { chests: 20, rare_chests: 2 }, shields: { slurp_barrels: 4, vending_machines: 2 }, contest_data: { popularity: "medium" } },
+        { id: "sus_studios", name: "Sus Studios", type: "named_poi", loot: { chests: 19, rare_chests: 2 }, shields: { slurp_barrels: 2, vending_machines: 1 }, contest_data: { popularity: "medium" } },
+        { id: "wonkeeland", name: "Wonkeeland / Cartmanland", type: "named_poi", loot: { chests: 25, rare_chests: 3 }, shields: { slurp_barrels: 3, shield_kegs: 1, vending_machines: 2 }, contest_data: { popularity: "low_medium" } },
+        { id: "classified_canyon", name: "Classified Canyon", type: "named_poi", loot: { chests: 20, rare_chests: 5 }, shields: { slurp_barrels: 2, vending_machines: 1 }, contest_data: { popularity: "high" } },
+        { id: "humble_hills", name: "Humble Hills", type: "named_poi", loot: { chests: 17, rare_chests: 2 }, shields: { slurp_barrels: 2, shield_kegs: 1, vending_machines: 1 }, contest_data: { popularity: "medium" } },
+        { id: "fore_shores", name: "Fore Shores", type: "named_poi", loot: { chests: 14, rare_chests: 1 }, shields: { slurp_barrels: 3, vending_machines: 1 }, contest_data: { popularity: "very_low" } }
+      ],
+      landmarks: [
+        { id: "toybox_docks", name: "Toybox Docks", type: "landmark", loot: { chests: 12, rare_chests: 1 }, shields: { slurp_barrels: 6, slurp_trucks: 1 }, contest_data: { popularity: "very_low" } },
+        { id: "artsy_rvs", name: "Artsy RVs", type: "landmark", loot: { chests: 8, rare_chests: 0 }, shields: { slurp_barrels: 5 }, contest_data: { popularity: "very_low" } },
+        { id: "peelian_swamp", name: "Peelian Swamp", type: "landmark", loot: { chests: 10, rare_chests: 1 }, shields: { slurp_barrels: 4 }, contest_data: { popularity: "very_low" } },
+        { id: "storm_station", name: "Storm Station", type: "landmark", loot: { chests: 6, rare_chests: 0 }, shields: { slurp_barrels: 2 }, contest_data: { popularity: "very_low" } },
+        { id: "paws_inn", name: "Paws Inn / Clawsy Lodge", type: "landmark", loot: { chests: 8, rare_chests: 1 }, shields: { slurp_barrels: 2, vending_machines: 1 }, contest_data: { popularity: "low" } }
+      ]
+    };
+
+    // Tab switching
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Analyze game situation
+    async function analyzeGame() {
+      const apiKey = document.getElementById('apiKey').value.trim();
+      if (!apiKey) {
+        alert('Please enter your Groq API key');
+        return;
+      }
+
+      const situation = {
+        landing_spot: document.getElementById('landingSpot').value,
+        teams_contested: document.getElementById('teamsContested').value,
+        our_loot: {
+          weapons: document.getElementById('weapons').value,
+          heals: document.getElementById('heals').value,
+          shields: document.getElementById('shields').value
+        },
+        current_mats: {
+          wood: parseInt(document.getElementById('matsWood').value) || 0,
+          brick: parseInt(document.getElementById('matsBrick').value) || 0,
+          metal: parseInt(document.getElementById('matsMetal').value) || 0
+        },
+        storm_pull: {
+          direction: document.getElementById('stormDirection').value,
+          distance: document.getElementById('stormDistance').value
+        },
+        surge_status: document.getElementById('surgeStatus').value,
+        time_zone: document.getElementById('timeZone').value,
+        additional_context: document.getElementById('additionalContext').value
+      };
+
+      const resultsPanel = document.getElementById('resultsPanel');
+      const loadingIndicator = document.getElementById('loadingIndicator');
+      const analysisResults = document.getElementById('analysisResults');
+      const analyzeBtn = document.getElementById('analyzeBtn');
+
+      resultsPanel.style.display = 'block';
+      loadingIndicator.style.display = 'flex';
+      analysisResults.innerHTML = '';
+      analyzeBtn.disabled = true;
+
+      try {
+        const result = await callGroqAPI(apiKey, situation);
+
+        loadingIndicator.style.display = 'none';
+
+        if (result.success) {
+          displayResults(result.analysis);
+        } else {
+          analysisResults.innerHTML = `<div class="recommendation" style="border-left-color: var(--accent-danger);">
+            <strong>Error:</strong> ${result.error}
+          </div>`;
+        }
+      } catch (error) {
+        loadingIndicator.style.display = 'none';
+        analysisResults.innerHTML = `<div class="recommendation" style="border-left-color: var(--accent-danger);">
+          <strong>Error:</strong> ${error.message}
+        </div>`;
+      }
+
+      analyzeBtn.disabled = false;
+    }
+
+    async function callGroqAPI(apiKey, situation) {
+      const systemPrompt = `You are an elite Fortnite IGL coach for NAC competitive duos (35-45ms ping). Provide tactical advice based on manual user inputs only. Return JSON with: leave_timing, rotate_paths, mats_plan, fight_decision, surge_plan, contingency, priority_actions.`;
+
+      const userPrompt = `SITUATION:
+- Landing: ${situation.landing_spot}
+- Teams: ${situation.teams_contested}
+- Weapons: ${situation.our_loot.weapons}
+- Heals: ${situation.our_loot.heals}
+- Shields: ${situation.our_loot.shields}
+- Mats: ${situation.current_mats.wood}/${situation.current_mats.brick}/${situation.current_mats.metal}
+- Storm: ${situation.storm_pull.direction}, ${situation.storm_pull.distance}
+- Surge: ${situation.surge_status}
+- Zone: ${situation.time_zone}
+- Context: ${situation.additional_context}
+
+Provide tactical JSON response.`;
+
+      const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          model: 'llama-3.1-70b-versatile',
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: userPrompt }
+          ],
+          temperature: 0.3,
+          max_tokens: 2000,
+          response_format: { type: 'json_object' }
+        })
+      });
+
+      if (!response.ok) {
+        const error = await response.json().catch(() => ({}));
+        throw new Error(error.error?.message || `API Error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const content = data.choices[0]?.message?.content;
+
+      try {
+        return { success: true, analysis: JSON.parse(content) };
+      } catch {
+        return { success: false, error: 'Failed to parse response', raw: content };
+      }
+    }
+
+    function displayResults(analysis) {
+      const container = document.getElementById('analysisResults');
+
+      let html = '';
+
+      // Priority Actions
+      if (analysis.priority_actions) {
+        html += `<div class="result-section">
+          <h3>🎯 Priority Actions</h3>
+          <ol class="priority-list">
+            ${analysis.priority_actions.map(action => `<li>${action}</li>`).join('')}
+          </ol>
+        </div>`;
+      }
+
+      // Leave Timing
+      if (analysis.leave_timing) {
+        const urgencyClass = analysis.leave_timing.recommendation === 'now' ? 'now' :
+                            analysis.leave_timing.recommendation.includes('40') ? 'safe' : 'warning';
+        html += `<div class="result-section">
+          <h3>⏱️ Leave Timing</h3>
+          <div class="recommendation ${urgencyClass}">
+            <strong>${analysis.leave_timing.recommendation?.toUpperCase()}</strong>
+            <p>${analysis.leave_timing.reasoning}</p>
+          </div>
+        </div>`;
+      }
+
+      // Rotate Paths
+      if (analysis.rotate_paths) {
+        html += `<div class="result-section">
+          <h3>🛤️ Rotation Paths</h3>
+          ${analysis.rotate_paths.map(path => `
+            <div class="path-card">
+              <h4>${path.name}</h4>
+              <span class="risk-badge ${path.risk_level}">${path.risk_level} risk</span>
+              <span style="margin-left: 10px; color: var(--text-secondary);">${path.time_estimate}</span>
+              <p style="margin-top: 10px;">${path.description}</p>
+            </div>
+          `).join('')}
+        </div>`;
+      }
+
+      // Fight Decision
+      if (analysis.fight_decision) {
+        const fightClass = analysis.fight_decision.recommendation === 'fight' ? 'now' :
+                          analysis.fight_decision.recommendation === 'refuse' ? 'safe' : 'warning';
+        html += `<div class="result-section">
+          <h3>⚔️ Fight Decision</h3>
+          <div class="recommendation ${fightClass}">
+            <strong>${analysis.fight_decision.recommendation?.toUpperCase()}</strong>
+            <p>${analysis.fight_decision.reasoning}</p>
+            ${analysis.fight_decision.conditions ? `<ul style="margin-top: 10px;">${analysis.fight_decision.conditions.map(c => `<li>${c}</li>`).join('')}</ul>` : ''}
+          </div>
+        </div>`;
+      }
+
+      // Mats Plan
+      if (analysis.mats_plan) {
+        html += `<div class="result-section">
+          <h3>🪵 Materials Plan</h3>
+          <div class="recommendation">
+            <strong>Status: ${analysis.mats_plan.current_assessment?.toUpperCase()}</strong>
+            <p>Target: ${analysis.mats_plan.target_before_endgame}</p>
+            <p>Priority: ${analysis.mats_plan.priority}</p>
+            <p>Refarm at: ${analysis.mats_plan.refarm_locations?.join(', ')}</p>
+          </div>
+        </div>`;
+      }
+
+      // Surge Plan
+      if (analysis.surge_plan) {
+        html += `<div class="result-section">
+          <h3>⚡ Surge Plan</h3>
+          <div class="recommendation ${analysis.surge_plan.action === 'emergency' ? 'now' : 'safe'}">
+            <strong>Action: ${analysis.surge_plan.action?.toUpperCase()}</strong>
+            ${analysis.surge_plan.tag_spots ? `<p>Tag spots: ${analysis.surge_plan.tag_spots.join(', ')}</p>` : ''}
+          </div>
+        </div>`;
+      }
+
+      // Contingency
+      if (analysis.contingency) {
+        html += `<div class="result-section">
+          <h3>🛡️ Contingency Plans</h3>
+          <div class="recommendation">
+            <strong>If Keyed Mid-Rotate:</strong>
+            <p>${analysis.contingency.if_keyed}</p>
+            ${analysis.contingency.if_zone_shifts ? `<p style="margin-top: 10px;"><strong>If Zone Shifts:</strong> ${analysis.contingency.if_zone_shifts}</p>` : ''}
+          </div>
+        </div>`;
+      }
+
+      container.innerHTML = html;
+    }
+
+    // Drop Explorer Functions
+    function filterDrops() {
+      const style = document.getElementById('styleFilter').value;
+      const type = document.getElementById('typeFilter').value;
+      const sort = document.getElementById('sortFilter').value;
+
+      let allPOIs = [...POI_DATA.named_pois, ...POI_DATA.landmarks];
+
+      // Filter by type
+      if (type !== 'all') {
+        allPOIs = allPOIs.filter(poi => poi.type === type);
+      }
+
+      // Calculate scores (simplified)
+      allPOIs = allPOIs.map(poi => {
+        let score = 0;
+        const chests = poi.loot?.chests || 0;
+        const rareChests = poi.loot?.rare_chests || 0;
+        const shields = (poi.shields?.slurp_barrels || 0) + (poi.shields?.slurp_trucks || 0) * 3 + (poi.shields?.vending_machines || 0);
+
+        const contestMap = { very_low: 10, low: 8, low_medium: 6, medium: 5, high: 2, very_high: 0 };
+        const contestScore = contestMap[poi.contest_data?.popularity] || 5;
+
+        if (style === 'balanced') {
+          score = (chests * 0.3) + (rareChests * 0.5) + (shields * 0.2) + (contestScore * 0.5);
+        } else if (style === 'super_safe') {
+          score = (chests * 0.15) + (shields * 0.3) + (contestScore * 0.8);
+        } else {
+          score = (chests * 0.4) + (rareChests * 0.6) + (shields * 0.15) + (contestScore * 0.2);
+        }
+
+        return { ...poi, score: Math.round(score * 100) / 100, shieldScore: shields };
+      });
+
+      // Sort
+      if (sort === 'score') {
+        allPOIs.sort((a, b) => b.score - a.score);
+      } else if (sort === 'chests') {
+        allPOIs.sort((a, b) => b.loot.chests - a.loot.chests);
+      } else if (sort === 'shields') {
+        allPOIs.sort((a, b) => b.shieldScore - a.shieldScore);
+      } else if (sort === 'contest_low') {
+        const contestOrder = { very_low: 1, low: 2, low_medium: 3, medium: 4, high: 5, very_high: 6 };
+        allPOIs.sort((a, b) => contestOrder[a.contest_data?.popularity] - contestOrder[b.contest_data?.popularity]);
+      }
+
+      // Render table
+      const tbody = document.getElementById('poiTableBody');
+      tbody.innerHTML = allPOIs.map((poi, index) => {
+        const scoreClass = poi.score >= 8 ? 'high' : poi.score >= 5 ? 'medium' : 'low';
+        return `<tr>
+          <td>#${index + 1}</td>
+          <td><strong>${poi.name}</strong></td>
+          <td>${poi.type === 'named_poi' ? 'POI' : 'Landmark'}</td>
+          <td><span class="score-badge ${scoreClass}">${poi.score}</span></td>
+          <td>${poi.loot?.chests || 0}</td>
+          <td>${poi.shieldScore}</td>
+          <td>${poi.contest_data?.popularity?.replace('_', ' ')}</td>
+          <td><button class="btn btn-secondary" onclick="showDropCard('${poi.id}')" style="padding: 6px 12px; font-size: 0.8rem;">View Card</button></td>
+        </tr>`;
+      }).join('');
+    }
+
+    function showDropCard(poiId) {
+      const poi = [...POI_DATA.named_pois, ...POI_DATA.landmarks].find(p => p.id === poiId);
+      if (!poi) return;
+
+      const modal = document.getElementById('dropCardModal');
+      const content = document.getElementById('dropCardContent');
+
+      content.innerHTML = `
+        <h2 style="margin-bottom: 20px;">${poi.name}</h2>
+        <div class="grid" style="gap: 15px;">
+          <div>
+            <h3 style="color: var(--accent-primary); margin-bottom: 10px;">Loot</h3>
+            <p>Chests: ${poi.loot?.chests || 0}</p>
+            <p>Rare Chests: ${poi.loot?.rare_chests || 0}</p>
+          </div>
+          <div>
+            <h3 style="color: var(--accent-primary); margin-bottom: 10px;">Shields</h3>
+            <p>Slurp Barrels: ${poi.shields?.slurp_barrels || 0}</p>
+            <p>Slurp Trucks: ${poi.shields?.slurp_trucks || 0}</p>
+            <p>Vending Machines: ${poi.shields?.vending_machines || 0}</p>
+          </div>
+        </div>
+        <div style="margin-top: 20px;">
+          <h3 style="color: var(--accent-primary); margin-bottom: 10px;">Contest Risk</h3>
+          <p>Popularity: ${poi.contest_data?.popularity?.replace('_', ' ')}</p>
+        </div>
+        <div style="margin-top: 20px;">
+          <a href="https://fortnite.gg/map" target="_blank" class="btn btn-secondary">View on Fortnite.gg Map →</a>
+        </div>
+      `;
+
+      modal.classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('dropCardModal').classList.remove('active');
+    }
+
+    // Map Canvas (simplified visualization)
+    const mapLayers = {
+      pois: true,
+      chests: false,
+      shields: false,
+      mobility: false,
+      routes: false
+    };
+
+    function toggleLayer(layer) {
+      mapLayers[layer] = !mapLayers[layer];
+      drawMap();
+    }
+
+    function drawMap() {
+      const canvas = document.getElementById('mapCanvas');
+      const ctx = canvas.getContext('2d');
+
+      // Set canvas size
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+
+      // Draw background
+      ctx.fillStyle = '#1a1a25';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw grid
+      ctx.strokeStyle = '#2a2a3a';
+      ctx.lineWidth = 1;
+      for (let i = 0; i <= 8; i++) {
+        const x = (canvas.width / 8) * i;
+        const y = (canvas.height / 8) * i;
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
+      }
+
+      // POI positions (approximate)
+      const poiPositions = {
+        'Battle Boulevard': [0.35, 0.55],
+        'Sandy Strip': [0.8, 0.45],
+        'Tiptop Terrace': [0.25, 0.2],
+        'Painted Palms': [0.7, 0.7],
+        'Bumpy Bay': [0.1, 0.45],
+        'Innoloop Labs': [0.5, 0.45],
+        'Wonkeeland / Cartmanland': [0.7, 0.2],
+        'Classified Canyon': [0.55, 0.7],
+        'Humble Hills': [0.4, 0.4],
+        'Toybox Docks': [0.2, 0.25],
+        'Artsy RVs': [0.65, 0.55]
+      };
+
+      if (mapLayers.pois) {
+        Object.entries(poiPositions).forEach(([name, [x, y]]) => {
+          const poi = [...POI_DATA.named_pois, ...POI_DATA.landmarks].find(p => p.name === name);
+          const contest = poi?.contest_data?.popularity;
+
+          // Color based on contest
+          let color = '#f59e0b'; // default
+          if (contest === 'very_low' || contest === 'low') color = '#10b981';
+          if (contest === 'high' || contest === 'very_high') color = '#ef4444';
+
+          // Draw POI marker
+          ctx.beginPath();
+          ctx.arc(x * canvas.width, y * canvas.height, 12, 0, Math.PI * 2);
+          ctx.fillStyle = color;
+          ctx.fill();
+
+          // Draw label
+          ctx.fillStyle = '#ffffff';
+          ctx.font = '10px Inter, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(name.split(' ')[0], x * canvas.width, y * canvas.height + 25);
+        });
+      }
+
+      if (mapLayers.routes) {
+        // Draw example rotation path
+        ctx.beginPath();
+        ctx.strokeStyle = '#6366f1';
+        ctx.lineWidth = 3;
+        ctx.setLineDash([10, 5]);
+        ctx.moveTo(0.2 * canvas.width, 0.25 * canvas.height);
+        ctx.lineTo(0.5 * canvas.width, 0.45 * canvas.height);
+        ctx.lineTo(0.55 * canvas.width, 0.7 * canvas.height);
+        ctx.stroke();
+        ctx.setLineDash([]);
+      }
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      filterDrops();
+      drawMap();
+      window.addEventListener('resize', drawMap);
+    });
+  </script>
+</body>
+</html>

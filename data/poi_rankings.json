@@ -1,0 +1,1691 @@
+{
+  "balanced": [
+    {
+      "rank": 1,
+      "poi_id": "battle_boulevard",
+      "poi_name": "Battle Boulevard",
+      "poi_type": "named_poi",
+      "preset": "balanced",
+      "composite_score": 7.96,
+      "component_scores": {
+        "rotate_potential": 10,
+        "loot_quality": 9.3,
+        "shield_availability": 4.666666666666667,
+        "materials": 8,
+        "surge_potential": 9,
+        "contest_risk_inverse": 3
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 2,
+      "poi_id": "sandy_strip",
+      "poi_name": "Sandy Strip",
+      "poi_type": "named_poi",
+      "preset": "balanced",
+      "composite_score": 6.91,
+      "component_scores": {
+        "rotate_potential": 7.3,
+        "loot_quality": 7.279999999999999,
+        "shield_availability": 8.333333333333334,
+        "materials": 6.333333333333333,
+        "surge_potential": 8.4,
+        "contest_risk_inverse": 2.25
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 3,
+      "poi_id": "classified_canyon",
+      "poi_name": "Classified Canyon",
+      "poi_type": "named_poi",
+      "preset": "balanced",
+      "composite_score": 6.72,
+      "component_scores": {
+        "rotate_potential": 9.100000000000001,
+        "loot_quality": 7.559999999999999,
+        "shield_availability": 2.6666666666666665,
+        "materials": 6,
+        "surge_potential": 9,
+        "contest_risk_inverse": 2.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 4,
+      "poi_id": "innoloop_labs",
+      "poi_name": "Innoloop Labs",
+      "poi_type": "named_poi",
+      "preset": "balanced",
+      "composite_score": 6.58,
+      "component_scores": {
+        "rotate_potential": 10,
+        "loot_quality": 5.4799999999999995,
+        "shield_availability": 1.6666666666666665,
+        "materials": 5.333333333333333,
+        "surge_potential": 9.6,
+        "contest_risk_inverse": 4.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 5,
+      "poi_id": "humble_hills",
+      "poi_name": "Humble Hills",
+      "poi_type": "named_poi",
+      "preset": "balanced",
+      "composite_score": 6.54,
+      "component_scores": {
+        "rotate_potential": 8.8,
+        "loot_quality": 5.460000000000001,
+        "shield_availability": 4,
+        "materials": 6,
+        "surge_potential": 7.8,
+        "contest_risk_inverse": 5.25
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 6,
+      "poi_id": "sus_studios",
+      "poi_name": "Sus Studios",
+      "poi_type": "named_poi",
+      "preset": "balanced",
+      "composite_score": 6.3,
+      "component_scores": {
+        "rotate_potential": 8.8,
+        "loot_quality": 6.04,
+        "shield_availability": 2.6666666666666665,
+        "materials": 5.666666666666666,
+        "surge_potential": 7,
+        "contest_risk_inverse": 5
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 7,
+      "poi_id": "painted_palms",
+      "poi_name": "Painted Palms",
+      "poi_type": "named_poi",
+      "preset": "balanced",
+      "composite_score": 6.24,
+      "component_scores": {
+        "rotate_potential": 6.8,
+        "loot_quality": 7.800000000000001,
+        "shield_availability": 4,
+        "materials": 6,
+        "surge_potential": 6.4,
+        "contest_risk_inverse": 5
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 8,
+      "poi_id": "ripped_tides",
+      "poi_name": "Ripped Tides",
+      "poi_type": "named_poi",
+      "preset": "balanced",
+      "composite_score": 6.17,
+      "component_scores": {
+        "rotate_potential": 6.8,
+        "loot_quality": 6.3,
+        "shield_availability": 5.333333333333333,
+        "materials": 6,
+        "surge_potential": 6.4,
+        "contest_risk_inverse": 5.25
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 9,
+      "poi_id": "wonkeeland",
+      "poi_name": "Wonkeeland / Cartmanland",
+      "poi_type": "named_poi",
+      "preset": "balanced",
+      "composite_score": 6.1,
+      "component_scores": {
+        "rotate_potential": 4.8,
+        "loot_quality": 8.120000000000001,
+        "shield_availability": 5.666666666666666,
+        "materials": 6.666666666666666,
+        "surge_potential": 5.6,
+        "contest_risk_inverse": 6.25
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 10,
+      "poi_id": "bumpy_bay",
+      "poi_name": "Bumpy Bay",
+      "poi_type": "named_poi",
+      "preset": "balanced",
+      "composite_score": 5.77,
+      "component_scores": {
+        "rotate_potential": 7.3,
+        "loot_quality": 5.2,
+        "shield_availability": 3.6666666666666665,
+        "materials": 5.333333333333333,
+        "surge_potential": 4.4,
+        "contest_risk_inverse": 7.5
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 11,
+      "poi_id": "fore_fields",
+      "poi_name": "Fore Fields",
+      "poi_type": "named_poi",
+      "preset": "balanced",
+      "composite_score": 5.7,
+      "component_scores": {
+        "rotate_potential": 6.8,
+        "loot_quality": 4.88,
+        "shield_availability": 4,
+        "materials": 5,
+        "surge_potential": 5.6,
+        "contest_risk_inverse": 7.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 12,
+      "poi_id": "toybox_docks",
+      "poi_name": "Toybox Docks",
+      "poi_type": "landmark",
+      "preset": "balanced",
+      "composite_score": 5.51,
+      "component_scores": {
+        "rotate_potential": 4.8,
+        "loot_quality": 3.7,
+        "shield_availability": 9.333333333333334,
+        "materials": 5.333333333333333,
+        "surge_potential": 1.8,
+        "contest_risk_inverse": 9.5
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 13,
+      "poi_id": "espresso_experiment",
+      "poi_name": "Espresso Experiment",
+      "poi_type": "landmark",
+      "preset": "balanced",
+      "composite_score": 5.46,
+      "component_scores": {
+        "rotate_potential": 10,
+        "loot_quality": 1.36,
+        "shield_availability": 1.6666666666666665,
+        "materials": 3.6666666666666665,
+        "surge_potential": 5.6,
+        "contest_risk_inverse": 8.25
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 14,
+      "poi_id": "artsy_rvs",
+      "poi_name": "Artsy RVs",
+      "poi_type": "landmark",
+      "preset": "balanced",
+      "composite_score": 5.38,
+      "component_scores": {
+        "rotate_potential": 7.3,
+        "loot_quality": 2.2,
+        "shield_availability": 5,
+        "materials": 4.666666666666667,
+        "surge_potential": 3.2,
+        "contest_risk_inverse": 9.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 15,
+      "poi_id": "tiptop_terrace",
+      "poi_name": "Tiptop Terrace",
+      "poi_type": "named_poi",
+      "preset": "balanced",
+      "composite_score": 5.26,
+      "component_scores": {
+        "rotate_potential": 5.1,
+        "loot_quality": 5.720000000000001,
+        "shield_availability": 4.666666666666667,
+        "materials": 5.666666666666666,
+        "surge_potential": 2.6,
+        "contest_risk_inverse": 7.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 16,
+      "poi_id": "peelian_swamp",
+      "poi_name": "Peelian Swamp",
+      "poi_type": "landmark",
+      "preset": "balanced",
+      "composite_score": 4.92,
+      "component_scores": {
+        "rotate_potential": 6.3,
+        "loot_quality": 3.12,
+        "shield_availability": 4,
+        "materials": 4,
+        "surge_potential": 2.6,
+        "contest_risk_inverse": 9.5
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 17,
+      "poi_id": "storm_station",
+      "poi_name": "Storm Station",
+      "poi_type": "landmark",
+      "preset": "balanced",
+      "composite_score": 4.56,
+      "component_scores": {
+        "rotate_potential": 6.3,
+        "loot_quality": 1.6800000000000002,
+        "shield_availability": 2,
+        "materials": 4.666666666666667,
+        "surge_potential": 3.8,
+        "contest_risk_inverse": 9.5
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 18,
+      "poi_id": "collider_corridor_alpha",
+      "poi_name": "Collider Corridor Alpha",
+      "poi_type": "landmark",
+      "preset": "balanced",
+      "composite_score": 4.47,
+      "component_scores": {
+        "rotate_potential": 8,
+        "loot_quality": 1.24,
+        "shield_availability": 0,
+        "materials": 3,
+        "surge_potential": 4,
+        "contest_risk_inverse": 9.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 19,
+      "poi_id": "collider_corridor_gamma",
+      "poi_name": "Collider Corridor Gamma",
+      "poi_type": "landmark",
+      "preset": "balanced",
+      "composite_score": 4.47,
+      "component_scores": {
+        "rotate_potential": 8,
+        "loot_quality": 1.24,
+        "shield_availability": 0,
+        "materials": 3,
+        "surge_potential": 4,
+        "contest_risk_inverse": 9.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 20,
+      "poi_id": "fore_shores",
+      "poi_name": "Fore Shores",
+      "poi_type": "named_poi",
+      "preset": "balanced",
+      "composite_score": 4.4,
+      "component_scores": {
+        "rotate_potential": 3.8,
+        "loot_quality": 4.28,
+        "shield_availability": 3.6666666666666665,
+        "materials": 5,
+        "surge_potential": 1.8,
+        "contest_risk_inverse": 9.25
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 21,
+      "poi_id": "battlewood_sign",
+      "poi_name": "Battlewood Sign",
+      "poi_type": "landmark",
+      "preset": "balanced",
+      "composite_score": 4.37,
+      "component_scores": {
+        "rotate_potential": 6.3,
+        "loot_quality": 1.1,
+        "shield_availability": 1,
+        "materials": 4,
+        "surge_potential": 5.6,
+        "contest_risk_inverse": 9.5
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 22,
+      "poi_id": "cosmic_durr",
+      "poi_name": "Cosmic Durr",
+      "poi_type": "landmark",
+      "preset": "balanced",
+      "composite_score": 3.95,
+      "component_scores": {
+        "rotate_potential": 6.3,
+        "loot_quality": 1.1,
+        "shield_availability": 1,
+        "materials": 3,
+        "surge_potential": 2.6,
+        "contest_risk_inverse": 9.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 23,
+      "poi_id": "paws_inn",
+      "poi_name": "Paws Inn / Clawsy Lodge",
+      "poi_type": "landmark",
+      "preset": "balanced",
+      "composite_score": 3.77,
+      "component_scores": {
+        "rotate_potential": 3.8,
+        "loot_quality": 2.6,
+        "shield_availability": 2.6666666666666665,
+        "materials": 4.333333333333334,
+        "surge_potential": 2.6,
+        "contest_risk_inverse": 8
+      },
+      "weights_used": {
+        "rotate_potential": 0.3,
+        "loot_quality": 0.2,
+        "shield_availability": 0.15,
+        "materials": 0.15,
+        "surge_potential": 0.1,
+        "contest_risk_inverse": 0.1
+      }
+    }
+  ],
+  "super_safe": [
+    {
+      "rank": 1,
+      "poi_id": "battle_boulevard",
+      "poi_name": "Battle Boulevard",
+      "poi_type": "named_poi",
+      "preset": "super_safe",
+      "composite_score": 6.73,
+      "component_scores": {
+        "rotate_potential": 10,
+        "loot_quality": 9.3,
+        "shield_availability": 4.666666666666667,
+        "materials": 8,
+        "surge_potential": 9,
+        "contest_risk_inverse": 3
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 2,
+      "poi_id": "toybox_docks",
+      "poi_name": "Toybox Docks",
+      "poi_type": "landmark",
+      "preset": "super_safe",
+      "composite_score": 6.65,
+      "component_scores": {
+        "rotate_potential": 4.8,
+        "loot_quality": 3.7,
+        "shield_availability": 9.333333333333334,
+        "materials": 5.333333333333333,
+        "surge_potential": 1.8,
+        "contest_risk_inverse": 9.5
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 3,
+      "poi_id": "sandy_strip",
+      "poi_name": "Sandy Strip",
+      "poi_type": "named_poi",
+      "preset": "super_safe",
+      "composite_score": 6.15,
+      "component_scores": {
+        "rotate_potential": 7.3,
+        "loot_quality": 7.279999999999999,
+        "shield_availability": 8.333333333333334,
+        "materials": 6.333333333333333,
+        "surge_potential": 8.4,
+        "contest_risk_inverse": 2.25
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 4,
+      "poi_id": "wonkeeland",
+      "poi_name": "Wonkeeland / Cartmanland",
+      "poi_type": "named_poi",
+      "preset": "super_safe",
+      "composite_score": 6.15,
+      "component_scores": {
+        "rotate_potential": 4.8,
+        "loot_quality": 8.120000000000001,
+        "shield_availability": 5.666666666666666,
+        "materials": 6.666666666666666,
+        "surge_potential": 5.6,
+        "contest_risk_inverse": 6.25
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 5,
+      "poi_id": "artsy_rvs",
+      "poi_name": "Artsy RVs",
+      "poi_type": "landmark",
+      "preset": "super_safe",
+      "composite_score": 6.09,
+      "component_scores": {
+        "rotate_potential": 7.3,
+        "loot_quality": 2.2,
+        "shield_availability": 5,
+        "materials": 4.666666666666667,
+        "surge_potential": 3.2,
+        "contest_risk_inverse": 9.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 6,
+      "poi_id": "humble_hills",
+      "poi_name": "Humble Hills",
+      "poi_type": "named_poi",
+      "preset": "super_safe",
+      "composite_score": 5.98,
+      "component_scores": {
+        "rotate_potential": 8.8,
+        "loot_quality": 5.460000000000001,
+        "shield_availability": 4,
+        "materials": 6,
+        "surge_potential": 7.8,
+        "contest_risk_inverse": 5.25
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 7,
+      "poi_id": "ripped_tides",
+      "poi_name": "Ripped Tides",
+      "poi_type": "named_poi",
+      "preset": "super_safe",
+      "composite_score": 5.9,
+      "component_scores": {
+        "rotate_potential": 6.8,
+        "loot_quality": 6.3,
+        "shield_availability": 5.333333333333333,
+        "materials": 6,
+        "surge_potential": 6.4,
+        "contest_risk_inverse": 5.25
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 8,
+      "poi_id": "bumpy_bay",
+      "poi_name": "Bumpy Bay",
+      "poi_type": "named_poi",
+      "preset": "super_safe",
+      "composite_score": 5.87,
+      "component_scores": {
+        "rotate_potential": 7.3,
+        "loot_quality": 5.2,
+        "shield_availability": 3.6666666666666665,
+        "materials": 5.333333333333333,
+        "surge_potential": 4.4,
+        "contest_risk_inverse": 7.5
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 9,
+      "poi_id": "fore_fields",
+      "poi_name": "Fore Fields",
+      "poi_type": "named_poi",
+      "preset": "super_safe",
+      "composite_score": 5.86,
+      "component_scores": {
+        "rotate_potential": 6.8,
+        "loot_quality": 4.88,
+        "shield_availability": 4,
+        "materials": 5,
+        "surge_potential": 5.6,
+        "contest_risk_inverse": 7.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 10,
+      "poi_id": "painted_palms",
+      "poi_name": "Painted Palms",
+      "poi_type": "named_poi",
+      "preset": "super_safe",
+      "composite_score": 5.8,
+      "component_scores": {
+        "rotate_potential": 6.8,
+        "loot_quality": 7.800000000000001,
+        "shield_availability": 4,
+        "materials": 6,
+        "surge_potential": 6.4,
+        "contest_risk_inverse": 5
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 11,
+      "poi_id": "tiptop_terrace",
+      "poi_name": "Tiptop Terrace",
+      "poi_type": "named_poi",
+      "preset": "super_safe",
+      "composite_score": 5.73,
+      "component_scores": {
+        "rotate_potential": 5.1,
+        "loot_quality": 5.720000000000001,
+        "shield_availability": 4.666666666666667,
+        "materials": 5.666666666666666,
+        "surge_potential": 2.6,
+        "contest_risk_inverse": 7.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 12,
+      "poi_id": "sus_studios",
+      "poi_name": "Sus Studios",
+      "poi_type": "named_poi",
+      "preset": "super_safe",
+      "composite_score": 5.65,
+      "component_scores": {
+        "rotate_potential": 8.8,
+        "loot_quality": 6.04,
+        "shield_availability": 2.6666666666666665,
+        "materials": 5.666666666666666,
+        "surge_potential": 7,
+        "contest_risk_inverse": 5
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 13,
+      "poi_id": "peelian_swamp",
+      "poi_name": "Peelian Swamp",
+      "poi_type": "landmark",
+      "preset": "super_safe",
+      "composite_score": 5.63,
+      "component_scores": {
+        "rotate_potential": 6.3,
+        "loot_quality": 3.12,
+        "shield_availability": 4,
+        "materials": 4,
+        "surge_potential": 2.6,
+        "contest_risk_inverse": 9.5
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 14,
+      "poi_id": "innoloop_labs",
+      "poi_name": "Innoloop Labs",
+      "poi_type": "named_poi",
+      "preset": "super_safe",
+      "composite_score": 5.62,
+      "component_scores": {
+        "rotate_potential": 10,
+        "loot_quality": 5.4799999999999995,
+        "shield_availability": 1.6666666666666665,
+        "materials": 5.333333333333333,
+        "surge_potential": 9.6,
+        "contest_risk_inverse": 4.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 15,
+      "poi_id": "classified_canyon",
+      "poi_name": "Classified Canyon",
+      "poi_type": "named_poi",
+      "preset": "super_safe",
+      "composite_score": 5.52,
+      "component_scores": {
+        "rotate_potential": 9.100000000000001,
+        "loot_quality": 7.559999999999999,
+        "shield_availability": 2.6666666666666665,
+        "materials": 6,
+        "surge_potential": 9,
+        "contest_risk_inverse": 2.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 16,
+      "poi_id": "espresso_experiment",
+      "poi_name": "Espresso Experiment",
+      "poi_type": "landmark",
+      "preset": "super_safe",
+      "composite_score": 5.43,
+      "component_scores": {
+        "rotate_potential": 10,
+        "loot_quality": 1.36,
+        "shield_availability": 1.6666666666666665,
+        "materials": 3.6666666666666665,
+        "surge_potential": 5.6,
+        "contest_risk_inverse": 8.25
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 17,
+      "poi_id": "fore_shores",
+      "poi_name": "Fore Shores",
+      "poi_type": "named_poi",
+      "preset": "super_safe",
+      "composite_score": 5.29,
+      "component_scores": {
+        "rotate_potential": 3.8,
+        "loot_quality": 4.28,
+        "shield_availability": 3.6666666666666665,
+        "materials": 5,
+        "surge_potential": 1.8,
+        "contest_risk_inverse": 9.25
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 18,
+      "poi_id": "storm_station",
+      "poi_name": "Storm Station",
+      "poi_type": "landmark",
+      "preset": "super_safe",
+      "composite_score": 5.18,
+      "component_scores": {
+        "rotate_potential": 6.3,
+        "loot_quality": 1.6800000000000002,
+        "shield_availability": 2,
+        "materials": 4.666666666666667,
+        "surge_potential": 3.8,
+        "contest_risk_inverse": 9.5
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 19,
+      "poi_id": "battlewood_sign",
+      "poi_name": "Battlewood Sign",
+      "poi_type": "landmark",
+      "preset": "super_safe",
+      "composite_score": 4.88,
+      "component_scores": {
+        "rotate_potential": 6.3,
+        "loot_quality": 1.1,
+        "shield_availability": 1,
+        "materials": 4,
+        "surge_potential": 5.6,
+        "contest_risk_inverse": 9.5
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 20,
+      "poi_id": "collider_corridor_alpha",
+      "poi_name": "Collider Corridor Alpha",
+      "poi_type": "landmark",
+      "preset": "super_safe",
+      "composite_score": 4.87,
+      "component_scores": {
+        "rotate_potential": 8,
+        "loot_quality": 1.24,
+        "shield_availability": 0,
+        "materials": 3,
+        "surge_potential": 4,
+        "contest_risk_inverse": 9.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 21,
+      "poi_id": "collider_corridor_gamma",
+      "poi_name": "Collider Corridor Gamma",
+      "poi_type": "landmark",
+      "preset": "super_safe",
+      "composite_score": 4.87,
+      "component_scores": {
+        "rotate_potential": 8,
+        "loot_quality": 1.24,
+        "shield_availability": 0,
+        "materials": 3,
+        "surge_potential": 4,
+        "contest_risk_inverse": 9.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 22,
+      "poi_id": "cosmic_durr",
+      "poi_name": "Cosmic Durr",
+      "poi_type": "landmark",
+      "preset": "super_safe",
+      "composite_score": 4.64,
+      "component_scores": {
+        "rotate_potential": 6.3,
+        "loot_quality": 1.1,
+        "shield_availability": 1,
+        "materials": 3,
+        "surge_potential": 2.6,
+        "contest_risk_inverse": 9.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    },
+    {
+      "rank": 23,
+      "poi_id": "paws_inn",
+      "poi_name": "Paws Inn / Clawsy Lodge",
+      "poi_type": "landmark",
+      "preset": "super_safe",
+      "composite_score": 4.46,
+      "component_scores": {
+        "rotate_potential": 3.8,
+        "loot_quality": 2.6,
+        "shield_availability": 2.6666666666666665,
+        "materials": 4.333333333333334,
+        "surge_potential": 2.6,
+        "contest_risk_inverse": 8
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.15,
+        "shield_availability": 0.2,
+        "materials": 0.15,
+        "surge_potential": 0.05,
+        "contest_risk_inverse": 0.25
+      }
+    }
+  ],
+  "risky_keying": [
+    {
+      "rank": 1,
+      "poi_id": "battle_boulevard",
+      "poi_name": "Battle Boulevard",
+      "poi_type": "named_poi",
+      "preset": "risky_keying",
+      "composite_score": 7.93,
+      "component_scores": {
+        "rotate_potential": 10,
+        "loot_quality": 9.3,
+        "shield_availability": 4.666666666666667,
+        "materials": 8,
+        "surge_potential": 9,
+        "contest_risk_inverse": 3
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 2,
+      "poi_id": "sandy_strip",
+      "poi_name": "Sandy Strip",
+      "poi_type": "named_poi",
+      "preset": "risky_keying",
+      "composite_score": 7.07,
+      "component_scores": {
+        "rotate_potential": 7.3,
+        "loot_quality": 7.279999999999999,
+        "shield_availability": 8.333333333333334,
+        "materials": 6.333333333333333,
+        "surge_potential": 8.4,
+        "contest_risk_inverse": 2.25
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 3,
+      "poi_id": "classified_canyon",
+      "poi_name": "Classified Canyon",
+      "poi_type": "named_poi",
+      "preset": "risky_keying",
+      "composite_score": 6.79,
+      "component_scores": {
+        "rotate_potential": 9.100000000000001,
+        "loot_quality": 7.559999999999999,
+        "shield_availability": 2.6666666666666665,
+        "materials": 6,
+        "surge_potential": 9,
+        "contest_risk_inverse": 2.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 4,
+      "poi_id": "innoloop_labs",
+      "poi_name": "Innoloop Labs",
+      "poi_type": "named_poi",
+      "preset": "risky_keying",
+      "composite_score": 6.55,
+      "component_scores": {
+        "rotate_potential": 10,
+        "loot_quality": 5.4799999999999995,
+        "shield_availability": 1.6666666666666665,
+        "materials": 5.333333333333333,
+        "surge_potential": 9.6,
+        "contest_risk_inverse": 4.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 5,
+      "poi_id": "humble_hills",
+      "poi_name": "Humble Hills",
+      "poi_type": "named_poi",
+      "preset": "risky_keying",
+      "composite_score": 6.41,
+      "component_scores": {
+        "rotate_potential": 8.8,
+        "loot_quality": 5.460000000000001,
+        "shield_availability": 4,
+        "materials": 6,
+        "surge_potential": 7.8,
+        "contest_risk_inverse": 5.25
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 6,
+      "poi_id": "painted_palms",
+      "poi_name": "Painted Palms",
+      "poi_type": "named_poi",
+      "preset": "risky_keying",
+      "composite_score": 6.29,
+      "component_scores": {
+        "rotate_potential": 6.8,
+        "loot_quality": 7.800000000000001,
+        "shield_availability": 4,
+        "materials": 6,
+        "surge_potential": 6.4,
+        "contest_risk_inverse": 5
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 7,
+      "poi_id": "wonkeeland",
+      "poi_name": "Wonkeeland / Cartmanland",
+      "poi_type": "named_poi",
+      "preset": "risky_keying",
+      "composite_score": 6.25,
+      "component_scores": {
+        "rotate_potential": 4.8,
+        "loot_quality": 8.120000000000001,
+        "shield_availability": 5.666666666666666,
+        "materials": 6.666666666666666,
+        "surge_potential": 5.6,
+        "contest_risk_inverse": 6.25
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 8,
+      "poi_id": "ripped_tides",
+      "poi_name": "Ripped Tides",
+      "poi_type": "named_poi",
+      "preset": "risky_keying",
+      "composite_score": 6.14,
+      "component_scores": {
+        "rotate_potential": 6.8,
+        "loot_quality": 6.3,
+        "shield_availability": 5.333333333333333,
+        "materials": 6,
+        "surge_potential": 6.4,
+        "contest_risk_inverse": 5.25
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 9,
+      "poi_id": "sus_studios",
+      "poi_name": "Sus Studios",
+      "poi_type": "named_poi",
+      "preset": "risky_keying",
+      "composite_score": 6.14,
+      "component_scores": {
+        "rotate_potential": 8.8,
+        "loot_quality": 6.04,
+        "shield_availability": 2.6666666666666665,
+        "materials": 5.666666666666666,
+        "surge_potential": 7,
+        "contest_risk_inverse": 5
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 10,
+      "poi_id": "fore_fields",
+      "poi_name": "Fore Fields",
+      "poi_type": "named_poi",
+      "preset": "risky_keying",
+      "composite_score": 5.58,
+      "component_scores": {
+        "rotate_potential": 6.8,
+        "loot_quality": 4.88,
+        "shield_availability": 4,
+        "materials": 5,
+        "surge_potential": 5.6,
+        "contest_risk_inverse": 7.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 11,
+      "poi_id": "bumpy_bay",
+      "poi_name": "Bumpy Bay",
+      "poi_type": "named_poi",
+      "preset": "risky_keying",
+      "composite_score": 5.47,
+      "component_scores": {
+        "rotate_potential": 7.3,
+        "loot_quality": 5.2,
+        "shield_availability": 3.6666666666666665,
+        "materials": 5.333333333333333,
+        "surge_potential": 4.4,
+        "contest_risk_inverse": 7.5
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 12,
+      "poi_id": "toybox_docks",
+      "poi_name": "Toybox Docks",
+      "poi_type": "landmark",
+      "preset": "risky_keying",
+      "composite_score": 5.13,
+      "component_scores": {
+        "rotate_potential": 4.8,
+        "loot_quality": 3.7,
+        "shield_availability": 9.333333333333334,
+        "materials": 5.333333333333333,
+        "surge_potential": 1.8,
+        "contest_risk_inverse": 9.5
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 13,
+      "poi_id": "tiptop_terrace",
+      "poi_name": "Tiptop Terrace",
+      "poi_type": "named_poi",
+      "preset": "risky_keying",
+      "composite_score": 5.01,
+      "component_scores": {
+        "rotate_potential": 5.1,
+        "loot_quality": 5.720000000000001,
+        "shield_availability": 4.666666666666667,
+        "materials": 5.666666666666666,
+        "surge_potential": 2.6,
+        "contest_risk_inverse": 7.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 14,
+      "poi_id": "espresso_experiment",
+      "poi_name": "Espresso Experiment",
+      "poi_type": "landmark",
+      "preset": "risky_keying",
+      "composite_score": 4.9,
+      "component_scores": {
+        "rotate_potential": 10,
+        "loot_quality": 1.36,
+        "shield_availability": 1.6666666666666665,
+        "materials": 3.6666666666666665,
+        "surge_potential": 5.6,
+        "contest_risk_inverse": 8.25
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 15,
+      "poi_id": "artsy_rvs",
+      "poi_name": "Artsy RVs",
+      "poi_type": "landmark",
+      "preset": "risky_keying",
+      "composite_score": 4.84,
+      "component_scores": {
+        "rotate_potential": 7.3,
+        "loot_quality": 2.2,
+        "shield_availability": 5,
+        "materials": 4.666666666666667,
+        "surge_potential": 3.2,
+        "contest_risk_inverse": 9.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 16,
+      "poi_id": "peelian_swamp",
+      "poi_name": "Peelian Swamp",
+      "poi_type": "landmark",
+      "preset": "risky_keying",
+      "composite_score": 4.51,
+      "component_scores": {
+        "rotate_potential": 6.3,
+        "loot_quality": 3.12,
+        "shield_availability": 4,
+        "materials": 4,
+        "surge_potential": 2.6,
+        "contest_risk_inverse": 9.5
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 17,
+      "poi_id": "fore_shores",
+      "poi_name": "Fore Shores",
+      "poi_type": "named_poi",
+      "preset": "risky_keying",
+      "composite_score": 4.17,
+      "component_scores": {
+        "rotate_potential": 3.8,
+        "loot_quality": 4.28,
+        "shield_availability": 3.6666666666666665,
+        "materials": 5,
+        "surge_potential": 1.8,
+        "contest_risk_inverse": 9.25
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 18,
+      "poi_id": "battlewood_sign",
+      "poi_name": "Battlewood Sign",
+      "poi_type": "landmark",
+      "preset": "risky_keying",
+      "composite_score": 4.16,
+      "component_scores": {
+        "rotate_potential": 6.3,
+        "loot_quality": 1.1,
+        "shield_availability": 1,
+        "materials": 4,
+        "surge_potential": 5.6,
+        "contest_risk_inverse": 9.5
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 19,
+      "poi_id": "storm_station",
+      "poi_name": "Storm Station",
+      "poi_type": "landmark",
+      "preset": "risky_keying",
+      "composite_score": 4.16,
+      "component_scores": {
+        "rotate_potential": 6.3,
+        "loot_quality": 1.6800000000000002,
+        "shield_availability": 2,
+        "materials": 4.666666666666667,
+        "surge_potential": 3.8,
+        "contest_risk_inverse": 9.5
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 20,
+      "poi_id": "collider_corridor_alpha",
+      "poi_name": "Collider Corridor Alpha",
+      "poi_type": "landmark",
+      "preset": "risky_keying",
+      "composite_score": 3.99,
+      "component_scores": {
+        "rotate_potential": 8,
+        "loot_quality": 1.24,
+        "shield_availability": 0,
+        "materials": 3,
+        "surge_potential": 4,
+        "contest_risk_inverse": 9.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 21,
+      "poi_id": "collider_corridor_gamma",
+      "poi_name": "Collider Corridor Gamma",
+      "poi_type": "landmark",
+      "preset": "risky_keying",
+      "composite_score": 3.99,
+      "component_scores": {
+        "rotate_potential": 8,
+        "loot_quality": 1.24,
+        "shield_availability": 0,
+        "materials": 3,
+        "surge_potential": 4,
+        "contest_risk_inverse": 9.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 22,
+      "poi_id": "paws_inn",
+      "poi_name": "Paws Inn / Clawsy Lodge",
+      "poi_type": "landmark",
+      "preset": "risky_keying",
+      "composite_score": 3.56,
+      "component_scores": {
+        "rotate_potential": 3.8,
+        "loot_quality": 2.6,
+        "shield_availability": 2.6666666666666665,
+        "materials": 4.333333333333334,
+        "surge_potential": 2.6,
+        "contest_risk_inverse": 8
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    },
+    {
+      "rank": 23,
+      "poi_id": "cosmic_durr",
+      "poi_name": "Cosmic Durr",
+      "poi_type": "landmark",
+      "preset": "risky_keying",
+      "composite_score": 3.48,
+      "component_scores": {
+        "rotate_potential": 6.3,
+        "loot_quality": 1.1,
+        "shield_availability": 1,
+        "materials": 3,
+        "surge_potential": 2.6,
+        "contest_risk_inverse": 9.75
+      },
+      "weights_used": {
+        "rotate_potential": 0.2,
+        "loot_quality": 0.25,
+        "shield_availability": 0.15,
+        "materials": 0.1,
+        "surge_potential": 0.2,
+        "contest_risk_inverse": 0.1
+      }
+    }
+  ],
+  "generated_at": "2026-01-16T04:40:23.731Z",
+  "scoring_weights": {
+    "balanced": {
+      "rotate_potential": 0.3,
+      "loot_quality": 0.2,
+      "shield_availability": 0.15,
+      "materials": 0.15,
+      "surge_potential": 0.1,
+      "contest_risk_inverse": 0.1
+    },
+    "super_safe": {
+      "rotate_potential": 0.2,
+      "loot_quality": 0.15,
+      "shield_availability": 0.2,
+      "materials": 0.15,
+      "surge_potential": 0.05,
+      "contest_risk_inverse": 0.25
+    },
+    "risky_keying": {
+      "rotate_potential": 0.2,
+      "loot_quality": 0.25,
+      "shield_availability": 0.15,
+      "materials": 0.1,
+      "surge_potential": 0.2,
+      "contest_risk_inverse": 0.1
+    }
+  }
+}
