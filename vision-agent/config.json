@@ -1,0 +1,38 @@
+{
+    "capture": {
+          "monitor_index": 0,
+          "target_fps": 3,
+          "adaptive_fps": true,
+          "min_fps": 1,
+          "max_fps": 5
+    },
+    "ocr": {
+          "gpu": true,
+          "languages": ["en"]
+    },
+    "websocket": {
+          "host": "localhost",
+          "port": 8765
+    },
+    "regions": {
+          "hp": {"x": 90, "y": 1035, "width": 45, "height": 25},
+          "shield": {"x": 90, "y": 1010, "width": 45, "height": 25},
+          "materials": {
+                  "wood": {"x": 1785, "y": 1035, "width": 40, "height": 20},
+                  "brick": {"x": 1825, "y": 1035, "width": 40, "height": 20},
+                  "metal": {"x": 1865, "y": 1035, "width": 40, "height": 20}
+          },
+          "storm_timer": {"x": 925, "y": 55, "width": 70, "height": 30},
+          "storm_phase": {"x": 870, "y": 55, "width": 30, "height": 30},
+          "player_count": {"x": 1830, "y": 55, "width": 50, "height": 30},
+          "elimination_count": {"x": 1780, "y": 55, "width": 40, "height": 30},
+          "surge_warning": {"x": 800, "y": 150, "width": 320, "height": 60}
+    },
+    "detection": {
+          "surge_keywords": ["SURGE", "DAMAGE", "BELOW"]
+    },
+    "performance": {
+          "max_cpu_percent": 8,
+          "max_memory_mb": 600
+    }
+}
