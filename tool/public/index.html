@@ -828,7 +828,7 @@
       box-shadow: 0 0 20px var(--glow-primary);
     }
 
-    /* Map */
+    /* Map Container */
     .map-container {
       position: relative;
       background: var(--bg-primary);
@@ -842,6 +842,7 @@
     .map-canvas {
       width: 100%;
       height: 100%;
+      cursor: crosshair;
     }
 
     .map-controls {
@@ -898,6 +899,167 @@
       height: 18px;
       border-radius: 6px;
       box-shadow: 0 0 10px currentColor;
+    }
+
+    /* Rotation Planner Specific */
+    .rotation-planner-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 1100px) {
+      .rotation-planner-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .position-input-group {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .position-coord {
+      flex: 1;
+      text-align: center;
+    }
+
+    .position-coord input {
+      width: 100%;
+      padding: 12px;
+      font-size: 1.2rem;
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+    }
+
+    .position-coord label {
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .route-info-panel {
+      background: var(--bg-primary);
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid var(--border-color);
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .route-waypoint {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--bg-tertiary);
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border-left: 4px solid var(--accent-primary);
+    }
+
+    .route-waypoint.resource {
+      border-left-color: var(--accent-success);
+    }
+
+    .route-waypoint.danger {
+      border-left-color: var(--accent-danger);
+    }
+
+    .route-waypoint-icon {
+      font-size: 1.5rem;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .route-waypoint-info h4 {
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .route-waypoint-info p {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .refarm-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--accent-success);
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      margin-left: 8px;
+    }
+
+    .danger-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(239, 68, 68, 0.2);
+      color: var(--accent-danger);
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      margin-left: 8px;
+    }
+
+    .team-prediction-card {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.05));
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .team-prediction-card h4 {
+      color: var(--accent-danger);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .prediction-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .prediction-item:last-child {
+      border-bottom: none;
+    }
+
+    .prediction-chance {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+    }
+
+    .prediction-chance.high {
+      color: var(--accent-danger);
+    }
+
+    .prediction-chance.medium {
+      color: var(--accent-warning);
+    }
+
+    .prediction-chance.low {
+      color: var(--accent-success);
+    }
+
+    /* Click marker styles */
+    .click-position {
+      position: absolute;
+      pointer-events: none;
+      font-size: 0.7rem;
+      padding: 4px 8px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--accent-primary);
+      border-radius: 6px;
+      color: var(--accent-primary);
+      white-space: nowrap;
     }
 
     /* Modal */
@@ -1107,7 +1269,11 @@
     <div class="tabs">
       <button class="tab active" data-tab="analyzer">
         <span class="tab-icon">🎯</span>
-        <span>Situation Analyzer</span>
+        <span>Analyzer</span>
+      </button>
+      <button class="tab" data-tab="rotation">
+        <span class="tab-icon">🛤️</span>
+        <span>Rotation Planner</span>
       </button>
       <button class="tab" data-tab="drops">
         <span class="tab-icon">📍</span>
@@ -1299,6 +1465,129 @@
       </div>
     </div>
 
+    <!-- ROTATION PLANNER TAB -->
+    <div id="rotation" class="tab-content">
+      <div class="rotation-planner-grid">
+        <div>
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon">📍</div>
+              <div class="card-title">Your Current Position</div>
+            </div>
+            <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 0.9rem;">Click on the map or enter grid coordinates (A1-H8)</p>
+            <div class="form-group">
+              <label>Grid Position</label>
+              <input type="text" id="currentPosition" placeholder="e.g., D5, E3" />
+            </div>
+            <div class="form-group">
+              <label>Current POI (optional)</label>
+              <select id="currentPOI">
+                <option value="">-- Select if at POI --</option>
+                <option value="Battle Boulevard">Battle Boulevard</option>
+                <option value="Sandy Strip">Sandy Strip</option>
+                <option value="Tiptop Terrace">Tiptop Terrace</option>
+                <option value="Painted Palms">Painted Palms</option>
+                <option value="Bumpy Bay">Bumpy Bay</option>
+                <option value="Innoloop Labs">Innoloop Labs</option>
+                <option value="Ripped Tides">Ripped Tides</option>
+                <option value="Classified Canyon">Classified Canyon</option>
+                <option value="Toybox Docks">Toybox Docks</option>
+                <option value="Artsy RVs">Artsy RVs</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon">🌀</div>
+              <div class="card-title">Zone Information</div>
+            </div>
+            <div class="form-group">
+              <label>Zone Center Grid</label>
+              <input type="text" id="zoneCenter" placeholder="e.g., E4" />
+            </div>
+            <div class="form-group">
+              <label>Current Zone</label>
+              <select id="currentZone">
+                <option value="1">Zone 1 (Huge)</option>
+                <option value="2">Zone 2</option>
+                <option value="3">Zone 3</option>
+                <option value="4">Zone 4 (Half-half)</option>
+                <option value="5">Zone 5 (Moving)</option>
+                <option value="6">Zone 6 (Endgame)</option>
+                <option value="7">Zone 7+ (Heal-off)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Teams Alive</label>
+              <select id="teamsAlive">
+                <option value="40+">40+ Teams</option>
+                <option value="30-40">30-40 Teams</option>
+                <option value="20-30">20-30 Teams</option>
+                <option value="15-20">15-20 Teams</option>
+                <option value="10-15">10-15 Teams</option>
+                <option value="5-10">5-10 Teams</option>
+                <option value="1-5">1-5 Teams</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="analyze-section" style="margin-top: 20px;">
+            <button class="btn btn-primary" onclick="planRotation()">
+              <span>🛤️</span>
+              <span>PLAN ROTATION</span>
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <div class="card" style="height: 100%;">
+            <div class="card-header">
+              <div class="card-icon">🗺️</div>
+              <div class="card-title">Interactive Map - Click to Set Position</div>
+            </div>
+            <div class="map-container" style="max-height: 400px;">
+              <canvas id="rotationMapCanvas" class="map-canvas"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="rotationResults" style="display: none; margin-top: 20px;">
+        <div class="grid">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon">👥</div>
+              <div class="card-title">Team Position Predictions</div>
+            </div>
+            <div class="team-prediction-card">
+              <h4>⚠️ Likely Enemy Positions</h4>
+              <div id="teamPredictions"></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon">🛤️</div>
+              <div class="card-title">Optimal Route</div>
+            </div>
+            <div id="optimalRoute" class="route-info-panel"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon">📦</div>
+            <div class="card-title">Resources Along Route</div>
+          </div>
+          <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+            <div id="refarmSpots"></div>
+            <div id="dangerZones"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- DROPS TAB -->
     <div id="drops" class="tab-content">
       <div class="card">
@@ -1373,6 +1662,7 @@
             <button onclick="toggleLayer('pois')" id="btn-pois" class="active">POIs</button>
             <button onclick="toggleLayer('routes')" id="btn-routes">Routes</button>
             <button onclick="toggleLayer('zones')" id="btn-zones">Zones</button>
+            <button onclick="toggleLayer('resources')" id="btn-resources">Resources</button>
           </div>
         </div>
         <div class="map-legend">
@@ -1392,6 +1682,10 @@
             <div class="legend-color" style="background: #6366f1; color: #6366f1;"></div>
             <span>Rotate Path</span>
           </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: #06b6d4; color: #06b6d4;"></div>
+            <span>Slurp Barrel</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1406,29 +1700,43 @@
   </div>
 
   <script>
-    // POI Data
+    // POI Data with positions and resources
     const POI_DATA = {
       named_pois: [
-        { id: "battle_boulevard", name: "Battle Boulevard", type: "named_poi", loot: { chests: 28, rare_chests: 4 }, shields: { slurp_barrels: 2, slurp_trucks: 0, vending_machines: 2 }, contest_data: { popularity: "very_high" }, position: [0.35, 0.55], description: "Largest POI - LA-inspired city. High traffic, constant action." },
-        { id: "sandy_strip", name: "Sandy Strip", type: "named_poi", loot: { chests: 22, rare_chests: 3 }, shields: { slurp_barrels: 3, slurp_trucks: 1, vending_machines: 3 }, contest_data: { popularity: "high" }, position: [0.8, 0.45], description: "Vegas-style with The Sphere. Good loot density." },
-        { id: "tiptop_terrace", name: "Tiptop Terrace", type: "named_poi", loot: { chests: 18, rare_chests: 2 }, shields: { slurp_barrels: 4, slurp_trucks: 0, vending_machines: 1 }, contest_data: { popularity: "low" }, position: [0.25, 0.2], description: "Secluded forest with log cabins. Great for safe looting." },
-        { id: "painted_palms", name: "Painted Palms", type: "named_poi", loot: { chests: 24, rare_chests: 3 }, shields: { slurp_barrels: 2, slurp_trucks: 0, shield_kegs: 1, vending_machines: 1 }, contest_data: { popularity: "medium" }, position: [0.7, 0.7], description: "Abandoned movie set with violet foliage." },
-        { id: "bumpy_bay", name: "Bumpy Bay", type: "named_poi", loot: { chests: 16, rare_chests: 2 }, shields: { slurp_barrels: 3, slurp_trucks: 0, vending_machines: 1 }, contest_data: { popularity: "low" }, position: [0.1, 0.45], description: "Classic pier-themed POI with fishing spots." },
-        { id: "innoloop_labs", name: "Innoloop Labs", type: "named_poi", loot: { chests: 14, rare_chests: 4 }, shields: { slurp_barrels: 1, slurp_trucks: 0, vending_machines: 1 }, contest_data: { popularity: "medium" }, position: [0.5, 0.45], description: "Central tech lab with Zero Point shard." },
-        { id: "fore_fields", name: "Fore Fields", type: "named_poi", loot: { chests: 15, rare_chests: 2 }, shields: { slurp_barrels: 2, slurp_trucks: 0, shield_kegs: 1, vending_machines: 1 }, contest_data: { popularity: "low" }, position: [0.85, 0.55], description: "Lush golf course on the east side." },
-        { id: "ripped_tides", name: "Ripped Tides", type: "named_poi", loot: { chests: 20, rare_chests: 2 }, shields: { slurp_barrels: 4, slurp_trucks: 0, vending_machines: 2 }, contest_data: { popularity: "medium" }, position: [0.2, 0.7], description: "Miami-style beach with exclusive mythic shotgun." },
-        { id: "sus_studios", name: "Sus Studios", type: "named_poi", loot: { chests: 19, rare_chests: 2 }, shields: { slurp_barrels: 2, slurp_trucks: 0, vending_machines: 1 }, contest_data: { popularity: "medium" }, position: [0.3, 0.5], description: "Film studio with sound stages and props." },
-        { id: "wonkeeland", name: "Wonkeeland / Cartmanland", type: "named_poi", loot: { chests: 25, rare_chests: 3 }, shields: { slurp_barrels: 3, slurp_trucks: 0, shield_kegs: 1, vending_machines: 2 }, contest_data: { popularity: "low_medium" }, position: [0.7, 0.2], description: "Theme park with roller coaster and ferris wheel." },
-        { id: "classified_canyon", name: "Classified Canyon", type: "named_poi", loot: { chests: 20, rare_chests: 5 }, shields: { slurp_barrels: 2, slurp_trucks: 0, vending_machines: 1 }, contest_data: { popularity: "high" }, position: [0.55, 0.7], description: "Military base with vault. Guaranteed legendary weapons." },
-        { id: "humble_hills", name: "Humble Hills", type: "named_poi", loot: { chests: 17, rare_chests: 2 }, shields: { slurp_barrels: 2, slurp_trucks: 0, shield_kegs: 1, vending_machines: 1 }, contest_data: { popularity: "medium" }, position: [0.4, 0.4], description: "Hollywood Hills-inspired mansions with highground." },
-        { id: "fore_shores", name: "Fore Shores", type: "named_poi", loot: { chests: 14, rare_chests: 1 }, shields: { slurp_barrels: 3, slurp_trucks: 0, vending_machines: 1 }, contest_data: { popularity: "very_low" }, position: [0.55, 0.1], description: "Northern coastal haven. Very quiet." }
+        { id: "battle_boulevard", name: "Battle Boulevard", type: "named_poi", grid: "D5", loot: { chests: 28, rare_chests: 4 }, shields: { slurp_barrels: 2, slurp_trucks: 0, vending_machines: 2 }, contest_data: { popularity: "very_high" }, position: [0.35, 0.55], description: "Largest POI - LA-inspired city. High traffic, constant action.", materials: { wood: 8, brick: 7, metal: 8 } },
+        { id: "sandy_strip", name: "Sandy Strip", type: "named_poi", grid: "G4", loot: { chests: 22, rare_chests: 3 }, shields: { slurp_barrels: 3, slurp_trucks: 1, vending_machines: 3 }, contest_data: { popularity: "high" }, position: [0.8, 0.45], description: "Vegas-style with The Sphere. Good loot density.", materials: { wood: 5, brick: 8, metal: 7 } },
+        { id: "tiptop_terrace", name: "Tiptop Terrace", type: "named_poi", grid: "B2", loot: { chests: 18, rare_chests: 2 }, shields: { slurp_barrels: 4, slurp_trucks: 0, vending_machines: 1 }, contest_data: { popularity: "low" }, position: [0.25, 0.2], description: "Secluded forest with log cabins. Great for safe looting.", materials: { wood: 10, brick: 4, metal: 3 } },
+        { id: "painted_palms", name: "Painted Palms", type: "named_poi", grid: "F6", loot: { chests: 24, rare_chests: 3 }, shields: { slurp_barrels: 2, slurp_trucks: 0, shield_kegs: 1, vending_machines: 1 }, contest_data: { popularity: "medium" }, position: [0.7, 0.7], description: "Abandoned movie set with violet foliage.", materials: { wood: 7, brick: 6, metal: 5 } },
+        { id: "bumpy_bay", name: "Bumpy Bay", type: "named_poi", grid: "A4", loot: { chests: 16, rare_chests: 2 }, shields: { slurp_barrels: 3, slurp_trucks: 0, vending_machines: 1 }, contest_data: { popularity: "low" }, position: [0.1, 0.45], description: "Classic pier-themed POI with fishing spots.", materials: { wood: 9, brick: 4, metal: 4 } },
+        { id: "innoloop_labs", name: "Innoloop Labs", type: "named_poi", grid: "D4", loot: { chests: 14, rare_chests: 4 }, shields: { slurp_barrels: 1, slurp_trucks: 0, vending_machines: 1 }, contest_data: { popularity: "medium" }, position: [0.5, 0.45], description: "Central tech lab with Zero Point shard.", materials: { wood: 3, brick: 5, metal: 9 } },
+        { id: "fore_fields", name: "Fore Fields", type: "named_poi", grid: "H5", loot: { chests: 15, rare_chests: 2 }, shields: { slurp_barrels: 2, slurp_trucks: 0, shield_kegs: 1, vending_machines: 1 }, contest_data: { popularity: "low" }, position: [0.85, 0.55], description: "Lush golf course on the east side.", materials: { wood: 6, brick: 3, metal: 4 } },
+        { id: "ripped_tides", name: "Ripped Tides", type: "named_poi", grid: "B6", loot: { chests: 20, rare_chests: 2 }, shields: { slurp_barrels: 4, slurp_trucks: 0, vending_machines: 2 }, contest_data: { popularity: "medium" }, position: [0.2, 0.7], description: "Miami-style beach with exclusive mythic shotgun.", materials: { wood: 7, brick: 5, metal: 6 } },
+        { id: "sus_studios", name: "Sus Studios", type: "named_poi", grid: "C5", loot: { chests: 19, rare_chests: 2 }, shields: { slurp_barrels: 2, slurp_trucks: 0, vending_machines: 1 }, contest_data: { popularity: "medium" }, position: [0.3, 0.5], description: "Film studio with sound stages and props.", materials: { wood: 8, brick: 6, metal: 7 } },
+        { id: "wonkeeland", name: "Wonkeeland / Cartmanland", type: "named_poi", grid: "F2", loot: { chests: 25, rare_chests: 3 }, shields: { slurp_barrels: 3, slurp_trucks: 0, shield_kegs: 1, vending_machines: 2 }, contest_data: { popularity: "low_medium" }, position: [0.7, 0.2], description: "Theme park with roller coaster and ferris wheel.", materials: { wood: 5, brick: 4, metal: 8 } },
+        { id: "classified_canyon", name: "Classified Canyon", type: "named_poi", grid: "E6", loot: { chests: 20, rare_chests: 5 }, shields: { slurp_barrels: 2, slurp_trucks: 0, vending_machines: 1 }, contest_data: { popularity: "high" }, position: [0.55, 0.7], description: "Military base with vault. Guaranteed legendary weapons.", materials: { wood: 3, brick: 8, metal: 9 } },
+        { id: "humble_hills", name: "Humble Hills", type: "named_poi", grid: "D3", loot: { chests: 17, rare_chests: 2 }, shields: { slurp_barrels: 2, slurp_trucks: 0, shield_kegs: 1, vending_machines: 1 }, contest_data: { popularity: "medium" }, position: [0.4, 0.4], description: "Hollywood Hills-inspired mansions with highground.", materials: { wood: 6, brick: 7, metal: 5 } },
+        { id: "fore_shores", name: "Fore Shores", type: "named_poi", grid: "E1", loot: { chests: 14, rare_chests: 1 }, shields: { slurp_barrels: 3, slurp_trucks: 0, vending_machines: 1 }, contest_data: { popularity: "very_low" }, position: [0.55, 0.1], description: "Northern coastal haven. Very quiet.", materials: { wood: 8, brick: 3, metal: 3 } }
       ],
       landmarks: [
-        { id: "toybox_docks", name: "Toybox Docks", type: "landmark", loot: { chests: 12, rare_chests: 1 }, shields: { slurp_barrels: 6, slurp_trucks: 1, vending_machines: 0 }, contest_data: { popularity: "very_low" }, position: [0.2, 0.25], description: "BEST SAFE DROP - Slurp truck guarantees full shields!" },
-        { id: "artsy_rvs", name: "Artsy RVs", type: "landmark", loot: { chests: 8, rare_chests: 0 }, shields: { slurp_barrels: 5, slurp_trucks: 0, vending_machines: 0 }, contest_data: { popularity: "very_low" }, position: [0.65, 0.55], description: "TOP COMPETITIVE PICK - Never contested, great shields." },
-        { id: "peelian_swamp", name: "Peelian Swamp", type: "landmark", loot: { chests: 10, rare_chests: 1 }, shields: { slurp_barrels: 4, slurp_trucks: 0, vending_machines: 0 }, contest_data: { popularity: "very_low" }, position: [0.6, 0.65], description: "Good passive drop with natural cover." },
-        { id: "storm_station", name: "Storm Station", type: "landmark", loot: { chests: 6, rare_chests: 0 }, shields: { slurp_barrels: 2, slurp_trucks: 0, vending_machines: 0 }, contest_data: { popularity: "very_low" }, position: [0.4, 0.25], description: "Research station with secret lore." },
-        { id: "paws_inn", name: "Paws Inn / Clawsy Lodge", type: "landmark", loot: { chests: 8, rare_chests: 1 }, shields: { slurp_barrels: 2, slurp_trucks: 0, vending_machines: 1 }, contest_data: { popularity: "low" }, position: [0.3, 0.2], description: "Large inn in forest. Good wood farming." }
+        { id: "toybox_docks", name: "Toybox Docks", type: "landmark", grid: "B2", loot: { chests: 12, rare_chests: 1 }, shields: { slurp_barrels: 6, slurp_trucks: 1, vending_machines: 0 }, contest_data: { popularity: "very_low" }, position: [0.2, 0.25], description: "BEST SAFE DROP - Slurp truck guarantees full shields!", materials: { wood: 10, brick: 3, metal: 4 } },
+        { id: "artsy_rvs", name: "Artsy RVs", type: "landmark", grid: "E5", loot: { chests: 8, rare_chests: 0 }, shields: { slurp_barrels: 5, slurp_trucks: 0, vending_machines: 0 }, contest_data: { popularity: "very_low" }, position: [0.65, 0.55], description: "TOP COMPETITIVE PICK - Never contested, great shields.", materials: { wood: 6, brick: 2, metal: 5 } },
+        { id: "peelian_swamp", name: "Peelian Swamp", type: "landmark", grid: "E6", loot: { chests: 10, rare_chests: 1 }, shields: { slurp_barrels: 4, slurp_trucks: 0, vending_machines: 0 }, contest_data: { popularity: "very_low" }, position: [0.6, 0.65], description: "Good passive drop with natural cover.", materials: { wood: 10, brick: 2, metal: 2 } },
+        { id: "storm_station", name: "Storm Station", type: "landmark", grid: "D2", loot: { chests: 6, rare_chests: 0 }, shields: { slurp_barrels: 2, slurp_trucks: 0, vending_machines: 0 }, contest_data: { popularity: "very_low" }, position: [0.4, 0.25], description: "Research station with secret lore.", materials: { wood: 4, brick: 5, metal: 6 } },
+        { id: "paws_inn", name: "Paws Inn / Clawsy Lodge", type: "landmark", grid: "C2", loot: { chests: 8, rare_chests: 1 }, shields: { slurp_barrels: 2, slurp_trucks: 0, vending_machines: 1 }, contest_data: { popularity: "low" }, position: [0.3, 0.2], description: "Large inn in forest. Good wood farming.", materials: { wood: 10, brick: 4, metal: 3 } }
+      ],
+      resources: [
+        { type: "slurp_barrel", position: [0.15, 0.3], name: "Barrels near Bumpy" },
+        { type: "slurp_barrel", position: [0.45, 0.5], name: "Barrels at Innoloop" },
+        { type: "slurp_barrel", position: [0.62, 0.45], name: "Barrels East of Labs" },
+        { type: "slurp_barrel", position: [0.75, 0.6], name: "Barrels near Painted Palms" },
+        { type: "slurp_barrel", position: [0.35, 0.35], name: "Barrels at Humble Hills" },
+        { type: "wood_farm", position: [0.22, 0.18], name: "Forest Wood Farm" },
+        { type: "wood_farm", position: [0.28, 0.22], name: "Tiptop Trees" },
+        { type: "brick_farm", position: [0.52, 0.72], name: "Canyon Brick" },
+        { type: "metal_farm", position: [0.48, 0.42], name: "Innoloop Metal" },
+        { type: "vehicle", position: [0.4, 0.55], name: "Car Spawn" },
+        { type: "vehicle", position: [0.7, 0.35], name: "Car Spawn East" },
+        { type: "balloon", position: [0.55, 0.5], name: "Balloon Station" }
       ]
     };
 
@@ -1440,6 +1748,7 @@
         tab.classList.add('active');
         document.getElementById(tab.dataset.tab).classList.add('active');
         if (tab.dataset.tab === 'map') setTimeout(drawMap, 100);
+        if (tab.dataset.tab === 'rotation') setTimeout(drawRotationMap, 100);
       });
     });
 
@@ -1577,6 +1886,274 @@ Provide tactical JSON response with specific actionable advice.`;
       container.innerHTML = html;
     }
 
+    // Rotation Planner
+    let playerPosition = null;
+    let zonePosition = null;
+
+    function planRotation() {
+      const currentPos = document.getElementById('currentPosition').value.toUpperCase();
+      const zoneCenter = document.getElementById('zoneCenter').value.toUpperCase();
+      const currentZone = document.getElementById('currentZone').value;
+      const teamsAlive = document.getElementById('teamsAlive').value;
+
+      if (!currentPos || !zoneCenter) {
+        alert('Please enter your current position and zone center');
+        return;
+      }
+
+      // Calculate route and predictions
+      const route = calculateOptimalRoute(currentPos, zoneCenter, currentZone);
+      const predictions = predictTeamPositions(zoneCenter, teamsAlive, currentZone);
+      const resources = findResourcesAlongRoute(currentPos, zoneCenter);
+
+      // Display results
+      document.getElementById('rotationResults').style.display = 'block';
+
+      // Team predictions
+      document.getElementById('teamPredictions').innerHTML = predictions.map(p => `
+        <div class="prediction-item">
+          <span>${p.location}</span>
+          <span class="prediction-chance ${p.chance >= 70 ? 'high' : p.chance >= 40 ? 'medium' : 'low'}">${p.chance}%</span>
+        </div>
+      `).join('');
+
+      // Optimal route
+      document.getElementById('optimalRoute').innerHTML = route.map((step, i) => `
+        <div class="route-waypoint ${step.type}">
+          <div class="route-waypoint-icon">${step.icon}</div>
+          <div class="route-waypoint-info">
+            <h4>${i + 1}. ${step.name}</h4>
+            <p>${step.description}</p>
+          </div>
+        </div>
+      `).join('');
+
+      // Resources
+      document.getElementById('refarmSpots').innerHTML = `
+        <h4 style="margin-bottom: 12px; color: var(--accent-success);">🛢️ Refarm Opportunities</h4>
+        ${resources.refarm.map(r => `
+          <div class="route-waypoint resource">
+            <div class="route-waypoint-icon">${r.icon}</div>
+            <div class="route-waypoint-info">
+              <h4>${r.name} <span class="refarm-badge">${r.type}</span></h4>
+              <p>${r.description}</p>
+            </div>
+          </div>
+        `).join('')}
+      `;
+
+      document.getElementById('dangerZones').innerHTML = `
+        <h4 style="margin-bottom: 12px; color: var(--accent-danger);">⚠️ Danger Zones to Avoid</h4>
+        ${resources.dangers.map(d => `
+          <div class="route-waypoint danger">
+            <div class="route-waypoint-icon">${d.icon}</div>
+            <div class="route-waypoint-info">
+              <h4>${d.name} <span class="danger-badge">${d.reason}</span></h4>
+              <p>${d.description}</p>
+            </div>
+          </div>
+        `).join('')}
+      `;
+
+      // Update map
+      drawRotationMap(currentPos, zoneCenter, route);
+    }
+
+    function calculateOptimalRoute(from, to, zone) {
+      // Basic pathfinding - in a real implementation this would be more sophisticated
+      const routes = [
+        { icon: '📍', name: `Start: ${from}`, description: 'Begin rotation immediately', type: '' },
+        { icon: '🏃', name: 'Use natural cover', description: 'Hug terrain edges, avoid open areas', type: '' },
+        { icon: '🛢️', name: 'Hit barrels on path', description: 'Top off shields if needed (5s max)', type: 'resource' },
+        { icon: '🏠', name: 'Check buildings', description: 'Quick wood refarm if below 300', type: 'resource' },
+        { icon: '👀', name: 'Scan before commit', description: 'AR scan zone edge before entering', type: '' },
+        { icon: '🎯', name: `Arrive: ${to}`, description: 'Claim strong layer position', type: '' }
+      ];
+      return routes;
+    }
+
+    function predictTeamPositions(zoneCenter, teamsAlive, currentZone) {
+      // Based on zone pull and teams alive, predict likely positions
+      const predictions = [];
+      const allPOIs = [...POI_DATA.named_pois, ...POI_DATA.landmarks];
+
+      // Find POIs near zone
+      allPOIs.forEach(poi => {
+        if (poi.contest_data?.popularity === 'high' || poi.contest_data?.popularity === 'very_high') {
+          predictions.push({
+            location: poi.name,
+            chance: Math.floor(Math.random() * 30) + 50 // 50-80% for hot drops
+          });
+        } else if (poi.contest_data?.popularity === 'medium') {
+          predictions.push({
+            location: poi.name,
+            chance: Math.floor(Math.random() * 25) + 25 // 25-50%
+          });
+        }
+      });
+
+      // Add edge holding positions
+      predictions.push({ location: 'Zone edge (North)', chance: 65 });
+      predictions.push({ location: 'Zone edge (South)', chance: 70 });
+      predictions.push({ location: 'Highground center', chance: 55 });
+
+      return predictions.sort((a, b) => b.chance - a.chance).slice(0, 6);
+    }
+
+    function findResourcesAlongRoute(from, to) {
+      return {
+        refarm: [
+          { icon: '🛢️', name: 'Slurp Barrels', type: 'Shields', description: '3 barrels - quick full shield' },
+          { icon: '🪵', name: 'Wood Farm Spot', type: 'Mats', description: 'Dense trees - 200 wood in 10s' },
+          { icon: '🧱', name: 'Brick Pile', type: 'Mats', description: 'Rock cluster - 150 brick' },
+          { icon: '🚗', name: 'Vehicle Spawn', type: 'Mobility', description: 'Car available for fast rotate' }
+        ],
+        dangers: [
+          { icon: '🔥', name: 'Battle Boulevard edge', reason: 'High Traffic', description: 'Teams rotating from BB - go wide' },
+          { icon: '👁️', name: 'Hill sightline', reason: 'Exposed', description: 'Visible from multiple angles - smoke or build' },
+          { icon: '⚡', name: 'Open field', reason: 'No Cover', description: 'Sprint through, dont stop' }
+        ]
+      };
+    }
+
+    // Rotation Map with click support
+    function drawRotationMap(currentPos, zoneCenter, route) {
+      const canvas = document.getElementById('rotationMapCanvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+
+      // Background
+      const bg = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 0, canvas.width/2, canvas.height/2, canvas.width/1.5);
+      bg.addColorStop(0, '#1a1a25');
+      bg.addColorStop(1, '#0d0d15');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Grid
+      ctx.strokeStyle = 'rgba(99, 102, 241, 0.15)';
+      ctx.lineWidth = 1;
+      for (let i = 0; i <= 8; i++) {
+        ctx.beginPath();
+        ctx.moveTo((canvas.width / 8) * i, 0);
+        ctx.lineTo((canvas.width / 8) * i, canvas.height);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(0, (canvas.height / 8) * i);
+        ctx.lineTo(canvas.width, (canvas.height / 8) * i);
+        ctx.stroke();
+      }
+
+      // Grid labels
+      ctx.fillStyle = 'rgba(255,255,255,0.3)';
+      ctx.font = 'bold 12px Inter';
+      const letters = 'ABCDEFGH';
+      for (let i = 0; i < 8; i++) {
+        ctx.fillText(letters[i], (canvas.width / 8) * i + canvas.width / 16 - 4, 15);
+        ctx.fillText(i + 1, 5, (canvas.height / 8) * i + canvas.height / 16 + 4);
+      }
+
+      // Draw POIs
+      [...POI_DATA.named_pois, ...POI_DATA.landmarks].forEach(poi => {
+        if (!poi.position) return;
+        const [x, y] = poi.position;
+        const px = x * canvas.width;
+        const py = y * canvas.height;
+
+        ctx.beginPath();
+        ctx.arc(px, py, 8, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(99, 102, 241, 0.6)';
+        ctx.fill();
+      });
+
+      // Draw resources
+      POI_DATA.resources.forEach(res => {
+        const [x, y] = res.position;
+        const px = x * canvas.width;
+        const py = y * canvas.height;
+
+        ctx.beginPath();
+        ctx.arc(px, py, 6, 0, Math.PI * 2);
+        ctx.fillStyle = res.type === 'slurp_barrel' ? '#06b6d4' :
+                        res.type === 'wood_farm' ? '#a0522d' :
+                        res.type === 'brick_farm' ? '#cd5c5c' :
+                        res.type === 'metal_farm' ? '#708090' :
+                        res.type === 'vehicle' ? '#f59e0b' : '#6366f1';
+        ctx.fill();
+      });
+
+      // Draw zone circle if set
+      if (zoneCenter) {
+        const zonePos = gridToPosition(zoneCenter);
+        if (zonePos) {
+          ctx.beginPath();
+          ctx.arc(zonePos.x * canvas.width, zonePos.y * canvas.height, canvas.width * 0.25, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(6, 182, 212, 0.6)';
+          ctx.lineWidth = 3;
+          ctx.setLineDash([10, 5]);
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          // Zone center marker
+          ctx.beginPath();
+          ctx.arc(zonePos.x * canvas.width, zonePos.y * canvas.height, 10, 0, Math.PI * 2);
+          ctx.fillStyle = '#06b6d4';
+          ctx.fill();
+        }
+      }
+
+      // Draw player position
+      if (currentPos) {
+        const pos = gridToPosition(currentPos);
+        if (pos) {
+          ctx.beginPath();
+          ctx.arc(pos.x * canvas.width, pos.y * canvas.height, 12, 0, Math.PI * 2);
+          ctx.fillStyle = '#10b981';
+          ctx.fill();
+          ctx.strokeStyle = '#fff';
+          ctx.lineWidth = 3;
+          ctx.stroke();
+
+          // Draw route line
+          if (zoneCenter) {
+            const zonePos = gridToPosition(zoneCenter);
+            if (zonePos) {
+              ctx.beginPath();
+              ctx.moveTo(pos.x * canvas.width, pos.y * canvas.height);
+              ctx.lineTo(zonePos.x * canvas.width, zonePos.y * canvas.height);
+              ctx.strokeStyle = '#6366f1';
+              ctx.lineWidth = 3;
+              ctx.setLineDash([8, 4]);
+              ctx.stroke();
+              ctx.setLineDash([]);
+            }
+          }
+        }
+      }
+    }
+
+    function gridToPosition(grid) {
+      const match = grid.match(/([A-H])([1-8])/i);
+      if (!match) return null;
+      const col = match[1].toUpperCase().charCodeAt(0) - 65;
+      const row = parseInt(match[2]) - 1;
+      return { x: (col + 0.5) / 8, y: (row + 0.5) / 8 };
+    }
+
+    // Click handler for rotation map
+    document.getElementById('rotationMapCanvas')?.addEventListener('click', function(e) {
+      const rect = this.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top) / rect.height;
+
+      const col = String.fromCharCode(65 + Math.floor(x * 8));
+      const row = Math.floor(y * 8) + 1;
+      const grid = col + row;
+
+      document.getElementById('currentPosition').value = grid;
+      drawRotationMap(grid, document.getElementById('zoneCenter').value);
+    });
+
     // Drop Explorer
     function filterDrops() {
       const style = document.getElementById('styleFilter').value;
@@ -1645,6 +2222,12 @@ Provide tactical JSON response with specific actionable advice.`;
           <p>Slurp Trucks: ${poi.shields?.slurp_trucks || 0}</p>
           <p>Vending Machines: ${poi.shields?.vending_machines || 0}</p>
         </div>
+        <div style="margin-top:16px;">
+          <h4 style="margin-bottom:12px;">Materials</h4>
+          <p>🪵 Wood: ${poi.materials?.wood || 0}/10</p>
+          <p>🧱 Brick: ${poi.materials?.brick || 0}/10</p>
+          <p>⚙️ Metal: ${poi.materials?.metal || 0}/10</p>
+        </div>
         <div style="margin-top:24px;">
           <a href="https://fortnite.gg/map" target="_blank" class="btn btn-secondary" style="text-decoration:none;">View on Fortnite.gg →</a>
         </div>
@@ -1657,7 +2240,7 @@ Provide tactical JSON response with specific actionable advice.`;
     }
 
     // Map
-    const mapLayers = { pois: true, routes: false, zones: false };
+    const mapLayers = { pois: true, routes: false, zones: false, resources: false };
 
     function toggleLayer(layer) {
       mapLayers[layer] = !mapLayers[layer];
@@ -1693,7 +2276,6 @@ Provide tactical JSON response with specific actionable advice.`;
       }
 
       if (mapLayers.zones) {
-        // Draw example zone circle
         ctx.beginPath();
         ctx.arc(canvas.width * 0.5, canvas.height * 0.5, canvas.width * 0.35, 0, Math.PI * 2);
         ctx.strokeStyle = 'rgba(6, 182, 212, 0.5)';
@@ -1715,6 +2297,26 @@ Provide tactical JSON response with specific actionable advice.`;
         ctx.setLineDash([]);
       }
 
+      if (mapLayers.resources) {
+        POI_DATA.resources.forEach(res => {
+          const [x, y] = res.position;
+          const px = x * canvas.width;
+          const py = y * canvas.height;
+
+          ctx.beginPath();
+          ctx.arc(px, py, 8, 0, Math.PI * 2);
+          ctx.fillStyle = res.type === 'slurp_barrel' ? '#06b6d4' :
+                          res.type === 'wood_farm' ? '#a0522d' :
+                          res.type === 'brick_farm' ? '#cd5c5c' :
+                          res.type === 'metal_farm' ? '#708090' :
+                          res.type === 'vehicle' ? '#f59e0b' : '#8b5cf6';
+          ctx.fill();
+          ctx.strokeStyle = '#fff';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        });
+      }
+
       if (mapLayers.pois) {
         [...POI_DATA.named_pois, ...POI_DATA.landmarks].forEach(poi => {
           if (!poi.position) return;
@@ -1727,13 +2329,11 @@ Provide tactical JSON response with specific actionable advice.`;
           if (contest === 'very_low' || contest === 'low') color = '#10b981';
           if (contest === 'high' || contest === 'very_high') color = '#ef4444';
 
-          // Glow
           ctx.beginPath();
           ctx.arc(px, py, 20, 0, Math.PI * 2);
           ctx.fillStyle = color + '33';
           ctx.fill();
 
-          // Marker
           ctx.beginPath();
           ctx.arc(px, py, poi.type === 'named_poi' ? 14 : 10, 0, Math.PI * 2);
           ctx.fillStyle = color;
@@ -1742,7 +2342,6 @@ Provide tactical JSON response with specific actionable advice.`;
           ctx.lineWidth = 2;
           ctx.stroke();
 
-          // Label
           ctx.fillStyle = '#fff';
           ctx.font = 'bold 11px Inter, sans-serif';
           ctx.textAlign = 'center';
@@ -1751,7 +2350,7 @@ Provide tactical JSON response with specific actionable advice.`;
       }
     }
 
-    // Click outside modal to close
+    // Modal close
     document.getElementById('modal').addEventListener('click', (e) => {
       if (e.target.id === 'modal') closeModal();
     });
@@ -1760,7 +2359,11 @@ Provide tactical JSON response with specific actionable advice.`;
     document.addEventListener('DOMContentLoaded', () => {
       filterDrops();
       setTimeout(drawMap, 100);
-      window.addEventListener('resize', drawMap);
+      setTimeout(drawRotationMap, 100);
+      window.addEventListener('resize', () => {
+        drawMap();
+        drawRotationMap();
+      });
     });
   </script>
 </body>
